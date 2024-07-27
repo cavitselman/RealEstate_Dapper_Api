@@ -1,0 +1,6 @@
+@RED.Api_HostAddress = http://localhost:5067
+
+GET {{RED.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
