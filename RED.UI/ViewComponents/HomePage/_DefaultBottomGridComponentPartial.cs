@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RED.UI.DTOs.ProductDTOs;
+using RED.UI.DTOs.BottomGridDTOs;
 
 namespace RED.UI.ViewComponents.HomePage
 {
-    public class _DefaultHomePageProductList:ViewComponent
+    public class _DefaultBottomGridComponentPartial:ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _DefaultHomePageProductList(IHttpClientFactory httpClientFactory)
+        public _DefaultBottomGridComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,11 +16,11 @@ namespace RED.UI.ViewComponents.HomePage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductListWithCategory");
-            if(responseMessage.IsSuccessStatusCode)
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/BottomGrids");
+            if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDTO>> (jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultBottomGridDTO>>(jsonData);
                 return View(values);
             }
             return View();
