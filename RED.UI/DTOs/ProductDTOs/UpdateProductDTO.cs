@@ -1,6 +1,6 @@
 ﻿namespace RED.UI.DTOs.ProductDTOs
 {
-    public class ResultProductDTO
+    public class UpdateProductDTO
     {
         public int productID { get; set; }
         public string title { get; set; }
