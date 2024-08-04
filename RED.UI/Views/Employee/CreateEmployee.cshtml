@@ -1,0 +1,33 @@
+﻿@model CreateEmployeeDTO
+@{
+    ViewData["Title"] = "CreateEmployee";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Yeni Personel Ekleme Sayfası</h6>
+                <form method="post">
+                    <label>Personel Adı</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <br />
+                    <label>Personel Unvanı</label>
+                    <input type="text" asp-for="Title" class="form-control" />
+                    <br />
+                    <label>Mail Adresi</label>
+                    <input type="text" asp-for="Email" class="form-control" />
+                    <br />
+                    <label>Telefon Numarası</label>
+                    <input type="text" asp-for="PhoneNumber" class="form-control" />
+                    <br />
+                    <label>Görsel Yolu</label>
+                    <input type="text" asp-for="ImageUrl" class="form-control" />
+                    <br />
+                    <button class="btn-outline-primary">Personeli Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
