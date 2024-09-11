@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RED.UI.DTOs.ServiceDTOs;
 using RED.UI.DTOs.WhoWeAreDTOs;
 
 namespace RED.UI.ViewComponents.HomePage

@@ -32,7 +32,7 @@ namespace RED.Api.Controllers
             return Ok("Hakkımızda Kısmı Başarılı Bir Şekilde Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
             _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
