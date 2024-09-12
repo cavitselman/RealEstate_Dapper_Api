@@ -2,7 +2,7 @@
 using RED.Api.DTOs.ProductDTOs;
 using RED.Api.Models.DapperContext;
 
-namespace RED.Api.Repositories.ProductRepository
+namespace RED.Api.Repositories.ProductRepositories
 {
     public class ProductRepository : IProductRepository
     {
@@ -33,12 +33,12 @@ namespace RED.Api.Repositories.ProductRepository
             }
         }
 
-        public async Task<List<ResultProductDTO>> GetLast5ProductAsync()
+        public async Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync()
         {
-            string query = "Select Top(5) * From Product Where Type='Kiralık' Order By ProductID Desc";
+            string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where Type='Kiralık' Order By ProductID Desc";
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductDTO>(query);
+                var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDTO>(query);
                 return values.ToList();
             }
         }

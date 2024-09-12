@@ -1,6 +1,6 @@
 ﻿using RED.Api.DTOs.CategoryDTOs;
 
-namespace RED.Api.Repositories.CategoryRepository
+namespace RED.Api.Repositories.CategoryRepositories
 {
     public interface ICategoryRepository
     {

@@ -1,7 +1,7 @@
 ﻿using RED.Api.DTOs.WhoWeAreDetailDTOs;
 using RED.Api.DTOs.WhoWeAreDTOs;
 
-namespace RED.Api.Repositories.WhoWeAreRepository
+namespace RED.Api.Repositories.WhoWeAreDetailRepositories
 {
     public interface IWhoWeAreDetailRepository
     {

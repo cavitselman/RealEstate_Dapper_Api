@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RED.Api.Repositories.ProductRepository;
+﻿using Microsoft.AspNetCore.Mvc;
+using RED.Api.Repositories.ProductRepositories;
 
 namespace RED.Api.Controllers
 {

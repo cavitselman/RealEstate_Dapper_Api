@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RED.Api.DTOs.CategoryDTOs;
+﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.DTOs.WhoWeAreDetailDTOs;
-using RED.Api.Repositories.CategoryRepository;
-using RED.Api.Repositories.WhoWeAreRepository;
+using RED.Api.Repositories.WhoWeAreDetailRepositories;
 
 namespace RED.Api.Controllers
 {

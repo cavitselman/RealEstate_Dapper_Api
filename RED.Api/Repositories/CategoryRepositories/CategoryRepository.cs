@@ -2,7 +2,7 @@
 using RED.Api.Models.DapperContext;
 using Dapper;
 
-namespace RED.Api.Repositories.CategoryRepository
+namespace RED.Api.Repositories.CategoryRepositories
 {
     public class CategoryRepository : ICategoryRepository
     {

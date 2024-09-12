@@ -1,13 +1,15 @@
 using RED.Api.Models.DapperContext;
 using RED.Api.Repositories.BottomGridRepositories;
-using RED.Api.Repositories.CategoryRepository;
+using RED.Api.Repositories.CategoryRepositories;
+using RED.Api.Repositories.ContactRepositories;
 using RED.Api.Repositories.EmployeeRepositories;
 using RED.Api.Repositories.PopularLocationRepositories;
-using RED.Api.Repositories.ProductRepository;
-using RED.Api.Repositories.ServiceRepository;
+using RED.Api.Repositories.ProductRepositories;
+using RED.Api.Repositories.ServiceRepositories;
 using RED.Api.Repositories.StatisticsRepositories;
 using RED.Api.Repositories.TestimonialRepositories;
-using RED.Api.Repositories.WhoWeAreRepository;
+using RED.Api.Repositories.ToDoListRepositories;
+using RED.Api.Repositories.WhoWeAreDetailRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,8 @@ builder.Services.AddTransient<IPopularLocationRepository, PopularLocationReposit
 builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddTransient<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddTransient<IContactRepository, ContactRepository>();
+builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

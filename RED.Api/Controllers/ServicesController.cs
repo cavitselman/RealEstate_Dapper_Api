@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.DTOs.ServiceDTOs;
-using RED.Api.Repositories.ServiceRepository;
+using RED.Api.Repositories.ServiceRepositories;
 
 namespace RED.Api.Controllers
 {

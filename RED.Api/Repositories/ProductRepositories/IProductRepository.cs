@@ -1,6 +1,6 @@
 ﻿using RED.Api.DTOs.ProductDTOs;
 
-namespace RED.Api.Repositories.ProductRepository
+namespace RED.Api.Repositories.ProductRepositories
 {
     public interface IProductRepository
     {
@@ -8,6 +8,6 @@ namespace RED.Api.Repositories.ProductRepository
         Task<List<ResultProductWithCategoryDTO>> GetAllProductWithCategoryAsync();
         void ProductDealOfTheDayStatusChangeToTrue(int id);
         void ProductDealOfTheDayStatusChangeToFalse(int id);
-        Task<List<ResultProductDTO>> GetLast5ProductAsync();
+        Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync();
     }
 }

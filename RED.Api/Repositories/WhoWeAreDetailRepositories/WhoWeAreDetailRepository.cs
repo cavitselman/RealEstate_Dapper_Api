@@ -3,7 +3,7 @@ using RED.Api.DTOs.WhoWeAreDetailDTOs;
 using RED.Api.DTOs.WhoWeAreDTOs;
 using RED.Api.Models.DapperContext;
 
-namespace RED.Api.Repositories.WhoWeAreRepository
+namespace RED.Api.Repositories.WhoWeAreDetailRepositories
 {
     public class WhoWeAreDetailRepository : IWhoWeAreDetailRepository
     {

@@ -1,6 +1,6 @@
 ﻿using RED.Api.DTOs.ServiceDTOs;
 
-namespace RED.Api.Repositories.ServiceRepository
+namespace RED.Api.Repositories.ServiceRepositories
 {
     public interface IServiceRepository
     {
