@@ -1,7 +1,27 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using RED.UI.Services;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+
 var builder = WebApplication.CreateBuilder(args);
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove(ClaimTypes.NameIdentifier);
 
 // Add services to the container.
 builder.Services.AddHttpClient();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt=>
+{
+    opt.LoginPath = "/Login/Index";
+    opt.LogoutPath = "/Login/LogOut";
+    opt.AccessDeniedPath = "/Pages/AccessDenied";
+    opt.Cookie.HttpOnly = true;
+    opt.Cookie.SameSite = SameSiteMode.Strict;
+    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    opt.Cookie.Name = "RealEstateJwt";
+});
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ILoginService, LoginService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -19,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

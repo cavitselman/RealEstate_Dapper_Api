@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.ProductDTOs;
+using RED.UI.Services;
 
 namespace RED.UI.Areas.EstateAgent.Controllers
 {
@@ -9,15 +10,17 @@ namespace RED.UI.Areas.EstateAgent.Controllers
     {
 
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ILoginService _loginService;
 
-        public MyAdvertsController(IHttpClientFactory httpClientFactory)
+        public MyAdvertsController(IHttpClientFactory httpClientFactory, ILoginService loginService)
         {
             _httpClientFactory = httpClientFactory;
+            _loginService = loginService;
         }
 
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index()
         {
-            id = 1;
+            var id = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductAdvertsListByEmployee?id=" + id);
             if (responseMessage.IsSuccessStatusCode)

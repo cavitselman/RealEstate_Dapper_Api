@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateLoginDTO
 @{
     Layout = null;
 }
@@ -57,11 +57,11 @@
                         </div>
                         <form method="post">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Kullanıcı adınızı yazınız...">
+                            <input type="text" class="form-control" id="floatingInput" asp-for="Username" placeholder="Kullanıcı adınızı yazınız...">
                             <label for="floatingInput">Kullanıcı Adınız</label>
                         </div>
                         <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Şifreniz...">
+                                <input type="password" class="form-control" id="floatingPassword" asp-for="Password" placeholder="Şifreniz...">
                             <label for="floatingPassword">Şifre</label>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-4">
