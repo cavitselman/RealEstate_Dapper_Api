@@ -5,7 +5,9 @@ using RED.Api.Repositories.CategoryRepositories;
 using RED.Api.Repositories.ContactRepositories;
 using RED.Api.Repositories.EmployeeRepositories;
 using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.ChartRepositories;
+using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastProductsRepositories;
 using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticRepositories;
+using RED.Api.Repositories.MessageRepositories;
 using RED.Api.Repositories.PopularLocationRepositories;
 using RED.Api.Repositories.ProductRepositories;
 using RED.Api.Repositories.ServiceRepositories;
@@ -32,6 +34,8 @@ builder.Services.AddTransient<IContactRepository, ContactRepository>();
 builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 builder.Services.AddTransient<IChartRepository, ChartRepository>();
+builder.Services.AddTransient<ILast5ProductsRepository, Last5ProductsRepository>();
+builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 
 builder.Services.AddCors(opt =>
 {
