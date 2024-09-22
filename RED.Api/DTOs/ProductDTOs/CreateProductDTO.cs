@@ -1,4 +1,4 @@
-﻿namespace RED.UI.DTOs.ProductDTOs
+﻿namespace RED.Api.DTOs.ProductDTOs
 {
     public class CreateProductDTO
     {

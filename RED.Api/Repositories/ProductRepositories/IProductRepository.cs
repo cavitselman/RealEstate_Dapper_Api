@@ -11,5 +11,6 @@ namespace RED.Api.Repositories.ProductRepositories
         void ProductDealOfTheDayStatusChangeToTrue(int id);
         void ProductDealOfTheDayStatusChangeToFalse(int id);
         Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync();
+        Task CreateProduct(CreateProductDTO createProductDTO);
     }
 }

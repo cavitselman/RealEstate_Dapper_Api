@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RED.Api.DTOs.ProductDTOs;
 using RED.Api.Repositories.ProductRepositories;
 
 namespace RED.Api.Controllers
@@ -61,6 +62,13 @@ namespace RED.Api.Controllers
         {
             var values = await _productRepository.GetProductAdvertListByEmployeeAsyncByFalse(id);
             return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductDTO createProductDTO)
+        {
+            await _productRepository.CreateProduct(createProductDTO);
+            return Ok("İlan başarıyla eklendi.");
         }
     }
 }
