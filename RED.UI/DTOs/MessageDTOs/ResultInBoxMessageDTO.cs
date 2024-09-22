@@ -1,4 +1,4 @@
-﻿namespace RED.Api.DTOs.MessageDTOs
+﻿namespace RED.UI.DTOs.MessageDTOs
 {
     public class ResultInBoxMessageDTO
     {

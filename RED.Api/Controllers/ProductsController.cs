@@ -49,10 +49,17 @@ namespace RED.Api.Controllers
             return Ok(values);
         }
 
-        [HttpGet("ProductAdvertsListByEmployee")]
-        public async Task<IActionResult> ProductAdvertsListByEmployee(int id)
+        [HttpGet("ProductAdvertListByEmployeeAsyncByTrue")]
+        public async Task<IActionResult> ProductAdvertListByEmployeeAsyncByTrue(int id)
         {
-            var values = await _productRepository.GetProductAdvertListByEmployeeAsync(id);
+            var values = await _productRepository.GetProductAdvertListByEmployeeAsyncByTrue(id);
+            return Ok(values);
+        }
+
+        [HttpGet("ProductAdvertListByEmployeeAsyncByFalse")]
+        public async Task<IActionResult> ProductAdvertListByEmployeeAsyncByFalse(int id)
+        {
+            var values = await _productRepository.GetProductAdvertListByEmployeeAsyncByFalse(id);
             return Ok(values);
         }
     }

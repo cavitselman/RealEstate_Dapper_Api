@@ -5,7 +5,8 @@ namespace RED.Api.Repositories.ProductRepositories
     public interface IProductRepository
     {
         Task<List<ResultProductDTO>> GetAllProductAsync();
-        Task<List<ResultProductAdvertListWithCategoryByEmployeeDTO>> GetProductAdvertListByEmployeeAsync(int id);
+        Task<List<ResultProductAdvertListWithCategoryByEmployeeDTO>> GetProductAdvertListByEmployeeAsyncByTrue(int id);
+        Task<List<ResultProductAdvertListWithCategoryByEmployeeDTO>> GetProductAdvertListByEmployeeAsyncByFalse(int id);
         Task<List<ResultProductWithCategoryDTO>> GetAllProductWithCategoryAsync();
         void ProductDealOfTheDayStatusChangeToTrue(int id);
         void ProductDealOfTheDayStatusChangeToFalse(int id);
