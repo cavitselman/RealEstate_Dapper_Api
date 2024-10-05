@@ -70,5 +70,12 @@ namespace RED.Api.Controllers
             await _productRepository.CreateProduct(createProductDTO);
             return Ok("İlan başarıyla eklendi.");
         }
+
+        [HttpGet("GetProductByProductId")]
+        public async Task<IActionResult> GetProductByProductId(int id)
+        {
+            var values = await _productRepository.GetProductByProductId(id);
+            return Ok(values);
+        }               
     }
 }

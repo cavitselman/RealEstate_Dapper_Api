@@ -1,5 +1,6 @@
 using RED.Api.Hubs;
 using RED.Api.Models.DapperContext;
+using RED.Api.Repositories.AppUserRepositories;
 using RED.Api.Repositories.BottomGridRepositories;
 using RED.Api.Repositories.CategoryRepositories;
 using RED.Api.Repositories.ContactRepositories;
@@ -9,7 +10,9 @@ using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastPro
 using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticRepositories;
 using RED.Api.Repositories.MessageRepositories;
 using RED.Api.Repositories.PopularLocationRepositories;
+using RED.Api.Repositories.ProductImageRepositories;
 using RED.Api.Repositories.ProductRepositories;
+using RED.Api.Repositories.PropertyAmenityRepositories;
 using RED.Api.Repositories.ServiceRepositories;
 using RED.Api.Repositories.StatisticsRepositories;
 using RED.Api.Repositories.TestimonialRepositories;
@@ -36,6 +39,9 @@ builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 builder.Services.AddTransient<IChartRepository, ChartRepository>();
 builder.Services.AddTransient<ILast5ProductsRepository, Last5ProductsRepository>();
 builder.Services.AddTransient<IMessageRepository, MessageRepository>();
+builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
+builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
+builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
 
 builder.Services.AddCors(opt =>
 {
