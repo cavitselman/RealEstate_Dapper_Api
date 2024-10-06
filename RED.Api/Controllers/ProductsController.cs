@@ -76,6 +76,13 @@ namespace RED.Api.Controllers
         {
             var values = await _productRepository.GetProductByProductId(id);
             return Ok(values);
-        }               
+        }
+
+        [HttpGet("ResultProductWithSearchList")]
+        public async Task<IActionResult> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
+        {
+            var values = await _productRepository.ResultProductWithSearchList(searchKeyValue, propertyCategoryId, city);
+            return Ok(values);
+        }
     }
 }

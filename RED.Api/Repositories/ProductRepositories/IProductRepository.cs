@@ -15,5 +15,6 @@ namespace RED.Api.Repositories.ProductRepositories
         Task CreateProduct(CreateProductDTO createProductDTO);
         Task<GetProductByProductIdDTO> GetProductByProductId(int id);
         Task<GetProductDetailByIdDTO> GetProductDetailByProductId(int id);
+        Task<List<ResultProductWithSearchListDTO>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city);
     }
 }
