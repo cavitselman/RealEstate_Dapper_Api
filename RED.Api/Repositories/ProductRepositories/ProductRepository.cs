@@ -150,5 +150,25 @@ namespace RED.Api.Repositories.ProductRepositories
                 return values.ToList();
             }
         }
+
+        public async Task<List<ResultProductWithCategoryDTO>> GetProductByDealOfTheDayTrueWithCategoryAsync()
+        {
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay From Product inner join Category on Product.ProductCategory=Category.CategoryID Where DealOfTheDay=1";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithCategoryDTO>(query);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultLast3ProductWithCategoryDTO>> GetLast3ProductAsync()
+        {
+            string query = "Select Top(3) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate,CoverImage,Description From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Order By ProductID Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast3ProductWithCategoryDTO>(query);
+                return values.ToList();
+            }
+        }
     }
 }

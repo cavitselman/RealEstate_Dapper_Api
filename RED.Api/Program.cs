@@ -15,6 +15,7 @@ using RED.Api.Repositories.ProductRepositories;
 using RED.Api.Repositories.PropertyAmenityRepositories;
 using RED.Api.Repositories.ServiceRepositories;
 using RED.Api.Repositories.StatisticsRepositories;
+using RED.Api.Repositories.SubFeatureRepositories;
 using RED.Api.Repositories.TestimonialRepositories;
 using RED.Api.Repositories.ToDoListRepositories;
 using RED.Api.Repositories.WhoWeAreDetailRepositories;
@@ -42,6 +43,7 @@ builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
+builder.Services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
 
 builder.Services.AddCors(opt =>
 {

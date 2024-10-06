@@ -12,9 +12,11 @@ namespace RED.Api.Repositories.ProductRepositories
         Task ProductDealOfTheDayStatusChangeToTrue(int id);
         Task ProductDealOfTheDayStatusChangeToFalse(int id);
         Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync();
+        Task<List<ResultLast3ProductWithCategoryDTO>> GetLast3ProductAsync();
         Task CreateProduct(CreateProductDTO createProductDTO);
         Task<GetProductByProductIdDTO> GetProductByProductId(int id);
         Task<GetProductDetailByIdDTO> GetProductDetailByProductId(int id);
         Task<List<ResultProductWithSearchListDTO>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city);
+        Task<List<ResultProductWithCategoryDTO>> GetProductByDealOfTheDayTrueWithCategoryAsync();
     }
 }
