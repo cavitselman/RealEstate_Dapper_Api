@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "PropertySingle";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
@@ -51,7 +50,7 @@
             <div class="col-lg-8 w3l-news">
                 <div class="blog-single-post">
 
-                    @await Component.InvokeAsync("_PropertySliderComponentPartial")    
+                    @await Component.InvokeAsync("_PropertySliderComponentPartial", new { id = ViewBag.i })
 
                     <div class="single-post-content">
                         <h3 class="post-content-title mb-3">İlan Açıklaması</h3>
@@ -76,7 +75,7 @@
                             </ul>
                         </div>
                         @await Component.InvokeAsync("_PropertyAmenityStatusTrueByPropertyIdComponentPartial")
-                        
+
                     </div>
 
                     <div class="single-bg-white">
@@ -97,7 +96,7 @@
             </div>
 
             @await Component.InvokeAsync("_PropertyAppUserComponentPartial")
-            
+
         </div>
     </div>
 </section>

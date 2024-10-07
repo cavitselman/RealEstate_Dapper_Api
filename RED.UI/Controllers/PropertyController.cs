@@ -43,10 +43,10 @@ namespace RED.UI.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> PropertySingle(int id)
+        [HttpGet("property/{slug}/{id}")]
+        public async Task<IActionResult> PropertySingle(string slug, int id)
         {
-            id = 1;
+            ViewBag.i = id;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/GetProductByProductId?id=" + id);
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -65,6 +65,7 @@ namespace RED.UI.Controllers
             ViewBag.type = values.type;
             ViewBag.description = values.description;
             ViewBag.date = values.advertisementDate;
+            ViewBag.slugUrl = values.SlugUrl;
 
             DateTime date1 = DateTime.Now;
             DateTime date2 = values.advertisementDate;
@@ -80,7 +81,21 @@ namespace RED.UI.Controllers
             ViewBag.buildYear = values2.buildYear;
             ViewBag.location = values2.location;
             ViewBag.videoUrl = values2.videoUrl;
+
+            string slugFromTitle = CreateSlug(values.title);
+            ViewBag.slugUrl = slugFromTitle;
             return View();
+        }
+
+        private string CreateSlug(string title)
+        {
+            title = title.ToLowerInvariant(); //Küçük harfe çevir
+            title = title.Replace(" ", "-"); //Boşlukları tire ile değiştir
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"[^a-z0-9\s-]", ""); //Geçersiz karakterleri kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s+", " ").Trim(); //Birden fazla boşluğu tek boşluğa indir ve kenar boşluklarını kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s", "-"); //Boşlukları tire ile değiştir
+
+            return title;
         }
     }
 }
