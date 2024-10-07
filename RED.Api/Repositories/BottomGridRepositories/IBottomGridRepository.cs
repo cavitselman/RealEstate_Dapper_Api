@@ -4,10 +4,10 @@ namespace RED.Api.Repositories.BottomGridRepositories
 {
     public interface IBottomGridRepository
     {
-        Task<List<ResultBottomGridDTO>> GetAllBottomGridAsync();
-        void CreateBottomGrid(CreateBottomGridDTO createBottomGridDTO);
-        void DeleteBottomGrid(int id);
-        void UpdateBottomGrid(UpdateBottomGridDTO updateBottomGridDTO);
+        Task<List<ResultBottomGridDTO>> GetAllBottomGrid();
+        Task CreateBottomGrid(CreateBottomGridDTO createBottomGridDTO);
+        Task DeleteBottomGrid(int id);
+        Task UpdateBottomGrid(UpdateBottomGridDTO updateBottomGridDTO);
         Task<GetBottomGridDTO> GetBottomGrid(int id);
     }
 }

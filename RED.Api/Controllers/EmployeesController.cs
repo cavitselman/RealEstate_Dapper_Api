@@ -18,28 +18,28 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> EmployeeList()
         {
-            var values = await _employeeRepository.GetAllEmployeeAsync();
+            var values = await _employeeRepository.GetAllEmployee();
             return Ok(values);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateEmployee(CreateEmployeeDTO createEmployeeDTO)
         {
-            _employeeRepository.CreateEmployee(createEmployeeDTO);
+            await _employeeRepository.CreateEmployee(createEmployeeDTO);
             return Ok("Personel Başarılı Bir Şekilde Eklendi");
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
-            _employeeRepository.DeleteEmployee(id);
+            await _employeeRepository.DeleteEmployee(id);
             return Ok("Personel Başarılı Bir Şekilde Silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO)
         {
-            _employeeRepository.UpdateEmployee(updateEmployeeDTO);
+            await _employeeRepository.UpdateEmployee(updateEmployeeDTO);
             return Ok("Personel Başarıyla Güncellendi");
         }
 

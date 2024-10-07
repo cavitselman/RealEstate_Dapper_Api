@@ -12,7 +12,7 @@ namespace RED.Api.Repositories.SubFeatureRepositories
         {
             _context = context;
         }
-        public async Task<List<ResultSubFeatureDTO>> GetAllSubFeatureAsync()
+        public async Task<List<ResultSubFeatureDTO>> GetAllSubFeature()
         {
             string query = "Select * From SubFeature";
             using (var connection = _context.CreateConnection())

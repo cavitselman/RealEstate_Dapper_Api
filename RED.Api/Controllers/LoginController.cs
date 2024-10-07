@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RED.Api.DTOs.LoginDTOs;
 using RED.Api.Models.DapperContext;

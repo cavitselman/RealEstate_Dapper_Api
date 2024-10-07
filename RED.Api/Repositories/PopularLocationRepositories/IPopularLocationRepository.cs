@@ -4,10 +4,10 @@ namespace RED.Api.Repositories.PopularLocationRepositories
 {
     public interface IPopularLocationRepository
     {
-        Task<List<ResultPopularLocationDTO>> GetAllPopularLocationAsync();
-        void CreatePopularLocation(CreatePopularLocationDTO createPopularLocationDTO);
-        void DeletePopularLocation(int id);
-        void UpdatePopularLocation(UpdatePopularLocationDTO updatePopularLocationDTO);
+        Task<List<ResultPopularLocationDTO>> GetAllPopularLocation();
+        Task CreatePopularLocation(CreatePopularLocationDTO createPopularLocationDTO);
+        Task DeletePopularLocation(int id);
+        Task UpdatePopularLocation(UpdatePopularLocationDTO updatePopularLocationDTO);
         Task<GetByIDPopularLocationDTO> GetPopularLocation(int id);
     }
 }

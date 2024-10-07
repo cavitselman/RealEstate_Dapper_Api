@@ -12,7 +12,7 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Las
         {
             _context = context;
         }
-        public async Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync(int id)
+        public async Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5Product(int id)
         {
             string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where EmployeeId=@employeeId Order By ProductID Desc";
             var parameters = new DynamicParameters();

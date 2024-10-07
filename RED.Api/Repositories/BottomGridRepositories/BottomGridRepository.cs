@@ -14,7 +14,7 @@ namespace RED.Api.Repositories.BottomGridRepositories
             _context = context;
         }
 
-        public async void CreateBottomGrid(CreateBottomGridDTO createBottomGridDTO)
+        public async Task CreateBottomGrid(CreateBottomGridDTO createBottomGridDTO)
         {
             string query = "insert into BottomGrid (Icon,Title,Description) values (@icon,@title,@description)";
             var parameters = new DynamicParameters();
@@ -27,7 +27,7 @@ namespace RED.Api.Repositories.BottomGridRepositories
             }
         }
 
-        public async void DeleteBottomGrid(int id)
+        public async Task DeleteBottomGrid(int id)
         {
             string query = "Delete From BottomGrid Where BottomGridID=@bottomGridID";
             var parameters = new DynamicParameters();
@@ -38,7 +38,7 @@ namespace RED.Api.Repositories.BottomGridRepositories
             }
         }
 
-        public async Task<List<ResultBottomGridDTO>> GetAllBottomGridAsync()
+        public async Task<List<ResultBottomGridDTO>> GetAllBottomGrid()
         {
             string query = "Select * From BottomGrid";
             using (var connection = _context.CreateConnection())
@@ -60,7 +60,7 @@ namespace RED.Api.Repositories.BottomGridRepositories
             }
         }
 
-        public async void UpdateBottomGrid(UpdateBottomGridDTO updateBottomGridDTO)
+        public async Task UpdateBottomGrid(UpdateBottomGridDTO updateBottomGridDTO)
         {
             string query = "Update BottomGrid Set Icon=@icon,Title=@title, Description=@description where BottomGridID=@bottomGridID";
             var parameters = new DynamicParameters();

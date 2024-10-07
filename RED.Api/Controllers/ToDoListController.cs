@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.Repositories.ToDoListRepositories;
 
 namespace RED.Api.Controllers
@@ -18,7 +17,7 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> ToDoListList()
         {
-            var values = await _ToDoListRepository.GetAllToDoListAsync();
+            var values = await _ToDoListRepository.GetAllToDoList();
             return Ok(values);
         }
     }

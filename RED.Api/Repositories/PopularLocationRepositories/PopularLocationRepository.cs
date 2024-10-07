@@ -14,7 +14,7 @@ namespace RED.Api.Repositories.PopularLocationRepositories
             _context = context;
         }
 
-        public async void CreatePopularLocation(CreatePopularLocationDTO createPopularLocationDTO)
+        public async Task CreatePopularLocation(CreatePopularLocationDTO createPopularLocationDTO)
         {
             string query = "insert into PopularLocation (CityName,ImageUrl) values (@cityName,@imageUrl)";
             var parameters = new DynamicParameters();
@@ -26,7 +26,7 @@ namespace RED.Api.Repositories.PopularLocationRepositories
             }
         }
 
-        public async void DeletePopularLocation(int id)
+        public async Task DeletePopularLocation(int id)
         {
             string query = "Delete From PopularLocation Where LocationID=@locationID";
             var parameters = new DynamicParameters();
@@ -37,7 +37,7 @@ namespace RED.Api.Repositories.PopularLocationRepositories
             }
         }
 
-        public async Task<List<ResultPopularLocationDTO>> GetAllPopularLocationAsync()
+        public async Task<List<ResultPopularLocationDTO>> GetAllPopularLocation()
         {
             string query = "Select * From PopularLocation";
             using (var connection = _context.CreateConnection())
@@ -59,7 +59,7 @@ namespace RED.Api.Repositories.PopularLocationRepositories
             }
         }
 
-        public async void UpdatePopularLocation(UpdatePopularLocationDTO updatePopularLocationDTO)
+        public async Task UpdatePopularLocation(UpdatePopularLocationDTO updatePopularLocationDTO)
         {
             string query = "Update PopularLocation Set CityName=@cityName,ImageUrl=@imageUrl where LocationID=@locationID";
             var parameters = new DynamicParameters();

@@ -14,7 +14,7 @@ namespace RED.Api.Repositories.EmployeeRepositories
             _context = context;
         }
 
-        public async void CreateEmployee(CreateEmployeeDTO createEmployeeDTO)
+        public async Task CreateEmployee(CreateEmployeeDTO createEmployeeDTO)
         {
             string query = "insert into Employee (Name,Title,Email,PhoneNumber,ImageUrl,Status) values (@name,@title,@email,@phoneNumber,@imageUrl,@status)";
             var parameters = new DynamicParameters();
@@ -30,7 +30,7 @@ namespace RED.Api.Repositories.EmployeeRepositories
             }
         }
 
-        public async void DeleteEmployee(int id)
+        public async Task DeleteEmployee(int id)
         {
             string query = "Delete From Employee Where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();
@@ -41,7 +41,7 @@ namespace RED.Api.Repositories.EmployeeRepositories
             }
         }
 
-        public async Task<List<ResultEmployeeDTO>> GetAllEmployeeAsync()
+        public async Task<List<ResultEmployeeDTO>> GetAllEmployee()
         {
             string query = "Select * From Employee";
             using (var connection = _context.CreateConnection())
@@ -63,7 +63,7 @@ namespace RED.Api.Repositories.EmployeeRepositories
             }
         }
 
-        public async void UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO)
+        public async Task UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO)
         {
             string query = "Update Employee Set Name=@name,Title=@title,Email=@email,PhoneNumber=@phoneNumber,ImageUrl=@imageUrl,Status=@status where EmployeeID=@employeeId";
             var parameters = new DynamicParameters();

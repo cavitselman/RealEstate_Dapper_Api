@@ -4,6 +4,6 @@ namespace RED.Api.Repositories.TestimonialRepositories
 {
     public interface ITestimonialRepository
     {
-        Task<List<ResultTestimonialDTO>> GetAllTestimonialAsync();
+        Task<List<ResultTestimonialDTO>> GetAllTestimonial();
     }
 }

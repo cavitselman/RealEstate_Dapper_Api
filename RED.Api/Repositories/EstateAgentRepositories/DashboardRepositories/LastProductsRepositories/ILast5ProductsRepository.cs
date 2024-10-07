@@ -4,6 +4,6 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Las
 {
     public interface ILast5ProductsRepository
     {
-        Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync(int id);
+        Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5Product(int id);
     }
 }

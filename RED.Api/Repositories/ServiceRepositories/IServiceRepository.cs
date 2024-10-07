@@ -4,10 +4,10 @@ namespace RED.Api.Repositories.ServiceRepositories
 {
     public interface IServiceRepository
     {
-        Task<List<ResultServiceDTO>> GetAllServiceAsync();
-        void CreateService(CreateServiceDTO createServiceDTO);
-        void DeleteService(int id);
-        void UpdateService(UpdateServiceDTO updateServiceDTO);
+        Task<List<ResultServiceDTO>> GetAllService();
+        Task CreateService(CreateServiceDTO createServiceDTO);
+        Task DeleteService(int id);
+        Task UpdateService(UpdateServiceDTO updateServiceDTO);
         Task<GetByIDServiceDTO> GetService(int id);
     }
 }

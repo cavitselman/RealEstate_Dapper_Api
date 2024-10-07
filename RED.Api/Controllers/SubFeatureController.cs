@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.Repositories.SubFeatureRepositories;
 
 namespace RED.Api.Controllers
@@ -18,7 +17,7 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSubFeatureList()
         {
-            var values=await _subFeatureRepository.GetAllSubFeatureAsync();
+            var values=await _subFeatureRepository.GetAllSubFeature();
             return Ok(values);
         }
     }

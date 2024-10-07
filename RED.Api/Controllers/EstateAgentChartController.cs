@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.ChartRepositories;
 
 namespace RED.Api.Controllers
@@ -18,7 +17,8 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get5CityForChart()
         {
-            return Ok(await _chartRepository.Get5CityForChart());
+            var values = await _chartRepository.Get5CityForChart();
+            return Ok(values);
         }
     }
 }

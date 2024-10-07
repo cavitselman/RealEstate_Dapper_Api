@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.Repositories.TestimonialRepositories;
 
 namespace RED.Api.Controllers
@@ -18,7 +17,7 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> TestimonialList()
         {
-            var value = await _testimonialRepository.GetAllTestimonialAsync();
+            var value = await _testimonialRepository.GetAllTestimonial();
             return Ok(value);
         }
     }

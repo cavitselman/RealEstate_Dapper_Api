@@ -14,7 +14,7 @@ namespace RED.Api.Repositories.ServiceRepositories
             _context = context;
         }
 
-        public async void CreateService(CreateServiceDTO createServiceDTO)
+        public async Task CreateService(CreateServiceDTO createServiceDTO)
         {
             string query = "insert into Service (ServiceName,ServiceStatus) values (@serviceName,@serviceStatus)";
             var parameters = new DynamicParameters();
@@ -26,7 +26,7 @@ namespace RED.Api.Repositories.ServiceRepositories
             }
         }
 
-        public async void DeleteService(int id)
+        public async Task DeleteService(int id)
         {
             string query = "Delete From Service Where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
@@ -37,7 +37,7 @@ namespace RED.Api.Repositories.ServiceRepositories
             }
         }
 
-        public async Task<List<ResultServiceDTO>> GetAllServiceAsync()
+        public async Task<List<ResultServiceDTO>> GetAllService()
         {
             string query = "Select * From Service";
             using (var connection = _context.CreateConnection())
@@ -59,7 +59,7 @@ namespace RED.Api.Repositories.ServiceRepositories
             }
         }
 
-        public async void UpdateService(UpdateServiceDTO updateServiceDTO)
+        public async Task UpdateService(UpdateServiceDTO updateServiceDTO)
         {
             string query = "Update Service Set ServiceName=@serviceName,ServiceStatus=@serviceStatus where ServiceID=@serviceID";
             var parameters = new DynamicParameters();

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastProductsRepositories;
 
 namespace RED.Api.Controllers
@@ -18,7 +17,7 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetLast5ProductAsync(int id)
         {
-            var values= await _lastProductRepository.GetLast5ProductAsync(id);
+            var values= await _lastProductRepository.GetLast5Product(id);
             return Ok(values);
         }
     }

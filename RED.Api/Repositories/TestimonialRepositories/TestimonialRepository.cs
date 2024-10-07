@@ -13,7 +13,7 @@ namespace RED.Api.Repositories.TestimonialRepositories
             _context = context;
         }
 
-        public async Task<List<ResultTestimonialDTO>> GetAllTestimonialAsync()
+        public async Task<List<ResultTestimonialDTO>> GetAllTestimonial()
         {
             string query = "Select * From Testimonial";
             using (var connection = _context.CreateConnection())

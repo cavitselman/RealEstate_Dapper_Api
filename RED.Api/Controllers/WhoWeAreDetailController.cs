@@ -18,28 +18,28 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> WhoWeAreDetailList()
         {
-            var values = await _whoWeAreDetailRepository.GetAllWhoWeAreDetailAsync();
+            var values = await _whoWeAreDetailRepository.GetAllWhoWeAreDetail();
             return Ok(values);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO)
         {
-            _whoWeAreDetailRepository.CreateWhoWeAreDetail(createWhoWeAreDetailDTO);
+            await _whoWeAreDetailRepository.CreateWhoWeAreDetail(createWhoWeAreDetailDTO);
             return Ok("Hakkımızda Kısmı Başarılı Bir Şekilde Eklendi");
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
-            _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
+            await _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
             return Ok("Hakkımızda Kısmı Başarılı Bir Şekilde Silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
         {
-            _whoWeAreDetailRepository.UpdateWhoWeAreDetail(updateWhoWeAreDetailDTO);
+            await _whoWeAreDetailRepository.UpdateWhoWeAreDetail(updateWhoWeAreDetailDTO);
             return Ok("Hakkımızda Kısmı Başarıyla Güncellendi");
         }
 

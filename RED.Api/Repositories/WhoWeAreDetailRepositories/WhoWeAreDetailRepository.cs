@@ -13,7 +13,7 @@ namespace RED.Api.Repositories.WhoWeAreDetailRepositories
         {
             _context = context;
         }
-        public async void CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO)
+        public async Task CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO)
         {
             string query = "insert into WhoWeAreDetail (Title,Subtitle,Description1,Description2) values (@title,@subTitle,@description1,@description2)";
             var parameters = new DynamicParameters();
@@ -27,7 +27,7 @@ namespace RED.Api.Repositories.WhoWeAreDetailRepositories
             }
         }
 
-        public async void DeleteWhoWeAreDetail(int id)
+        public async Task DeleteWhoWeAreDetail(int id)
         {
             string query = "Delete From WhoWeAreDetail Where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
@@ -38,7 +38,7 @@ namespace RED.Api.Repositories.WhoWeAreDetailRepositories
             }
         }
 
-        public async Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetailAsync()
+        public async Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetail()
         {
             string query = "Select * From WhoWeAreDetail";
             using (var connection = _context.CreateConnection())
@@ -60,7 +60,7 @@ namespace RED.Api.Repositories.WhoWeAreDetailRepositories
             }
         }
 
-        public async void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
+        public async Task UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
         {
             string query = "Update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=@description2 where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();

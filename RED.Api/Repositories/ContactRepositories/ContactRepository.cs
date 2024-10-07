@@ -13,17 +13,17 @@ namespace RED.Api.Repositories.ContactRepositories
             _context = context;
         }
 
-        public void CreateContact(CreateContactDTO createContactDTO)
+        public Task CreateContact(CreateContactDTO createContactDTO)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteContact(int id)
+        public Task DeleteContact(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ResultContactDTO>> GetAllContactAsync()
+        public Task<List<ResultContactDTO>> GetAllContact()
         {
             throw new NotImplementedException();
         }

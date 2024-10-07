@@ -18,28 +18,28 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetServiceList()
         {
-            var value = await _serviceRepository.GetAllServiceAsync();
+            var value = await _serviceRepository.GetAllService();
             return Ok(value);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateService(CreateServiceDTO createServiceDTO)
         {
-            _serviceRepository.CreateService(createServiceDTO);
+            await _serviceRepository.CreateService(createServiceDTO);
             return Ok("Hizmet Kısmı Başarılı Bir Şekilde Eklendi");
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {
-            _serviceRepository.DeleteService(id);
+            await _serviceRepository.DeleteService(id);
             return Ok("Hizmet Kısmı Başarılı Bir Şekilde Silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateService(UpdateServiceDTO updateServiceDTO)
         {
-            _serviceRepository.UpdateService(updateServiceDTO);
+            await _serviceRepository.UpdateService(updateServiceDTO);
             return Ok("Hizmet Kısmı Başarıyla Güncellendi");
         }
 

@@ -13,7 +13,7 @@ namespace RED.Api.Repositories.CategoryRepositories
             _context = context;
         }
 
-        public async void CreateCategory(CreateCategoryDTO categoryDTO)
+        public async Task CreateCategory(CreateCategoryDTO categoryDTO)
         {
             string query = "insert into Category (CategoryName,CategoryStatus) values (@categoryName,@categoryStatus)";
             var parameters = new DynamicParameters();
@@ -25,7 +25,7 @@ namespace RED.Api.Repositories.CategoryRepositories
             }
         }
 
-        public async void DeleteCategory(int id)
+        public async Task DeleteCategory(int id)
         {
             string query = "Delete From Category Where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
@@ -36,7 +36,7 @@ namespace RED.Api.Repositories.CategoryRepositories
             }
         }
 
-        public async Task<List<ResultCategoryDTO>> GetAllCategoryAsync()
+        public async Task<List<ResultCategoryDTO>> GetAllCategory()
         {
             string query = "Select * From Category";
             using(var connection=_context.CreateConnection())
@@ -58,7 +58,7 @@ namespace RED.Api.Repositories.CategoryRepositories
             }
         }
 
-        public async void UpdateCategory(UpdateCategoryDTO categoryDTO)
+        public async Task UpdateCategory(UpdateCategoryDTO categoryDTO)
         {
             string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
