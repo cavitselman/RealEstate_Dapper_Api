@@ -1,22 +1,22 @@
-﻿using RED.Api.DTOs.ProductDetailDTOs;
-using RED.Api.DTOs.ProductDTOs;
+﻿using RED.Api.DTOs.PropertyDetailDTOs;
+using RED.Api.DTOs.PropertyDTOs;
 
-namespace RED.Api.Repositories.ProductRepositories
+namespace RED.Api.Repositories.PropertyRepositories
 {
-    public interface IProductRepository
+    public interface IPropertyRepository
     {
-        Task<List<ResultProductDTO>> GetAllProductAsync();
-        Task<List<ResultProductAdvertListWithCategoryByEmployeeDTO>> GetProductAdvertListByEmployeeAsyncByTrue(int id);
-        Task<List<ResultProductAdvertListWithCategoryByEmployeeDTO>> GetProductAdvertListByEmployeeAsyncByFalse(int id);
-        Task<List<ResultProductWithCategoryDTO>> GetAllProductWithCategoryAsync();
-        Task ProductDealOfTheDayStatusChangeToTrue(int id);
-        Task ProductDealOfTheDayStatusChangeToFalse(int id);
-        Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync();
-        Task<List<ResultLast3ProductWithCategoryDTO>> GetLast3ProductAsync();
-        Task CreateProduct(CreateProductDTO createProductDTO);
-        Task<GetProductByProductIdDTO> GetProductByProductId(int id);
-        Task<GetProductDetailByIdDTO> GetProductDetailByProductId(int id);
-        Task<List<ResultProductWithSearchListDTO>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city);
-        Task<List<ResultProductWithCategoryDTO>> GetProductByDealOfTheDayTrueWithCategoryAsync();
+        Task<List<ResultPropertyDTO>> GetAllPropertyAsync();
+        Task<List<ResultPropertyAdvertListWithCategoryByEmployeeDTO>> GetPropertyAdvertListByEmployeeAsyncByTrue(int id);
+        Task<List<ResultPropertyAdvertListWithCategoryByEmployeeDTO>> GetPropertyAdvertListByEmployeeAsyncByFalse(int id);
+        Task<List<ResultPropertyWithCategoryDTO>> GetAllPropertyWithCategoryAsync();
+        Task PropertyDealOfTheDayStatusChangeToTrue(int id);
+        Task PropertyDealOfTheDayStatusChangeToFalse(int id);
+        Task<List<ResultLast5PropertyWithCategoryDTO>> GetLast5PropertyAsync();
+        Task<List<ResultLast3PropertyWithCategoryDTO>> GetLast3PropertyAsync();
+        Task CreateProperty(CreatePropertyDTO createPropertyDTO);
+        Task<GetPropertyByPropertyIdDTO> GetPropertyByPropertyId(int id);
+        Task<GetPropertyDetailByIdDTO> GetPropertyDetailByPropertyId(int id);
+        Task<List<ResultPropertyWithSearchListDTO>> ResultPropertyWithSearchList(string searchKeyValue, int propertyCategoryId, string city);
+        Task<List<ResultPropertyWithCategoryDTO>> GetPropertyByDealOfTheDayTrueWithCategoryAsync();
     }
 }

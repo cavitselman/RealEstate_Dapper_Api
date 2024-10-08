@@ -1,23 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastProductsRepositories;
+using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastPropertysRepositories;
 
 namespace RED.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EstateAgentLastProductsController : ControllerBase
+    public class EstateAgentLastPropertysController : ControllerBase
     {
-        private readonly ILast5ProductsRepository _lastProductRepository;
+        private readonly ILast5PropertysRepository _lastPropertyRepository;
 
-        public EstateAgentLastProductsController(ILast5ProductsRepository lastProductRepository)
+        public EstateAgentLastPropertysController(ILast5PropertysRepository lastPropertyRepository)
         {
-            _lastProductRepository = lastProductRepository;
+            _lastPropertyRepository = lastPropertyRepository;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetLast5ProductAsync(int id)
+        public async Task<IActionResult> GetLast5PropertyAsync(int id)
         {
-            var values= await _lastProductRepository.GetLast5Product(id);
+            var values= await _lastPropertyRepository.GetLast5Property(id);
             return Ok(values);
         }
     }

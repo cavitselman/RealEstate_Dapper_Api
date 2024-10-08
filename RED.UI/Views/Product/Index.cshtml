@@ -1,7 +1,7 @@
-﻿@model List<ResultProductDTO>
+﻿@model List<ResultPropertyDTO>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Admin/Index.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
 }
 
@@ -39,24 +39,24 @@
                                     <td>@item.categoryName</td>
                                     <td>@item.price</td>
                                     <td>@item.type</td>
-                                    <td><a href="/Product/DeleteProduct/@item.productID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Product/UpdateProduct/@item.productID" class="btn btn-outline-success">Güncelle</a></td>
-                                    <td><a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-info">Sitede Gör</a></td>
+                                    <td><a href="/Property/DeleteProperty/@item.PropertyID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Property/UpdateProperty/@item.PropertyID" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/Property/PropertyDetail/@item.PropertyID" class="btn btn-outline-info">Sitede Gör</a></td>
                                     <td>
                                         @if (item.dealOfTheDay == true)
                                         {
-                                            <a href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.productID" class="btn btn-outline-secondary">Pasif Yap</a>
+                                            <a href="/Property/PropertyDealOfTheDayStatusChangeToFalse/@item.PropertyID" class="btn btn-outline-secondary">Pasif Yap</a>
                                         }
                                         @if (item.dealOfTheDay == false)
                                         {
-                                            <a href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.productID" class="btn btn-outline-warning">Aktif Yap</a>
+                                            <a href="/Property/PropertyDealOfTheDayStatusChangeToTrue/@item.PropertyID" class="btn btn-outline-warning">Aktif Yap</a>
                                         }
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Product/CreateProduct" class="btn btn-outline-info">Yeni İlan Girişi</a>
+                    <a href="/Property/CreateProperty" class="btn btn-outline-info">Yeni İlan Girişi</a>
                 </div>
             </div>
         </div>

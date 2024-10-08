@@ -15,9 +15,9 @@ namespace RED.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAppUserByProductId(int id)
+        public async Task<IActionResult> GetAppUserByPropertyId(int id)
         {
-            var value = await _appUserRepository.GetAppUserByProductId(id);
+            var value = await _appUserRepository.GetAppUserByPropertyId(id);
             return Ok(value);
         }
     }

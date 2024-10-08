@@ -31,16 +31,16 @@ namespace RED.Api.Controllers
             return Ok(_statisticsRepository.ApartmentCount());
         }
         
-        [HttpGet("AverageProductPriceByRent")]
-        public IActionResult AverageProductPriceByRent()
+        [HttpGet("AveragePropertyPriceByRent")]
+        public IActionResult AveragePropertyPriceByRent()
         {
-            return Ok(_statisticsRepository.AverageProductPriceByRent());
+            return Ok(_statisticsRepository.AveragePropertyPriceByRent());
         }
 
-        [HttpGet("AverageProductPriceBySale")]
-        public IActionResult AverageProductPriceBySale()
+        [HttpGet("AveragePropertyPriceBySale")]
+        public IActionResult AveragePropertyPriceBySale()
         {
-            return Ok(_statisticsRepository.AverageProductPriceBySale());
+            return Ok(_statisticsRepository.AveragePropertyPriceBySale());
         }
 
         [HttpGet("AverageRoomCount")]
@@ -55,16 +55,16 @@ namespace RED.Api.Controllers
             return Ok(_statisticsRepository.CategoryCount());
         }
 
-        [HttpGet("CategoryNameByMaxProductCount")]
-        public IActionResult CategoryNameByMaxProductCount()
+        [HttpGet("CategoryNameByMaxPropertyCount")]
+        public IActionResult CategoryNameByMaxPropertyCount()
         {
-            return Ok(_statisticsRepository.CategoryNameByMaxProductCount());
+            return Ok(_statisticsRepository.CategoryNameByMaxPropertyCount());
         }
 
-        [HttpGet("CityNameByMaxProductCount")]
-        public IActionResult CityNameByMaxProductCount()
+        [HttpGet("CityNameByMaxPropertyCount")]
+        public IActionResult CityNameByMaxPropertyCount()
         {
-            return Ok(_statisticsRepository.CityNameByMaxProductCount());
+            return Ok(_statisticsRepository.CityNameByMaxPropertyCount());
         }
 
         [HttpGet("DifferentCityCount")]
@@ -73,16 +73,16 @@ namespace RED.Api.Controllers
             return Ok(_statisticsRepository.DifferentCityCount());
         }
 
-        [HttpGet("EmployeeNameByMaxProductCount")]
-        public IActionResult EmployeeNameByMaxProductCount()
+        [HttpGet("EmployeeNameByMaxPropertyCount")]
+        public IActionResult EmployeeNameByMaxPropertyCount()
         {
-            return Ok(_statisticsRepository.EmployeeNameByMaxProductCount());
+            return Ok(_statisticsRepository.EmployeeNameByMaxPropertyCount());
         }
 
-        [HttpGet("LastProductPrice")]
-        public IActionResult LastProductPrice()
+        [HttpGet("LastPropertyPrice")]
+        public IActionResult LastPropertyPrice()
         {
-            return Ok(_statisticsRepository.LastProductPrice());
+            return Ok(_statisticsRepository.LastPropertyPrice());
         }
 
         [HttpGet("NewestBuildingYear")]
@@ -103,10 +103,10 @@ namespace RED.Api.Controllers
             return Ok(_statisticsRepository.PassiveCategoryCount());
         }
 
-        [HttpGet("ProductCount")]
-        public IActionResult ProductCount()
+        [HttpGet("PropertyCount")]
+        public IActionResult PropertyCount()
         {
-            return Ok(_statisticsRepository.ProductCount());
+            return Ok(_statisticsRepository.PropertyCount());
         }
     }
 }

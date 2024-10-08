@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RED.UI.DTOs.ProductDetailDTOs;
-using RED.UI.DTOs.ProductDTOs;
+using RED.UI.DTOs.PropertyDetailDTOs;
+using RED.UI.DTOs.PropertyDTOs;
 
 namespace RED.UI.Controllers
 {
@@ -17,11 +17,11 @@ namespace RED.UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductListWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyListWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDTO>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyDTO>>(jsonData);
                 return View(values);
             }
             return View();
@@ -33,11 +33,11 @@ namespace RED.UI.Controllers
             propertyCategoryId = int.Parse(TempData["propertyCategoryId"].ToString());
             city = TempData["city"].ToString();
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:44383/api/Products/ResultProductWithSearchList?searchKeyValue={searchKeyValue}&propertyCategoryId={propertyCategoryId}&city={city}");
+            var responseMessage = await client.GetAsync($"https://localhost:44383/api/Propertys/ResultPropertyWithSearchList?searchKeyValue={searchKeyValue}&propertyCategoryId={propertyCategoryId}&city={city}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductWithSearchListDTO>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyWithSearchListDTO>>(jsonData);
                 return View(values);
             }
             return View();
@@ -48,15 +48,15 @@ namespace RED.UI.Controllers
         {
             ViewBag.i = id;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/GetProductByProductId?id=" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/GetPropertyByPropertyId?id=" + id);
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<ResultProductDTO>(jsonData);
+            var values = JsonConvert.DeserializeObject<ResultPropertyDTO>(jsonData);
 
-            var responseMessage2 = await client.GetAsync("https://localhost:44383/api/ProductDetails/GetProductDetailByProductId?id=" + id);
+            var responseMessage2 = await client.GetAsync("https://localhost:44383/api/PropertyDetails/GetPropertyDetailByPropertyId?id=" + id);
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
-            var values2 = JsonConvert.DeserializeObject<GetProductDetailByIdDTO>(jsonData2);
+            var values2 = JsonConvert.DeserializeObject<GetPropertyDetailByIdDTO>(jsonData2);
 
-            ViewBag.productId = values.productID;
+            ViewBag.PropertyId = values.PropertyID;
             ViewBag.title1 = values.title.ToString();
             ViewBag.price = values.price;
             ViewBag.city = values.city;
@@ -75,7 +75,7 @@ namespace RED.UI.Controllers
             ViewBag.datediff = month / 30;
             ViewBag.bathCount = values2.bathCount;
             ViewBag.bedCount = values2.bedRoomCount;
-            ViewBag.size = values2.productSize;
+            ViewBag.size = values2.PropertySize;
             ViewBag.roomCount = values2.roomCount;
             ViewBag.garageCount = values2.garageSize;
             ViewBag.buildYear = values2.buildYear;

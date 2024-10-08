@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Admin/Index.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -38,7 +38,7 @@
                 <i class="fa fa-rocket fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Ortalama Kira</p>
-                    <h6 class="mb-0">@ViewBag.averageProductPriceByRent</h6>
+                    <h6 class="mb-0">@ViewBag.averagePropertyPriceByRent</h6>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Ortalama Satış F.</p>
-                    <h6 class="mb-0">@ViewBag.averageProductPriceBySale</h6>
+                    <h6 class="mb-0">@ViewBag.averagePropertyPriceBySale</h6>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">En İyi Kategori</p>
-                    <h6 class="mb-0">@ViewBag.categoryNameByMaxProductCount</h6>
+                    <h6 class="mb-0">@ViewBag.categoryNameByMaxPropertyCount</h6>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
                 <i class="fa fa-star fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">İlan - Şehir</p>
-                    <h6 class="mb-0">@ViewBag.cityNameByMaxProductCount</h6>
+                    <h6 class="mb-0">@ViewBag.cityNameByMaxPropertyCount</h6>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                 <i class="fa fa-gift fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">En İyi Personel</p>
-                    <h6 class="mb-0">@ViewBag.employeeNameByMaxProductCount</h6>
+                    <h6 class="mb-0">@ViewBag.employeeNameByMaxPropertyCount</h6>
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@
                 <i class="fa fa-credit-card fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Son İlan Fiyatı</p>
-                    <h6 class="mb-0">@ViewBag.lastProductPrice</h6>
+                    <h6 class="mb-0">@ViewBag.lastPropertyPrice</h6>
                 </div>
             </div>
         </div>
@@ -161,7 +161,7 @@
                 <i class="fa fa-tasks fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Toplam İlan Sayısı</p>
-                    <h6 class="mb-0">@ViewBag.productCount</h6>
+                    <h6 class="mb-0">@ViewBag.PropertyCount</h6>
                 </div>
             </div>
         </div>

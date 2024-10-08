@@ -14,28 +14,28 @@ namespace RED.Api.Controllers
             _statisticRepository = statisticRepository;
         }
 
-        [HttpGet("ProductCountByEmployeeId")]
-        public IActionResult ProductCountByEmployeeId(int id)
+        [HttpGet("PropertyCountByEmployeeId")]
+        public IActionResult PropertyCountByEmployeeId(int id)
         {
-            return Ok(_statisticRepository.ProductCountByEmployeeId(id));
+            return Ok(_statisticRepository.PropertyCountByEmployeeId(id));
         }
 
-        [HttpGet("ProductCountByStatusTrue")]
-        public IActionResult ProductCountByStatusTrue(int id)
+        [HttpGet("PropertyCountByStatusTrue")]
+        public IActionResult PropertyCountByStatusTrue(int id)
         {
-            return Ok(_statisticRepository.ProductCountByStatusTrue(id));
+            return Ok(_statisticRepository.PropertyCountByStatusTrue(id));
         }
 
-        [HttpGet("ProductCountByStatusFalse")]
-        public IActionResult ActiveCProductCountByStatusFalseategoryCount(int id)
+        [HttpGet("PropertyCountByStatusFalse")]
+        public IActionResult ActiveCPropertyCountByStatusFalseategoryCount(int id)
         {
-            return Ok(_statisticRepository.ProductCountByStatusFalse(id));
+            return Ok(_statisticRepository.PropertyCountByStatusFalse(id));
         }
 
-        [HttpGet("AllProductCount")]
-        public IActionResult AllProductCount()
+        [HttpGet("AllPropertyCount")]
+        public IActionResult AllPropertyCount()
         {
-            return Ok(_statisticRepository.AllProductCount());
+            return Ok(_statisticRepository.AllPropertyCount());
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<ResultProductAdvertListWithCategoryByEmployeeDTO>
+﻿@model List<ResultPropertyAdvertListWithCategoryByEmployeeDTO>
 
 @{
     ViewData["Title"] = "ActiveAdverts";
@@ -36,15 +36,15 @@
                                     <td>@item.categoryName</td>
                                     <td>@item.price</td>
                                     <td>@item.type</td>
-                                    <td><a href="/Product/DeleteProduct/@item.productID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Product/DeleteProduct/@item.productID" class="btn btn-outline-dark">Pasif Yap</a></td>
-                                    <td><a href="/Product/UpdateProduct/@item.productID" class="btn btn-outline-success">Güncelle</a></td>
-                                    <td><a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-info">Sitede Gör</a></td>                      
+                                    <td><a href="/Property/DeleteProperty/@item.PropertyID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Property/DeleteProperty/@item.PropertyID" class="btn btn-outline-dark">Pasif Yap</a></td>
+                                    <td><a href="/Property/UpdateProperty/@item.PropertyID" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/Property/PropertyDetail/@item.PropertyID" class="btn btn-outline-info">Sitede Gör</a></td>                      
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Product/CreateProduct" class="btn btn-outline-info">Yeni İlan Girişi</a>
+                    <a href="/Property/CreateProperty" class="btn btn-outline-info">Yeni İlan Girişi</a>
                 </div>
             </div>
         </div>

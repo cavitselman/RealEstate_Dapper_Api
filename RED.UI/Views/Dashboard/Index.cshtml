@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Admin/Index.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            @await Component.InvokeAsync("_DashboardLast5ProductComponentPartial")
+            @await Component.InvokeAsync("_DashboardLast5PropertyComponentPartial")
 
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">

@@ -1,4 +1,4 @@
-﻿@model CreateProductDTO
+﻿@model CreatePropertyDTO
 
 @{
     ViewData["Title"] = "CreateAdvert";
@@ -21,7 +21,7 @@
                     <input type="text" asp-for="District" class="form-control" />
                     <br />
                     <label>Kategori</label>
-                    @Html.DropDownListFor(x => x.ProductCategory, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                    @Html.DropDownListFor(x => x.PropertyCategory, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
                     <br />
                     <label>Fiyat</label>
                     <input type="text" asp-for="Price" class="form-control" />

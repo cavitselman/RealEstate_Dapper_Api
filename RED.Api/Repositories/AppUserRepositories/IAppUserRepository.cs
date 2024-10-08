@@ -4,6 +4,6 @@ namespace RED.Api.Repositories.AppUserRepositories
 {
     public interface IAppUserRepository
     {
-        Task<GetAppUserByProductIdDTO> GetAppUserByProductId(int id);
+        Task<GetAppUserByPropertyIdDTO> GetAppUserByPropertyId(int id);
     }
 }

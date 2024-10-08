@@ -34,7 +34,7 @@ namespace RED.Api.Repositories.StatisticsRepositories
 
         public int ApartmentCount()
         {
-            string query = "Select Count(*) From Product where Title like '%Daire%'";
+            string query = "Select Count(*) From Property where Title like '%Daire%'";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);
@@ -42,9 +42,9 @@ namespace RED.Api.Repositories.StatisticsRepositories
             }
         }
 
-        public decimal AverageProductPriceByRent()
+        public decimal AveragePropertyPriceByRent()
         {
-            string query = "Select Avg(Price) From Product where Type='Kiralık'";
+            string query = "Select Avg(Price) From Property where Type='Kiralık'";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<decimal>(query);
@@ -52,9 +52,9 @@ namespace RED.Api.Repositories.StatisticsRepositories
             }
         }
 
-        public decimal AverageProductPriceBySale()
+        public decimal AveragePropertyPriceBySale()
         {
-            string query = "Select Avg(Price) From Product where Type='Satılık'";
+            string query = "Select Avg(Price) From Property where Type='Satılık'";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<decimal>(query);
@@ -64,7 +64,7 @@ namespace RED.Api.Repositories.StatisticsRepositories
 
         public int AverageRoomCount()
         {
-            string query = "Select Avg(RoomCount) From ProductDetails";
+            string query = "Select Avg(RoomCount) From PropertyDetails";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);
@@ -82,9 +82,9 @@ namespace RED.Api.Repositories.StatisticsRepositories
             }
         }
 
-        public string CategoryNameByMaxProductCount()
+        public string CategoryNameByMaxPropertyCount()
         {
-            string query = "Select top(1) CategoryName,Count(*) From Product inner join Category On Product.ProductCategory=Category.CategoryID Group By CategoryName order by COUNT(*) Desc";
+            string query = "Select top(1) CategoryName,Count(*) From Property inner join Category On Property.PropertyCategory=Category.CategoryID Group By CategoryName order by COUNT(*) Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);
@@ -92,9 +92,9 @@ namespace RED.Api.Repositories.StatisticsRepositories
             }
         }
 
-        public string CityNameByMaxProductCount()
+        public string CityNameByMaxPropertyCount()
         {
-            string query = "Select Top(1) City,Count(*) as 'product_count' From Product Group By City order by product_count Desc";
+            string query = "Select Top(1) City,Count(*) as 'Property_count' From Property Group By City order by Property_count Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);
@@ -104,7 +104,7 @@ namespace RED.Api.Repositories.StatisticsRepositories
 
         public int DifferentCityCount()
         {
-            string query = "Select Count(Distinct(City)) From Product";
+            string query = "Select Count(Distinct(City)) From Property";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);
@@ -112,9 +112,9 @@ namespace RED.Api.Repositories.StatisticsRepositories
             }
         }
 
-        public string EmployeeNameByMaxProductCount()
+        public string EmployeeNameByMaxPropertyCount()
         {
-            string query = "Select Name,Count(*) 'product_count' From Product Inner Join Employee On Product.EmployeeID=Employee.EmployeeID Group By Name Order By product_count Desc";
+            string query = "Select Name,Count(*) 'Property_count' From Property Inner Join Employee On Property.AppUserId=Employee.EmployeeID Group By Name Order By Property_count Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);
@@ -122,9 +122,9 @@ namespace RED.Api.Repositories.StatisticsRepositories
             }
         }
 
-        public decimal LastProductPrice()
+        public decimal LastPropertyPrice()
         {
-            string query = "Select Top(1) Price From Product Order By ProductID Desc";
+            string query = "Select Top(1) Price From Property Order By PropertyID Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<decimal>(query);
@@ -134,7 +134,7 @@ namespace RED.Api.Repositories.StatisticsRepositories
 
         public string NewestBuildingYear()
         {
-            string query = "Select Top(1) BuildYear From ProductDetails Order By BuildYear Desc";
+            string query = "Select Top(1) BuildYear From PropertyDetails Order By BuildYear Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);
@@ -144,7 +144,7 @@ namespace RED.Api.Repositories.StatisticsRepositories
 
         public string OldestBuildingYear()
         {
-            string query = "Select Top(1) BuildYear From ProductDetails Order By BuildYear Asc";
+            string query = "Select Top(1) BuildYear From PropertyDetails Order By BuildYear Asc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);
@@ -162,9 +162,9 @@ namespace RED.Api.Repositories.StatisticsRepositories
             }
         }
 
-        public int ProductCount()
+        public int PropertyCount()
         {
-            string query = "Select Count(*) From Product";
+            string query = "Select Count(*) From Property";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using RED.UI.DTOs.CategoryDTOs;
-using RED.UI.DTOs.ProductDTOs;
+using RED.UI.DTOs.PropertyDTOs;
 using RED.UI.Services;
 using System.Text;
 
@@ -25,11 +25,11 @@ namespace RED.UI.Areas.EstateAgent.Controllers
         {
             var id = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductAdvertListByEmployeeAsyncByTrue?id=" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyAdvertListByEmployeeAsyncByTrue?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductAdvertListWithCategoryByEmployeeDTO>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyAdvertListWithCategoryByEmployeeDTO>>(jsonData);
                 return View(values);
             }
             return View();
@@ -39,11 +39,11 @@ namespace RED.UI.Areas.EstateAgent.Controllers
         {
             var id = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductAdvertListByEmployeeAsyncByFalse?id=" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyAdvertListByEmployeeAsyncByFalse?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductAdvertListWithCategoryByEmployeeDTO>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyAdvertListWithCategoryByEmployeeDTO>>(jsonData);
                 return View(values);
             }
             return View();
@@ -70,19 +70,19 @@ namespace RED.UI.Areas.EstateAgent.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAdvert(CreateProductDTO createProductDTO)
+        public async Task<IActionResult> CreateAdvert(CreatePropertyDTO createPropertyDTO)
         {
-            createProductDTO.DealOfTheDay = false;
-            createProductDTO.AdvertisementDate = DateTime.Now;
-            createProductDTO.ProductStatus = true;
+            createPropertyDTO.DealOfTheDay = false;
+            createPropertyDTO.AdvertisementDate = DateTime.Now;
+            createPropertyDTO.PropertyStatus = true;
 
             var id = _loginService.GetUserId;
-            createProductDTO.EmployeeID = int.Parse(id);
+            createPropertyDTO.EmployeeID = int.Parse(id);
 
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createProductDTO);
+            var jsonData = JsonConvert.SerializeObject(createPropertyDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44383/api/Products", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:44383/api/Propertys", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

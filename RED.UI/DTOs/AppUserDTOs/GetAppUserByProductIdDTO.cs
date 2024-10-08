@@ -1,6 +1,6 @@
 ﻿namespace RED.UI.DTOs.AppUserDTOs
 {
-    public class GetAppUserByProductIdDTO
+    public class GetAppUserByPropertyIdDTO
     {
         public int UserId { get; set; }
         public string Name { get; set; }

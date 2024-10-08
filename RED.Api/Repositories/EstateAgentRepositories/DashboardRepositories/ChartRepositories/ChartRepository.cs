@@ -15,7 +15,7 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Cha
 
         public async Task<List<ResultChartDTO>> Get5CityForChart()
         {
-            string query = "Select top(5) City,Count(*) as 'CityCount' From Product Group By City order By CityCount Desc";
+            string query = "Select top(5) City,Count(*) as 'CityCount' From Property Group By City order By CityCount Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultChartDTO>(query);

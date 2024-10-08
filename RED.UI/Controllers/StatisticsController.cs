@@ -36,16 +36,16 @@ namespace RED.UI.Controllers
 
             #region Statistics4
             var client4 = _httpClientFactory.CreateClient();
-            var responseMessage4 = await client4.GetAsync("https://localhost:44383/api/Statistics/AverageProductPriceByRent");
+            var responseMessage4 = await client4.GetAsync("https://localhost:44383/api/Statistics/AveragePropertyPriceByRent");
             var jsonData4 = await responseMessage4.Content.ReadAsStringAsync();
-            ViewBag.averageProductPriceByRent = jsonData4;
+            ViewBag.averagePropertyPriceByRent = jsonData4;
             #endregion
 
             #region Statistics5
             var client5 = _httpClientFactory.CreateClient();
-            var responseMessage5 = await client5.GetAsync("https://localhost:44383/api/Statistics/AverageProductPriceBySale");
+            var responseMessage5 = await client5.GetAsync("https://localhost:44383/api/Statistics/AveragePropertyPriceBySale");
             var jsonData5 = await responseMessage5.Content.ReadAsStringAsync();
-            ViewBag.averageProductPriceBySale = jsonData5;
+            ViewBag.averagePropertyPriceBySale = jsonData5;
             #endregion
 
             #region Statistics6
@@ -64,16 +64,16 @@ namespace RED.UI.Controllers
 
             #region Statistics8
             var client8 = _httpClientFactory.CreateClient();
-            var responseMessage8 = await client8.GetAsync("https://localhost:44383/api/Statistics/CategoryNameByMaxProductCount");
+            var responseMessage8 = await client8.GetAsync("https://localhost:44383/api/Statistics/CategoryNameByMaxPropertyCount");
             var jsonData8 = await responseMessage8.Content.ReadAsStringAsync();
-            ViewBag.categoryNameByMaxProductCount = jsonData8;
+            ViewBag.categoryNameByMaxPropertyCount = jsonData8;
             #endregion
 
             #region Statistics9
             var client9 = _httpClientFactory.CreateClient();
-            var responseMessage9 = await client9.GetAsync("https://localhost:44383/api/Statistics/CityNameByMaxProductCount");
+            var responseMessage9 = await client9.GetAsync("https://localhost:44383/api/Statistics/CityNameByMaxPropertyCount");
             var jsonData9 = await responseMessage9.Content.ReadAsStringAsync();
-            ViewBag.cityNameByMaxProductCount = jsonData9;
+            ViewBag.cityNameByMaxPropertyCount = jsonData9;
             #endregion
 
             #region Statistics10
@@ -85,16 +85,16 @@ namespace RED.UI.Controllers
 
             #region Statistics11
             var client11 = _httpClientFactory.CreateClient();
-            var responseMessage11 = await client11.GetAsync("https://localhost:44383/api/Statistics/EmployeeNameByMaxProductCount");
+            var responseMessage11 = await client11.GetAsync("https://localhost:44383/api/Statistics/EmployeeNameByMaxPropertyCount");
             var jsonData11 = await responseMessage11.Content.ReadAsStringAsync();
-            ViewBag.employeeNameByMaxProductCount = jsonData11;
+            ViewBag.employeeNameByMaxPropertyCount = jsonData11;
             #endregion
 
             #region Statistics12
             var client12 = _httpClientFactory.CreateClient();
-            var responseMessage12 = await client12.GetAsync("https://localhost:44383/api/Statistics/LastProductPrice");
+            var responseMessage12 = await client12.GetAsync("https://localhost:44383/api/Statistics/LastPropertyPrice");
             var jsonData12 = await responseMessage12.Content.ReadAsStringAsync();
-            ViewBag.lastProductPrice = jsonData12;
+            ViewBag.lastPropertyPrice = jsonData12;
             #endregion
 
             #region Statistics13
@@ -120,9 +120,9 @@ namespace RED.UI.Controllers
 
             #region Statistics16
             var client16 = _httpClientFactory.CreateClient();
-            var responseMessage16 = await client16.GetAsync("https://localhost:44383/api/Statistics/ProductCount");
+            var responseMessage16 = await client16.GetAsync("https://localhost:44383/api/Statistics/PropertyCount");
             var jsonData16 = await responseMessage16.Content.ReadAsStringAsync();
-            ViewBag.productCount = jsonData16;
+            ViewBag.PropertyCount = jsonData16;
             #endregion
 
             return View();

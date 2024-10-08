@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using RED.UI.DTOs.CategoryDTOs;
-using RED.UI.DTOs.ProductDTOs;
+using RED.UI.DTOs.PropertyDTOs;
 
 namespace RED.UI.Controllers
 {
@@ -18,11 +18,11 @@ namespace RED.UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductListWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyListWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDTO>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyDTO>>(jsonData);
                 return View(values);
             }
             return View();
@@ -51,7 +51,7 @@ namespace RED.UI.Controllers
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductDealOfTheDayStatusChangeToFalse/" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyDealOfTheDayStatusChangeToFalse/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -62,7 +62,7 @@ namespace RED.UI.Controllers
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Products/ProductDealOfTheDayStatusChangeToTrue/" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyDealOfTheDayStatusChangeToTrue/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

@@ -1,9 +1,9 @@
-﻿using RED.Api.DTOs.ProductDTOs;
+﻿using RED.Api.DTOs.PropertyDTOs;
 
-namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastProductsRepositories
+namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastPropertysRepositories
 {
-    public interface ILast5ProductsRepository
+    public interface ILast5PropertysRepository
     {
-        Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5Product(int id);
+        Task<List<ResultLast5PropertyWithCategoryDTO>> GetLast5Property(int id);
     }
 }

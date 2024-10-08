@@ -2,9 +2,9 @@
 {
     public interface IStatisticRepository
     {
-        int ProductCountByEmployeeId(int id);
-        int ProductCountByStatusTrue(int id);
-        int ProductCountByStatusFalse(int id);        
-        int AllProductCount();
+        int PropertyCountByEmployeeId(int id);
+        int PropertyCountByStatusTrue(int id);
+        int PropertyCountByStatusFalse(int id);        
+        int AllPropertyCount();
     }
 }

@@ -18,30 +18,30 @@ namespace RED.UI.ViewComponents.EstateAgent
             var id = _loginService.GetUserId;
             #region Statistics1 - ToplamİlanSayısı
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/AllProductCount");
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/AllPropertyCount");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            ViewBag.productCount = jsonData;
+            ViewBag.PropertyCount = jsonData;
             #endregion
 
             #region Statistics2 - EmlakçınınToplamİlanSayısı
             var client2 = _httpClientFactory.CreateClient();
-            var responseMessage2 = await client2.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/ProductCountByEmployeeId?id=" + id);
+            var responseMessage2 = await client2.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/PropertyCountByEmployeeId?id=" + id);
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
-            ViewBag.employeeByProductCount = jsonData2;
+            ViewBag.employeeByPropertyCount = jsonData2;
             #endregion
 
             #region Statistics3 - AktifİlanSayısı
             var client3 = _httpClientFactory.CreateClient();
-            var responseMessage3 = await client3.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/ProductCountByStatusTrue?id=" + id);
+            var responseMessage3 = await client3.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/PropertyCountByStatusTrue?id=" + id);
             var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
-            ViewBag.productCountByEmployeeStatusTrue = jsonData3;
+            ViewBag.PropertyCountByEmployeeStatusTrue = jsonData3;
             #endregion
 
             #region Statistics4 - PasifİlanSayısı
             var client4 = _httpClientFactory.CreateClient();
-            var responseMessage4 = await client4.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/ProductCountByStatusFalse?id=" + id);
+            var responseMessage4 = await client4.GetAsync("https://localhost:44383/api/EstateAgentDashboardStatistic/PropertyCountByStatusFalse?id=" + id);
             var jsonData4 = await responseMessage4.Content.ReadAsStringAsync();
-            ViewBag.productCountByEmployeeStatusFalse = jsonData4;
+            ViewBag.PropertyCountByEmployeeStatusFalse = jsonData4;
             #endregion
 
             return View();

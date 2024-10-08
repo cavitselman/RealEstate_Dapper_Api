@@ -12,14 +12,14 @@ namespace RED.Api.Repositories.AppUserRepositories
         {
             _context = context;
         }
-        public async Task<GetAppUserByProductIdDTO> GetAppUserByProductId(int id)
+        public async Task<GetAppUserByPropertyIdDTO> GetAppUserByPropertyId(int id)
         {
             string query = "Select * From AppUser Where UserId=@UserId";
             var parameters = new DynamicParameters();
             parameters.Add("@UserId", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryFirstOrDefaultAsync<GetAppUserByProductIdDTO>(query, parameters);
+                var values = await connection.QueryFirstOrDefaultAsync<GetAppUserByPropertyIdDTO>(query, parameters);
                 return values;
             }
         }

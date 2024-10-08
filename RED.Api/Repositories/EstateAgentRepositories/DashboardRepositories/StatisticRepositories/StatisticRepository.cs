@@ -11,9 +11,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
         {
             _context = context;
         }
-        public int AllProductCount()
+        public int AllPropertyCount()
         {
-            string query = "Select Count(*) From Product";
+            string query = "Select Count(*) From Property";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);
@@ -21,9 +21,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
             }
         }
 
-        public int ProductCountByEmployeeId(int id)
+        public int PropertyCountByEmployeeId(int id)
         {
-            string query = "Select Count(*) From Product Where EmployeeId=@employeeId";
+            string query = "Select Count(*) From Property Where EmployeeId=@employeeId";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeId", id);
             using (var connection = _context.CreateConnection())
@@ -33,9 +33,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
             }
         }
 
-        public int ProductCountByStatusFalse(int id)
+        public int PropertyCountByStatusFalse(int id)
         {
-            string query = "Select Count(*) From Product Where EmployeeId=@employeeId And ProductStatus=0";
+            string query = "Select Count(*) From Property Where EmployeeId=@employeeId And PropertyStatus=0";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeId", id);
             using (var connection = _context.CreateConnection())
@@ -45,9 +45,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
             }
         }
 
-        public int ProductCountByStatusTrue(int id)
+        public int PropertyCountByStatusTrue(int id)
         {
-            string query = "Select Count(*) From Product Where EmployeeId=@employeeId And ProductStatus=1";
+            string query = "Select Count(*) From Property Where EmployeeId=@employeeId And PropertyStatus=1";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeId", id);
             using (var connection = _context.CreateConnection())

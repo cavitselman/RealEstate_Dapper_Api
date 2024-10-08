@@ -1,7 +1,7 @@
-﻿@model CreateProductDTO
+﻿@model CreatePropertyDTO
 @{
-    ViewData["Title"] = "CreateProduct";
-    Layout = "~/Views/Admin/Index.cshtml";
+    ViewData["Title"] = "CreateProperty";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -20,7 +20,7 @@
                     <input type="text" asp-for="District" class="form-control" />
                     <br />
                     <label>Kategori</label>
-                    @Html.DropDownListFor(x => x.ProductCategory, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                    @Html.DropDownListFor(x => x.PropertyCategory, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
                     <br />
                     <label>Fiyat</label>
                     <input type="text" asp-for="Price" class="form-control" />

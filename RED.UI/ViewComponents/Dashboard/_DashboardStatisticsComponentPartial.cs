@@ -14,16 +14,16 @@ namespace RED.UI.ViewComponents.Dashboard
         {
             #region Statistics1 - ToplamİlanSayısı
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Statistics/ProductCount");
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Statistics/PropertyCount");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            ViewBag.productCount = jsonData;
+            ViewBag.PropertyCount = jsonData;
             #endregion
 
             #region Statistics2 - EnBaşarılıPersonel
             var client2 = _httpClientFactory.CreateClient();
-            var responseMessage2 = await client2.GetAsync("https://localhost:44383/api/Statistics/EmployeeNameByMaxProductCount");
+            var responseMessage2 = await client2.GetAsync("https://localhost:44383/api/Statistics/EmployeeNameByMaxPropertyCount");
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
-            ViewBag.employeeNameByMaxProductCount = jsonData2;
+            ViewBag.employeeNameByMaxPropertyCount = jsonData2;
             #endregion
 
             #region Statistics3 - İlandakiŞehirSayıları
@@ -35,9 +35,9 @@ namespace RED.UI.ViewComponents.Dashboard
 
             #region Statistics4 - OrtalamaKiraFiyatı
             var client4 = _httpClientFactory.CreateClient();
-            var responseMessage4 = await client4.GetAsync("https://localhost:44383/api/Statistics/AverageProductPriceByRent");
+            var responseMessage4 = await client4.GetAsync("https://localhost:44383/api/Statistics/AveragePropertyPriceByRent");
             var jsonData4 = await responseMessage4.Content.ReadAsStringAsync();
-            ViewBag.averageProductPriceByRent = jsonData4;
+            ViewBag.averagePropertyPriceByRent = jsonData4;
             #endregion
 
             return View();
