@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RED.UI.ViewComponents.EstateAgent
+namespace RED.UI.Areas.EstateAgent.ViewComponents
 {
     public class _EstateAgentNavbarComponentPartial:ViewComponent
     {

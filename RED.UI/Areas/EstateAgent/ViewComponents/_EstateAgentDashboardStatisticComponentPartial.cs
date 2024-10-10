@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RED.UI.Services;
 
-namespace RED.UI.ViewComponents.EstateAgent
+namespace RED.UI.Areas.EstateAgent.ViewComponents
 {
     public class _EstateAgentDashboardStatisticComponentPartial:ViewComponent
     {

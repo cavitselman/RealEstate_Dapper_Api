@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using RED.UI.DTOs.EstateAgentDTOs;
 
-namespace RED.UI.ViewComponents.EstateAgent
+namespace RED.UI.Areas.EstateAgent.ViewComponents
 {
     public class _EstateAgentDashboardChartComponentPartial:ViewComponent
     {
