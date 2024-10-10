@@ -23,9 +23,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
 
         public int PropertyCountByEmployeeId(int id)
         {
-            string query = "Select Count(*) From Property Where EmployeeId=@employeeId";
+            string query = "Select Count(*) From Property Where AppUserId=@appUserId";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeId", id);
+            parameters.Add("@appUserId", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query,parameters);
@@ -35,9 +35,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
 
         public int PropertyCountByStatusFalse(int id)
         {
-            string query = "Select Count(*) From Property Where EmployeeId=@employeeId And PropertyStatus=0";
+            string query = "Select Count(*) From Property Where AppUserId=@appUserId And PropertyStatus=0";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeId", id);
+            parameters.Add("@appUserId", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query, parameters);
@@ -47,9 +47,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
 
         public int PropertyCountByStatusTrue(int id)
         {
-            string query = "Select Count(*) From Property Where EmployeeId=@employeeId And PropertyStatus=1";
+            string query = "Select Count(*) From Property Where AppUserId=@appUserId And PropertyStatus=1";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeId", id);
+            parameters.Add("@appUserId", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query, parameters);

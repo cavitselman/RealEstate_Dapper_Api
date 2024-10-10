@@ -1,6 +1,6 @@
-﻿namespace RED.UI.DTOs.PropertyDTOs
+﻿namespace RED.Api.DTOs.PropertyDTOs
 {
-    public class UpdatePropertyDTO
+    public class GetPropertyByAdvertIdDTO
     {
         public int PropertyID { get; set; }
         public string Title { get; set; }
@@ -12,5 +12,7 @@
         public string Type { get; set; }
         public string Address { get; set; }
         public int PropertyCategory { get; set; }
+        public bool DealOfTheDay { get; set; }
+        public DateTime AdvertisementDate { get; set; }
     }
 }

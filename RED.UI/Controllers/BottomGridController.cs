@@ -34,10 +34,10 @@ namespace RED.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDTO createServiceDTO)
+        public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDTO createBottomGridDTO)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createServiceDTO);
+            var jsonData = JsonConvert.SerializeObject(createBottomGridDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:44383/api/BottomGrids", stringContent);
             if (responseMessage.IsSuccessStatusCode)
@@ -73,10 +73,10 @@ namespace RED.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateBottomGrid(UpdateBottomGridDTO updateServiceDTO)
+        public async Task<IActionResult> UpdateBottomGrid(UpdateBottomGridDTO updateBottomGridDTO)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateServiceDTO);
+            var jsonData = JsonConvert.SerializeObject(updateBottomGridDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PutAsync("https://localhost:44383/api/BottomGrids", stringContent);
             if (responseMessage.IsSuccessStatusCode)

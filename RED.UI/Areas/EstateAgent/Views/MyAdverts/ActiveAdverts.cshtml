@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "ActiveAdverts";
-    Layout = "~/Areas/EstateAgent/Views/LayoutEstateAgent/Index.cshtml";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
     int count = 0;
 }
 
@@ -37,14 +37,14 @@
                                     <td>@item.price</td>
                                     <td>@item.type</td>
                                     <td><a href="/Property/DeleteProperty/@item.PropertyID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Property/DeleteProperty/@item.PropertyID" class="btn btn-outline-dark">Pasif Yap</a></td>
-                                    <td><a href="/Property/UpdateProperty/@item.PropertyID" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/EstateAgent/MyAdverts/ChangePassive/@item.PropertyID" class="btn btn-outline-dark">İlandan Kaldır</a></td>
+                                    <td><a href="/EstateAgent/MyAdverts/UpdateAdvert/@item.PropertyID" class="btn btn-outline-success">Güncelle</a></td>
                                     <td><a href="/Property/PropertyDetail/@item.PropertyID" class="btn btn-outline-info">Sitede Gör</a></td>                      
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Property/CreateProperty" class="btn btn-outline-info">Yeni İlan Girişi</a>
+                    <a href="/EstateAgent/MyAdverts/CreateAdvert" class="btn btn-outline-info">Yeni İlan Girişi</a>
                 </div>
             </div>
         </div>

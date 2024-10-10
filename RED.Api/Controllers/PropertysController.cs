@@ -18,49 +18,49 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> PropertyList()
         {
-            var values = await _PropertyRepository.GetAllPropertyAsync();
+            var values = await _PropertyRepository.GetAllProperty();
             return Ok(values);
         }
 
         [HttpGet("PropertyListWithCategory")]
         public async Task<IActionResult> PropertyListWithCategory()
         {
-            var values = await _PropertyRepository.GetAllPropertyWithCategoryAsync();
+            var values = await _PropertyRepository.GetAllPropertyWithCategory();
             return Ok(values);
         }
 
         [HttpGet("PropertyDealOfTheDayStatusChangeToTrue/{id}")]
         public async Task<IActionResult> PropertyDealOfTheDayStatusChangeToTrue(int id)
         {
-            _PropertyRepository.PropertyDealOfTheDayStatusChangeToTrue(id);
+            await _PropertyRepository.PropertyDealOfTheDayStatusChangeToTrue(id);
             return Ok("İlan Günün Fırsatları Arasına Eklendi.");
         }
 
         [HttpGet("PropertyDealOfTheDayStatusChangeToFalse/{id}")]
         public async Task<IActionResult> PropertyDealOfTheDayStatusChangeToFalse(int id)
         {
-            _PropertyRepository.PropertyDealOfTheDayStatusChangeToFalse(id);
+            await _PropertyRepository.PropertyDealOfTheDayStatusChangeToFalse(id);
             return Ok("İlan Günün Fırsatları Arasından Çıkarıldı.");
         }
 
         [HttpGet("Last5PropertyList")]
         public async Task<IActionResult> Last5PropertyList()
         {
-            var values = await _PropertyRepository.GetLast5PropertyAsync();
+            var values = await _PropertyRepository.GetLast5Property();
             return Ok(values);
         }
 
-        [HttpGet("PropertyAdvertListByEmployeeAsyncByTrue")]
-        public async Task<IActionResult> PropertyAdvertListByEmployeeAsyncByTrue(int id)
+        [HttpGet("PropertyAdvertListByAppUserByTrue")]
+        public async Task<IActionResult> PropertyAdvertListByAppUserByTrue(int id)
         {
-            var values = await _PropertyRepository.GetPropertyAdvertListByEmployeeAsyncByTrue(id);
+            var values = await _PropertyRepository.GetPropertyAdvertListByAppUserByTrue(id);
             return Ok(values);
         }
 
-        [HttpGet("PropertyAdvertListByEmployeeAsyncByFalse")]
-        public async Task<IActionResult> PropertyAdvertListByEmployeeAsyncByFalse(int id)
+        [HttpGet("PropertyAdvertListByAppUserByFalse")]
+        public async Task<IActionResult> PropertyAdvertListByAppUserByFalse(int id)
         {
-            var values = await _PropertyRepository.GetPropertyAdvertListByEmployeeAsyncByFalse(id);
+            var values = await _PropertyRepository.GetPropertyAdvertListByAppUserByFalse(id);
             return Ok(values);
         }
 
@@ -71,10 +71,24 @@ namespace RED.Api.Controllers
             return Ok("İlan başarıyla eklendi.");
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateProperty(UpdatePropertyDTO updatePropertyDTO)
+        {
+            await _PropertyRepository.UpdateProperty(updatePropertyDTO);
+            return Ok("İlan başarıyla güncellendi.");
+        }
+
         [HttpGet("GetPropertyByPropertyId")]
         public async Task<IActionResult> GetPropertyByPropertyId(int id)
         {
             var values = await _PropertyRepository.GetPropertyByPropertyId(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetPropertyByAdvertId")]
+        public async Task<IActionResult> GetPropertyByAdvertId(int id)
+        {
+            var values = await _PropertyRepository.GetPropertyByAdvertId(id);
             return Ok(values);
         }
 
@@ -88,15 +102,29 @@ namespace RED.Api.Controllers
         [HttpGet("GetPropertyByDealOfTheDayTrueWithCategory")]
         public async Task<IActionResult> GetPropertyByDealOfTheDayTrueWithCategory()
         {
-            var values= await _PropertyRepository.GetPropertyByDealOfTheDayTrueWithCategoryAsync();
+            var values= await _PropertyRepository.GetPropertyByDealOfTheDayTrueWithCategory();
             return Ok(values);
         }
 
         [HttpGet("GetLast3Property")]
         public async Task<IActionResult> GetLast3Property()
         {
-            var values = await _PropertyRepository.GetLast3PropertyAsync();
+            var values = await _PropertyRepository.GetLast3Property();
             return Ok(values);
+        }
+
+        [HttpGet("PropertyStatusChangeToTrue/{id}")]
+        public async Task<IActionResult> PropertyStatusChangeToTrue(int id)
+        {
+            await _PropertyRepository.PropertyStatusChangeToTrue(id);
+            return Ok("İlan Aktif Yapıldı.");
+        }
+
+        [HttpGet("PropertyStatusChangeToFalse/{id}")]
+        public async Task<IActionResult> PropertyStatusChangeToFalse(int id)
+        {
+            await _PropertyRepository.PropertyStatusChangeToFalse(id);
+            return Ok("İlan Pasif Yapıldı.");
         }
     }
 }

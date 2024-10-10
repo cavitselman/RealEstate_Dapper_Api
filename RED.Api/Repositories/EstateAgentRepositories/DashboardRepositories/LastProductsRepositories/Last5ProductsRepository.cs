@@ -14,9 +14,9 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Las
         }
         public async Task<List<ResultLast5PropertyWithCategoryDTO>> GetLast5Property(int id)
         {
-            string query = "Select Top(5) PropertyID,Title,Price,City,District,PropertyCategory,CategoryName,AdvertisementDate From Property Inner Join Category On Property.PropertyCategory=Category.CategoryID Where EmployeeId=@employeeId Order By PropertyID Desc";
+            string query = "Select Top(5) PropertyID,Title,Price,City,District,PropertyCategory,CategoryName,AdvertisementDate From Property Inner Join Category On Property.PropertyCategory=Category.CategoryID Where AppUserId=@appUserId Order By PropertyID Desc";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeId", id);
+            parameters.Add("@appUserId", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultLast5PropertyWithCategoryDTO>(query,parameters);

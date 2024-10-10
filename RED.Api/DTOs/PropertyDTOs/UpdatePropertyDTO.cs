@@ -1,4 +1,4 @@
-﻿namespace RED.UI.DTOs.PropertyDTOs
+﻿namespace RED.Api.DTOs.PropertyDTOs
 {
     public class UpdatePropertyDTO
     {
