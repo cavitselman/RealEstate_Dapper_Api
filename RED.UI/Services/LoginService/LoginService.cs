@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace RED.UI.Services
+namespace RED.UI.Services.LoginService.LoginService
 {
     public class LoginService : ILoginService
     {

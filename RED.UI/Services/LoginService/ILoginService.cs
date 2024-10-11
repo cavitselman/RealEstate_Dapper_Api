@@ -1,4 +1,4 @@
-﻿namespace RED.UI.Services
+﻿namespace RED.UI.Services.LoginService.LoginService
 {
     public interface ILoginService
     {

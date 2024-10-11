@@ -2,15 +2,11 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg stroke px-0">
             <h1>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="#">
                     <span class="fa fa-home"></span> Real Estate
                 </a>
             </h1>
-            <!-- if logo is image enable this
-            <a class="navbar-brand" href="#index.html">
-                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-            </a> -->
-            <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+            <button class="navbar-toggler collapsed bg-gradient" type="button" data-toggle="collapse"
                     data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
@@ -23,16 +19,10 @@
                         <a class="nav-link" href="/Default/Index">Ana Sayfa <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item @@listing__active">
-                        <a class="nav-link" href="/Property/Index">İlanlar</a>
+                        <a class="nav-link" href="/DealOfTheDay/Index">Fırsatlar</a>
                     </li>
-                    <li class="nav-item dropdown @@property__active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Detaylar <span class="fa fa-angle-down"></span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item @@ps__active" href="property-single.html">Günün Fırsatı</a>
-                        </div>
+                    <li class="nav-item @@listing__active">
+                        <a class="nav-link" href="/Property/Index">İlanlar</a>
                     </li>
                     <li class="nav-item @@listing__active">
                         <a class="nav-link" href="listing.html">Hakkımızda</a>
@@ -40,16 +30,29 @@
                     <li class="nav-item @@listing__active">
                         <a class="nav-link" href="listing.html">Bize Yazın</a>
                     </li>
-                    <li class="nav-item @@listing__active">
-                        <a class="nav-link" href="/Login/Index">Giriş Yap</a>
-                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                (Hoş Geldin, @User.Identity.Name)
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/Login/LogOut">Çıkış Yap</a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item @@listing__active">
+                            <a class="nav-link" href="/Login/SignIn?returnUrl=/EstateAgent/Dashboard">Giriş Yap</a>
+                        </li>
+                    }
                 </ul>
                 <div class="top-quote mt-lg-0">
                     <a href="/EstateAgent/MyAdverts/CreateAdvert" class="btn btn-style btn-primary">
                         <span class="fa fa-home"></span> İlan Ver
                     </a>
                 </div>
-                <!--/search-right-->
                 <div class="search mx-3">
                     <input class="search_box" type="checkbox" id="search_box">
                     <label class="fa fa-search" for="search_box"></label>
@@ -59,10 +62,8 @@
                         </form>
                     </div>
                 </div>
-                <!--//search-right-->
             </div>
 
-            <!-- toggle switch for light and dark theme -->
             <div class="mobile-position">
                 <nav class="navigation">
                     <div class="theme-switch-wrapper">
@@ -76,7 +77,6 @@
                     </div>
                 </nav>
             </div>
-            <!-- //toggle switch for light and dark theme -->
         </nav>
     </div>
 </header>

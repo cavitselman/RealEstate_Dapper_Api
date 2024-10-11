@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RED.UI.DTOs.EstateAgentDTOs;
 using RED.UI.DTOs.PropertyDTOs;
-using RED.UI.Services;
+using RED.UI.Services.LoginService.LoginService;
 
 namespace RED.UI.Areas.EstateAgent.ViewComponents
 {

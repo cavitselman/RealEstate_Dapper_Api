@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RED.UI.ViewComponents.Layout
+namespace RED.UI.ViewComponents.Admin
 {
-    public class _NavbarViewComponentPartial:ViewComponent
+    public class _AdminLayoutFooterComponentPartial:ViewComponent
     {
         public IViewComponentResult Invoke()
         {

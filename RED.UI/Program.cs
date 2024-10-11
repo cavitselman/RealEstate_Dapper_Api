@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using RED.UI.Models;
-using RED.UI.Services;
+using RED.UI.Services.LoginService.LoginService;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
@@ -13,7 +13,7 @@ builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSet
 builder.Services.AddHttpClient();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
 {
-    opt.LoginPath = "/Login/Index";
+    opt.LoginPath = "/Login/SignIn";
     opt.LogoutPath = "/Login/LogOut";
     opt.AccessDeniedPath = "/Pages/AccessDenied";
     opt.Cookie.HttpOnly = true;

@@ -1,4 +1,5 @@
-﻿@model CreateLoginDTO
+﻿@model CreateRegisterDTO
+
 @{
     Layout = null;
 }
@@ -8,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Real Estate Kullanıcı Girişi</title>
+    <title>Real Estate Kullanıcı Kayıt</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -51,29 +52,41 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                            </a>
-                            <h3>Kullanıcı Giriş Sayfası</h3>
+                            <a href="index.html" class=""></a>
+                            <h3>Kullanıcı Kayıt Sayfası</h3>
                         </div>
                         <form method="post">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" asp-for="Username" placeholder="Kullanıcı adınızı yazınız...">
-                            <label for="floatingInput">Kullanıcı Adınız</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" asp-for="Password" placeholder="Şifreniz...">
-                            <label for="floatingPassword">Şifre</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Beni Hatırla</label>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingName" asp-for="Name" placeholder="Adınızı yazınız...">
+                                <label for="floatingName">Ad Soyad</label>
+                            </div>                            
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingEmail" asp-for="Email" placeholder="E-posta adresiniz...">
+                                <label for="floatingEmail">E-posta</label>
                             </div>
-                            <a href="">Şifremi Unuttum</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Giriş Yap</button>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingUsername" asp-for="Username" placeholder="Kullanıcı adınızı yazınız...">
+                                <label for="floatingUsername">Kullanıcı Adı</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" asp-for="Password" placeholder="Şifreniz...">
+                                <label for="floatingPassword">Şifre</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingConfirmPassword" asp-for="ConfirmPassword" placeholder="Şifrenizi tekrar yazınız...">
+                                <label for="floatingConfirmPassword">Şifre Tekrar</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="floatingPhoneNumber" asp-for="PhoneNumber" placeholder="Telefon numaranızı yazınız...">
+                                <label for="floatingPhoneNumber">Telefon Numarası</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="floatingUserImageUrl" asp-for="UserImageUrl" placeholder="Profil resim URL'si...">
+                                <label for="floatingUserImageUrl">Profil Resmi</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Kayıt Ol</button>
                         </form>
-                        <p class="text-center mb-0">Bir hesabınız yok mu? <a href="">Kayıt Ol</a></p>
+                        <p class="text-center mb-0">Bir hesabınız var mı? <a href="/Login/SignIn">Giriş Yap</a></p>
                     </div>
                 </div>
             </div>

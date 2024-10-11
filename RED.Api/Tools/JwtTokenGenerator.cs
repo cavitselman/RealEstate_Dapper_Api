@@ -15,8 +15,8 @@ namespace RED.Api.Tools
 
             claims.Add(new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()));
 
-            if(!string.IsNullOrWhiteSpace(model.Username))
-                claims.Add(new Claim("Username", model.Username));
+            if (!string.IsNullOrWhiteSpace(model.Username))
+                claims.Add(new Claim(ClaimTypes.Name, model.Username));
 
             var key=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key));
             var signinCredentials=new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RED.UI.Services;
+using RED.UI.Services.LoginService.LoginService;
 
 namespace RED.UI.Areas.EstateAgent.ViewComponents
 {

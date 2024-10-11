@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RED.UI.ViewComponents.Dashboard
+namespace RED.UI.ViewComponents.Admin
 {
-    public class _DashboardStatisticsComponentPartial:ViewComponent
+    public class _AdminDashboardStatisticsComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _DashboardStatisticsComponentPartial(IHttpClientFactory httpClientFactory)
+        public _AdminDashboardStatisticsComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

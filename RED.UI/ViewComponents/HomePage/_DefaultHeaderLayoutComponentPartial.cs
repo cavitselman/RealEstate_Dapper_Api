@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RED.UI.ViewComponents.AdminLayout
+namespace RED.UI.ViewComponents.HomePage
 {
-    public class _AdminLayoutScriptComponentPartial:ViewComponent
+    public class _DefaultHeaderLayoutComponentPartial:ViewComponent
     {
         public IViewComponentResult Invoke()
         {

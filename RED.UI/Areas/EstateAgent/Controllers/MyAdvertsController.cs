@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using RED.UI.DTOs.CategoryDTOs;
 using RED.UI.DTOs.PropertyDTOs;
-using RED.UI.Services;
+using RED.UI.Services.LoginService.LoginService;
 using System.Text;
 
 namespace RED.UI.Areas.EstateAgent.Controllers
 {
     [Area("EstateAgent")]
+    [Authorize]
     public class MyAdvertsController : Controller
     {
 
