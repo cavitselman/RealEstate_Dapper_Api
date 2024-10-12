@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RED.Api.DTOs.MessageDTOs;
 using RED.Api.Repositories.MessageRepositories;
 
 namespace RED.Api.Controllers
@@ -19,6 +20,13 @@ namespace RED.Api.Controllers
         {
             var values = await _messageRepository.GetInBoxLast3MessageListByReceiver(id);
             return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendMessage(CreateContactMessageDTO createContactMessageDTO)
+        {
+            await _messageRepository.SendMessage(createContactMessageDTO);
+            return Ok("Mesaj başarıyla gönderildi.");
         }
     }
 }

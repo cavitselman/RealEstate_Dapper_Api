@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RED.Api.DTOs.ContactDTOs;
+using RED.Api.DTOs.MessageDTOs;
 using RED.Api.Repositories.ContactRepositories;
 
 namespace RED.Api.Controllers
@@ -19,6 +21,13 @@ namespace RED.Api.Controllers
         {
             var values = await _contactRepository.GetLast4Contact();
             return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateContact(CreateContactDTO createContactDTO)
+        {
+            await _contactRepository.CreateContact(createContactDTO);
+            return Ok("Mesaj başarıyla gönderildi.");
         }
     }
 }
