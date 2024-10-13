@@ -29,6 +29,27 @@ namespace RED.Api.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetCategoryByVilla")]
+        public async Task<IActionResult> GetCategoryByVilla()
+        {
+            var values = await _PropertyRepository.GetCategoryByVilla();
+            return Ok(values);
+        }
+
+        [HttpGet("GetCategoryByDaire")]
+        public async Task<IActionResult> GetCategoryByDaire()
+        {
+            var values = await _PropertyRepository.GetCategoryByDaire();
+            return Ok(values);
+        }
+
+        [HttpGet("GetCategoryByYazlik")]
+        public async Task<IActionResult> GetCategoryByYazlik()
+        {
+            var values = await _PropertyRepository.GetCategoryByYazlik();
+            return Ok(values);
+        }
+
         [HttpGet("PropertyDealOfTheDayStatusChangeToTrue/{id}")]
         public async Task<IActionResult> PropertyDealOfTheDayStatusChangeToTrue(int id)
         {

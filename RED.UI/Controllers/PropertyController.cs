@@ -27,20 +27,71 @@ namespace RED.UI.Controllers
             return View();
         }
 
+        public async Task<IActionResult> PropertyByVilla()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/GetCategoryByVilla");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyDTO>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> PropertyByDaire()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/GetCategoryByDaire");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyDTO>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> PropertyByYazlik()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/GetCategoryByYazlik");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultPropertyDTO>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
         public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue, int propertyCategoryId, string city)
         {
+            // TempData'dan değerleri kontrol et
+            if (TempData["searchKeyValue"] == null ||
+                TempData["propertyCategoryId"] == null ||
+                TempData["city"] == null)
+            {
+                // Hata durumu veya varsayılan değer atama
+                return View(new List<ResultPropertyWithSearchListDTO>());
+            }
+
             searchKeyValue = TempData["searchKeyValue"].ToString();
             propertyCategoryId = int.Parse(TempData["propertyCategoryId"].ToString());
             city = TempData["city"].ToString();
+
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:44383/api/Propertys/ResultPropertyWithSearchList?searchKeyValue={searchKeyValue}&propertyCategoryId={propertyCategoryId}&city={city}");
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultPropertyWithSearchListDTO>>(jsonData);
                 return View(values);
             }
-            return View();
+
+            return View(new List<ResultPropertyWithSearchListDTO>());
         }
 
         [HttpGet("property/{slug}/{id}")]

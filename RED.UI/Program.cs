@@ -15,7 +15,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
 {
     opt.LoginPath = "/Login/SignIn";
     opt.LogoutPath = "/Login/LogOut";
-    opt.AccessDeniedPath = "/Pages/AccessDenied";
+    opt.AccessDeniedPath = "/ErrorPage/Error404";
     opt.Cookie.HttpOnly = true;
     opt.Cookie.SameSite = SameSiteMode.Strict;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;

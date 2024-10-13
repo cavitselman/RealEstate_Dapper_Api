@@ -9,6 +9,9 @@ namespace RED.Api.Repositories.PropertyRepositories
         Task<List<ResultPropertyAdvertListWithCategoryByEmployeeDTO>> GetPropertyAdvertListByAppUserByTrue(int id);
         Task<List<ResultPropertyAdvertListWithCategoryByEmployeeDTO>> GetPropertyAdvertListByAppUserByFalse(int id);
         Task<List<ResultPropertyWithCategoryDTO>> GetAllPropertyWithCategory();
+        Task<List<ResultPropertyWithCategoryDTO>> GetCategoryByVilla();
+        Task<List<ResultPropertyWithCategoryDTO>> GetCategoryByDaire();
+        Task<List<ResultPropertyWithCategoryDTO>> GetCategoryByYazlik();
         Task PropertyDealOfTheDayStatusChangeToTrue(int id);
         Task PropertyDealOfTheDayStatusChangeToFalse(int id);
         Task<List<ResultLast5PropertyWithCategoryDTO>> GetLast5Property();

@@ -10403,7 +10403,7 @@ nav ul li a:hover {
   opacity: 0.95; }
 
 .w3l-cover-3 .top-bottom {
-  background: url(../images/banner.jpg) no-repeat center center;
+  background: url(../images/realestatebanner.jpeg) no-repeat center center;
   background-size: cover;
   min-height: 750px;
   position: relative;
@@ -11167,20 +11167,22 @@ a.title-small {
   box-shadow: 0px 9px 24px 5px rgba(0, 0, 0, 0.04); }
 
 .w3l-left-img {
-  background: url(../images/who.jpg) no-repeat center center;
-  background-size: cover;
-  position: relative;
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-  height: 100%; }
+    background: url(../images/realestateabout.jpg) no-repeat center center;
+    background-size: cover;
+    position: relative;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    height: 100%;
+}
 
 .w3l-left-img1 {
-  background: url(../images/who1.jpg) no-repeat center center;
-  background-size: cover;
-  position: relative;
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-  height: 100%; }
+    background: url(../images/realestatereference.jpg) no-repeat center center;
+    background-size: cover;
+    position: relative;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    height: 100%;
+}
 
 .w3l-left-img2 {
   background: url(../images/about1.jpg) no-repeat center center;

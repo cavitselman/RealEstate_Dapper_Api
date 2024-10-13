@@ -35,6 +35,36 @@ namespace RED.Api.Repositories.PropertyRepositories
             }
         }
 
+        public async Task<List<ResultPropertyWithCategoryDTO>> GetCategoryByDaire()
+        {
+            string query = "Select PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl From Property inner join Category on Property.PropertyCategory=Category.CategoryID WHERE CategoryName = 'Daire'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultPropertyWithCategoryDTO>(query);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultPropertyWithCategoryDTO>> GetCategoryByYazlik()
+        {
+            string query = "Select PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl From Property inner join Category on Property.PropertyCategory=Category.CategoryID WHERE CategoryName = 'Yazlık'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultPropertyWithCategoryDTO>(query);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultPropertyWithCategoryDTO>> GetCategoryByVilla()
+        {
+            string query = "Select PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl From Property inner join Category on Property.PropertyCategory=Category.CategoryID WHERE CategoryName = 'Villa'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultPropertyWithCategoryDTO>(query);
+                return values.ToList();
+            }
+        }
+
         public async Task<List<ResultLast5PropertyWithCategoryDTO>> GetLast5Property()
         {
             string query = "Select Top(5) PropertyID,Title,Price,City,District,PropertyCategory,CategoryName,AdvertisementDate From Property Inner Join Category On Property.PropertyCategory=Category.CategoryID Where Type='Kiralık' Order By PropertyID Desc";
@@ -160,11 +190,32 @@ namespace RED.Api.Repositories.PropertyRepositories
 
         public async Task<List<ResultPropertyWithSearchListDTO>> ResultPropertyWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
         {
-            string query = "Select * From Property Where Title like '%" + searchKeyValue + "%' And PropertyCategory=@propertyCategoryId And City=@city";
+            string query = @"
+        SELECT 
+            p.PropertyID, 
+            p.Title, 
+            p.Price, 
+            p.City, 
+            p.District, 
+            c.CategoryName, 
+            p.CoverImage, 
+            p.Type, 
+            p.Address, 
+            p.DealOfTheDay 
+        FROM 
+            Property p
+        INNER JOIN 
+            Category c ON p.PropertyCategory = c.CategoryID
+        WHERE 
+            p.Title LIKE @searchKeyValue 
+            AND p.PropertyCategory = @propertyCategoryId 
+            AND p.City = @city";
+
             var parameters = new DynamicParameters();
-            //parameters.Add("@searchKeyValue", searchKeyValue);
+            parameters.Add("@searchKeyValue", $"%{searchKeyValue}%");
             parameters.Add("@propertyCategoryId", propertyCategoryId);
             parameters.Add("@city", city);
+
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultPropertyWithSearchListDTO>(query, parameters);
