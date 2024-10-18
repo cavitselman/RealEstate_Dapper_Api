@@ -8,6 +8,6 @@ namespace RED.Api.Repositories.ContactRepositories
         Task<List<Last4ContactResultDTO>> GetLast4Contact();
         Task CreateContact(CreateContactDTO createContactDTO);
         Task DeleteContact(int id);
-        Task<GetByIDContactDTO> GetContact(int id);
+        Task<GetByIDContactReplyDTO> GetContact(int id);
     }
 }

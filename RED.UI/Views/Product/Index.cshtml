@@ -2,7 +2,11 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    int count = 0;
+
+    int totalCount = ViewBag.TotalCount ?? 0; // Toplam ilan sayısı
+    int currentPage = ViewBag.CurrentPage ?? 1; // Mevcut sayfa
+    int pageSize = ViewBag.PageSize ?? 10; // Sayfa boyutu
+    int totalPages = (int)Math.Ceiling((double)totalCount / pageSize); // Toplam sayfa sayısı
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -25,38 +29,60 @@
                                 <th scope="col">Güncelle</th>
                                 <th scope="col">Sitede Gör</th>
                                 <th scope="col">Günün Fırsatı</th>
+                                <th scope="col">Durum</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @for (int i = 0; i < Model.Count; i++)
                             {
-                                count++;
+                                var item = Model[i];
                                 <tr>
-                                    <th scope="row">@count</th>
+                                    <th scope="row">@((currentPage - 1) * pageSize + i + 1)</th>
                                     <td>@item.title</td>
                                     <td>@item.city</td>
                                     <td>@item.district</td>
                                     <td>@item.categoryName</td>
                                     <td>@item.price</td>
                                     <td>@item.type</td>
-                                    <td><a href="/Property/DeleteProperty/@item.PropertyID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Property/UpdateProperty/@item.PropertyID" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/Product/DeleteProduct/@item.PropertyID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Product/UpdateProduct/@item.PropertyID" class="btn btn-outline-success">Güncelle</a></td>
                                     <td><a href="/Property/PropertyDetail/@item.PropertyID" class="btn btn-outline-info">Sitede Gör</a></td>
                                     <td>
-                                        @if (item.dealOfTheDay == true)
+                                        @if (item.dealOfTheDay)
                                         {
-                                            <a href="/Property/PropertyDealOfTheDayStatusChangeToFalse/@item.PropertyID" class="btn btn-outline-secondary">Pasif Yap</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.PropertyID" class="btn btn-outline-secondary">Pasif Yap</a>
                                         }
-                                        @if (item.dealOfTheDay == false)
+                                        else
                                         {
-                                            <a href="/Property/PropertyDealOfTheDayStatusChangeToTrue/@item.PropertyID" class="btn btn-outline-warning">Aktif Yap</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.PropertyID" class="btn btn-outline-warning">Aktif Yap</a>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.PropertyStatus)
+                                        {
+                                            <a href="/Product/ChangePassive/@item.PropertyID" class="btn btn-outline-success">İlan Çıkar</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Product/ChangeActive/@item.PropertyID" class="btn btn-outline-danger">İlana Al</a>
                                         }
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Property/CreateProperty" class="btn btn-outline-info">Yeni İlan Girişi</a>
+                    <!-- Sayfalama Linkleri -->
+                    <nav aria-label="Page navigation">                        
+                        <ul class="pagination">
+                            <a href="/Product/CreateProduct" class="btn btn-outline-info">Yeni İlan Girişi</a>
+                            @for (int i = 1; i <= totalPages; i++)
+                            {
+                                <li style="position:relative;left:80%" class="page-item @(i == currentPage ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>                                       
                 </div>
             </div>
         </div>

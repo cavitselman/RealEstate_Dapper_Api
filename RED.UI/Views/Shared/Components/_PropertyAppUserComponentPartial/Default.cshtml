@@ -1,73 +1,56 @@
-﻿@model GetAppUserByPropertyIdDTO
+﻿@model List<GetAppUserByPropertyIdDTO>
 
 <div class="sidebar-side col-lg-4 col-md-12 col-sm-12 mt-lg-0 mt-5">
     <aside class="sidebar">
-
-        <!-- Popular Post Widget-->
         <div class="sidebar-widget popular-posts">
             <div class="sidebar-title">
                 <h4>Emlakçı İletişim Bilgileri</h4>
             </div>
 
-            <article class="post">
-                <figure class="post-thumb">
-                    <img src="@Model.UserImageUrl" style="width:100px; height:100px" class="radius-image" alt="">
-                </figure>
-                <div class="text mb-0">
-                    <a href="#blog-single">
-                        @Model.Name
-                    </a>
-                    <div class="post-info">@Model.PhoneNumber</div>
-                    <div class="post-info">@Model.Email</div>
-                </div>
-            </article>
-            <button type="submit" class="btn btn-primary btn-style w-100">Detaylı İletişim Bilgileri</button>
+            @if (Model != null && Model.Any())
+            {
+                var firstItem = Model.First(); // İlk ilanı al
+                <article class="post">
+                    <figure class="post-thumb">
+                        <img src="@firstItem.UserImageUrl" style="width:100px; height:100px" class="radius-image" alt="">
+                    </figure>
+                    <div class="text mb-0">
+                        <a href="#blog-single">
+                            @firstItem.Name
+                        </a>
+                        <div class="post-info">@firstItem.PhoneNumber</div>
+                        <div class="post-info">@firstItem.Email</div>
+                    </div>
+                </article>
+                <button type="button" class="btn btn-primary btn-style w-100">Detaylı İletişim Bilgileri</button>
+            }
         </div>
 
-
-        <!-- Popular Post Widget-->
         <div class="sidebar-widget popular-posts">
             <div class="sidebar-title">
                 <h4>Emlakçıya Ait Diğer İlanlar</h4>
             </div>
-
-            <article class="post">
-                <figure class="post-thumb">
-                    <img src="~/starter/assets/images/l1.jpg" class="radius-image" alt="">
-                </figure>
-                <div class="text">
-                    <a href="#blog-single">
-                        Why we are the best in the business
-                    </a>
-                    <div class="post-info">Sep 09, 2020 - 2 comments</div>
-                </div>
-            </article>
-
-            <article class="post">
-                <figure class="post-thumb">
-                    <img src="~/starter/assets/images/l2.jpg" class="radius-image" alt="">
-                </figure>
-                <div class="text">
-                    <a href="#blog-single">
-                        Build your next landing page.
-                    </a>
-                    <div class="post-info">Sep 09, 2020 - 2 comments</div>
-                </div>
-            </article>
-
-            <article class="post">
-                <figure class="post-thumb">
-                    <img src="~/starter/assets/images/l3.jpg" class="radius-image" alt="">
-                </figure>
-                <div class="text">
-                    <a href="#blog-single">
-                        Simply the best. Better than the rest.
-                    </a>
-                    <div class="post-info">Sep 10, 2020 - 2 comments</div>
-                </div>
-            </article>
-
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <article class="post">
+                        <figure class="post-thumb">
+                            <img src="@item.CoverImage" class="radius-image" alt="" style="height:70px">
+                        </figure>
+                        <div class="text">
+                            <a href="/Property/PropertySingle/@item.PropertyId">
+                                @item.Title
+                            </a>
+                            <div class="post-info">@item.AdvertisementDate.ToString("MMM dd, yyyy")</div>
+                        </div>
+                    </article>
+                }
+            }
+            else
+            {
+                <p>Bu emlakçıya ait ilan bulunmamaktadır.</p>
+            }
         </div>
-
     </aside>
 </div>

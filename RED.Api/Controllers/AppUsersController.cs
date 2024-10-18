@@ -20,5 +20,12 @@ namespace RED.Api.Controllers
             var value = await _appUserRepository.GetAppUserByPropertyId(id);
             return Ok(value);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAppUserWithLast3Properties(int id)
+        {
+            var value = await _appUserRepository.GetAppUserWithLast3Properties(id);
+            return Ok(value);
+        }
     }
 }

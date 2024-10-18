@@ -27,7 +27,7 @@ namespace RED.Api.Repositories.PropertyRepositories
 
         public async Task<List<ResultPropertyWithCategoryDTO>> GetAllPropertyWithCategory()
         {
-            string query = "Select PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl From Property inner join Category on Property.PropertyCategory=Category.CategoryID";
+            string query = "Select PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl,PropertyStatus From Property inner join Category on Property.PropertyCategory=Category.CategoryID";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultPropertyWithCategoryDTO>(query);
@@ -274,6 +274,17 @@ namespace RED.Api.Repositories.PropertyRepositories
             {
                 var values = await connection.QueryAsync<GetPropertyByAdvertIdDTO>(query, parameters);
                 return values.FirstOrDefault();
+            }
+        }
+
+        public async Task DeleteProperty(int propertyId)
+        {
+            string query = "DELETE FROM Property WHERE PropertyID = @propertyId";
+            var parameters = new DynamicParameters();
+            parameters.Add("@propertyId", propertyId);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
             }
         }
     }

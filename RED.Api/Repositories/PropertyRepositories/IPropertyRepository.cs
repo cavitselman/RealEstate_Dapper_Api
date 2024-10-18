@@ -25,5 +25,6 @@ namespace RED.Api.Repositories.PropertyRepositories
         Task<List<ResultPropertyWithCategoryDTO>> GetPropertyByDealOfTheDayTrueWithCategory();
         Task PropertyStatusChangeToTrue(int id);
         Task PropertyStatusChangeToFalse(int id);
+        Task DeleteProperty(int id);
     }
 }

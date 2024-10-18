@@ -18,6 +18,7 @@ using RED.Api.Repositories.SubFeatureRepositories;
 using RED.Api.Repositories.TestimonialRepositories;
 using RED.Api.Repositories.ToDoListRepositories;
 using RED.Api.Repositories.WhoWeAreDetailRepositories;
+using RED.Api.Repositories.ContactReplyRepositories;
 
 namespace RED.Api.Containers
 {
@@ -46,6 +47,7 @@ namespace RED.Api.Containers
             services.AddTransient<IAppUserRepository, AppUserRepository>();
             services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
             services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
+            services.AddTransient<IContactReplyRepository, ContactReplyRepository>();
         }
     }
 }

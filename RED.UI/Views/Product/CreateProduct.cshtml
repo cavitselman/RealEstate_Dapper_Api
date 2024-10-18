@@ -1,4 +1,5 @@
 ﻿@model CreatePropertyDTO
+
 @{
     ViewData["Title"] = "CreateProperty";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -20,21 +21,24 @@
                     <input type="text" asp-for="District" class="form-control" />
                     <br />
                     <label>Kategori</label>
-                    @Html.DropDownListFor(x => x.PropertyCategory, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                    @Html.DropDownListFor(x => x.PropertyCategory, (IEnumerable<SelectListItem>)ViewBag.categoryList, new { @class = "form-control" })
                     <br />
                     <label>Fiyat</label>
-                    <input type="text" asp-for="Price" class="form-control" />
+                    <input type="number" asp-for="Price" class="form-control" />
                     <br />
                     <label>Tür</label>
-                    <input type="text" asp-for="Type" class="form-control" />
+                    @Html.DropDownListFor(x => x.Type, (IEnumerable<SelectListItem>)ViewBag.typeList, new { @class = "form-control" })
                     <br />
                     <label>Kapak Fotoğrafı</label>
                     <input type="text" asp-for="CoverImage" class="form-control" />
                     <br />
                     <label>İlan Açık Adresi</label>
-                    <textarea asp-for="Address" class="form-control" rows="5"></textarea>
+                    <input type="text" asp-for="Address" class="form-control" />
                     <br />
-                    <button class="btn-outline-primary">İlanı Kaydet</button>
+                    <label>İlan Açıklaması</label>
+                    <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                    <br />
+                    <button class="btn-success">İlanı Oluştur</button>
                 </form>
             </div>
         </div>

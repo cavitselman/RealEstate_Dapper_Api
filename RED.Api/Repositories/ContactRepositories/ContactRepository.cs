@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using RED.Api.DTOs.BottomGridDTOs;
 using RED.Api.DTOs.ContactDTOs;
 using RED.Api.Models.DapperContext;
 
@@ -15,8 +16,8 @@ namespace RED.Api.Repositories.ContactRepositories
 
         public async Task CreateContact(CreateContactDTO createContactDTO)
         {
-            string query = "INSERT INTO Contact (Name, Email, Subject, Message, SendDate) " +
-                   "VALUES (@Name, @Email, @Subject, @Message, @SendDate)";
+            string query = "INSERT INTO Contact (Name, Email, Subject, Message, SendDate, IsRead) " +
+                           "VALUES (@Name, @Email, @Subject, @Message, @SendDate, @IsRead)";
 
             var parameters = new DynamicParameters();
             parameters.Add("@Name", createContactDTO.Name);
@@ -24,6 +25,7 @@ namespace RED.Api.Repositories.ContactRepositories
             parameters.Add("@Subject", createContactDTO.Subject);
             parameters.Add("@Message", createContactDTO.Message);
             parameters.Add("@SendDate", DateTime.UtcNow); // Burada UTC kullanıyoruz
+            parameters.Add("@IsRead", false); // IsRead'i false olarak gönderiyoruz
 
             using (var connection = _context.CreateConnection())
             {
@@ -31,19 +33,40 @@ namespace RED.Api.Repositories.ContactRepositories
             }
         }
 
-        public Task DeleteContact(int id)
+        public async Task DeleteContact(int id)
         {
-            throw new NotImplementedException();
+            string query = "DELETE FROM Contact WHERE ContactID = @contactId";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@contactId", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
         }
 
-        public Task<List<ResultContactDTO>> GetAllContact()
+        public async Task<List<ResultContactDTO>> GetAllContact()
         {
-            throw new NotImplementedException();
+            string query = "SELECT ContactID, Name, Email, Subject, Message, SendDate, IsRead FROM Contact";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var contacts = await connection.QueryAsync<ResultContactDTO>(query);
+                return contacts.ToList();
+            }
         }
 
-        public Task<GetByIDContactDTO> GetContact(int id)
+        public async Task<GetByIDContactReplyDTO> GetContact(int id)
         {
-            throw new NotImplementedException();
+            string query = "Select * From Contact Where ContactID=@contactId";
+            var parameters = new DynamicParameters();
+            parameters.Add("@contactId", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIDContactReplyDTO>(query, parameters);
+                return values;
+            }
         }
 
         public async Task<List<Last4ContactResultDTO>> GetLast4Contact()

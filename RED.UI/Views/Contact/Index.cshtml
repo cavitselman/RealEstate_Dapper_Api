@@ -6,6 +6,15 @@
 }
 
 <h2 class="title">Bize Ulaşın</h2>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <br />
+    <div id="successMessage" class="alert alert-success text-center" style="width: 100%; padding: 15px; margin: 0 auto;" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
 <section class="w3l-contact" id="contact">
     <div class="contact-infubd py-5">
         <div class="container py-lg-3">
@@ -84,4 +93,21 @@
     textarea.contact-input {
         height: 200px; /* Yüksekliği ayarlayın */
     }
+
+    #successMessage {
+        margin: 20px auto; /* Yukarıdan ve aşağıdan boşluk */
+        text-align: center; /* Metni ortala */
+        width: fit-content; /* İçeriğe göre genişlik ayarla */
+    }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var message = document.getElementById("successMessage");
+        if (message) {
+            setTimeout(function () {
+                message.style.display = 'none'; // Mesajı gizle
+            }, 5000); // 5000 ms = 5 saniye
+        }
+    });
+</script>

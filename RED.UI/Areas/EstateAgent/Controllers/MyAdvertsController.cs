@@ -55,39 +55,78 @@ namespace RED.UI.Areas.EstateAgent.Controllers
         public async Task<IActionResult> CreateAdvert()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Categories");
 
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultCategoryDTO>>(jsonData);
+            // Kategorileri API'den al
+            var categoryResponseMessage = await client.GetAsync("https://localhost:44383/api/Categories");
+            if (categoryResponseMessage.IsSuccessStatusCode)
+            {
+                var categoryJsonData = await categoryResponseMessage.Content.ReadAsStringAsync();
+                var categories = JsonConvert.DeserializeObject<List<ResultCategoryDTO>>(categoryJsonData);
 
-            List<SelectListItem> categoryValues = (from x in values.ToList()
-                                                   select new SelectListItem
-                                                   {
-                                                       Text = x.CategoryName,
-                                                       Value = x.CategoryID.ToString()
-                                                   }).ToList();
-            ViewBag.v = categoryValues;
+                // Kategori listesini oluştur
+                ViewBag.categoryList = categories.Select(c => new SelectListItem
+                {
+                    Text = c.CategoryName,
+                    Value = c.CategoryID.ToString()
+                }).ToList();
+            }
 
-            return View();
+            // İlan türlerini tanımla
+            var propertyTypes = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Satılık", Value = "Satılık" },
+        new SelectListItem { Text = "Kiralık", Value = "Kiralık" }
+    };
+
+            ViewBag.typeList = propertyTypes; // İlan türlerini ViewBag'e ekle
+
+            return View(); // Yeni ilan oluşturma görünümünü döndür
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateAdvert(CreatePropertyDTO createPropertyDTO)
         {
+            // Varsayılan değerleri ayarlama
             createPropertyDTO.DealOfTheDay = false;
             createPropertyDTO.AdvertisementDate = DateTime.Now;
             createPropertyDTO.PropertyStatus = true;
 
+            // Kullanıcı ID'sini alma
             var id = _loginService.GetUserId;
-            createPropertyDTO.EmployeeID = int.Parse(id);
+            createPropertyDTO.AppUserId = int.Parse(id);
 
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createPropertyDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            // API'ye POST isteği gönderme
             var responseMessage = await client.PostAsync("https://localhost:44383/api/Propertys", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                // Başarılı ise yönlendirme yap
+                return Redirect("/EstateAgent/MyAdverts/ActiveAdverts");
+            }
+
+            // Hata durumunda yeniden formu göster
+            return View(createPropertyDTO);
+        }
+        public async Task<IActionResult> DeleteActiveAdvert(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:44383/api/Propertys/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return Redirect("/EstateAgent/MyAdverts/ActiveAdverts");
+            }
+            return View();
+        }
+        public async Task<IActionResult> DeletePassiveAdvert(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:44383/api/Propertys/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return Redirect("/EstateAgent/MyAdverts/PassiveAdverts");
             }
             return View();
         }
@@ -154,7 +193,7 @@ namespace RED.UI.Areas.EstateAgent.Controllers
             var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyStatusChangeToTrue/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return Redirect("/EstateAgent/MyAdverts/ActiveAdverts");
+                return Redirect("/EstateAgent/MyAdverts/PassiveAdverts");
             }
             return View();
         }
@@ -165,7 +204,7 @@ namespace RED.UI.Areas.EstateAgent.Controllers
             var responseMessage = await client.GetAsync("https://localhost:44383/api/Propertys/PropertyStatusChangeToFalse/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return Redirect("/EstateAgent/MyAdverts/PassiveAdverts");
+                return Redirect("/EstateAgent/MyAdverts/ActiveAdverts");
             }
             return View();
         }

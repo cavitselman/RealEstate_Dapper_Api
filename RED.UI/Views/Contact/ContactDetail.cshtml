@@ -1,0 +1,58 @@
+﻿@model ContactDetailViewModel
+
+@{
+    ViewData["Title"] = "ContactDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<input type="hidden" asp-for="ContactDetails.ContactID" />
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title" style="position:relative; right:200px"><br />Mesaj Detayları</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="right:220px">
+                    <div class="card-body">
+                        <div class="card-sub">
+                            <b>Gönderen:</b> @Model.ContactDetails.Name
+                            <br />
+                            <b>Email:</b> @Model.ContactDetails.Email
+                            <br />
+                            <b>Tarih:</b> @Model.ContactDetails.SendDate
+                            <br /><br />
+                            <b>Konu:</b> @Model.ContactDetails.Subject
+                            <br />
+                            <b>Mesaj:</b> @Model.ContactDetails.Message
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-sub">
+                            <h6>Cevabınız</h6>
+                            <b>Gönderen:</b> @ViewBag.sender
+                            <br />
+                            <b>Tarih:</b>  @ViewBag.date
+                            <br />
+                            @foreach (var reply in ViewBag.reply)
+                            {
+                                <div>
+                                    <b>Cevap:</b> @reply <br />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!-- Cevap gönderme formu -->
+                    <form asp-controller="Contact" asp-action="SendReply" method="post">
+                        <input type="hidden" asp-for="ReplyDTO.ContactId" />
+                        <input type="hidden" asp-for="ReplyDTO.ReceiverEmail" /> <!-- Alıcı Email'i hidden olarak gönderiyoruz -->
+                        <div class="form-group">
+                            <label for="ReplyContent" style="position:relative; left:15px">Cevabınızı Girin:</label>
+                            <textarea class="form-control" id="ReplyContent" name="ReplyContent" rows="4" required></textarea>
+                        </div><br />
+                        <button type="submit" class="btn btn-primary" style="position:relative; left:84%; bottom:12px">Cevap Gönder</button>
+                        <br />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

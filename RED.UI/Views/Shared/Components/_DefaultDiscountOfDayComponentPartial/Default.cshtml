@@ -22,7 +22,7 @@
                             <div class="blog-info">
                                 <a href="/Property/PropertySingle/@item.PropertyID" class="category">@item.CategoryName</a>
                                 <h4><a href="/Property/PropertySingle/@item.PropertyID">@item.Title</a></h4>
-                                <p>@item.Description.Substring(0,100)</p>
+                                <p>@(item.Description.Length > 100 ? item.Description.Substring(0, 100) : item.Description)</p>
                             </div>
                         </div>
                     </div>

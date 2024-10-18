@@ -22,6 +22,13 @@ namespace RED.Api.Controllers
             return Ok(values);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProperty(int id)
+        {
+            await _PropertyRepository.DeleteProperty(id);
+            return Ok("İlan başarılı bir şekilde silindi!");
+        }
+
         [HttpGet("PropertyListWithCategory")]
         public async Task<IActionResult> PropertyListWithCategory()
         {

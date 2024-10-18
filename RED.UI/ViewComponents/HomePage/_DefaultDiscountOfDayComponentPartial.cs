@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.PropertyDTOs;
-using RED.UI.DTOs.SubFeatureDTOs;
 
 namespace RED.UI.ViewComponents.HomePage
 {

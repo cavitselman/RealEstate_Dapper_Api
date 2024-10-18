@@ -29,5 +29,26 @@ namespace RED.Api.Controllers
             await _contactRepository.CreateContact(createContactDTO);
             return Ok("Mesaj başarıyla gönderildi.");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteContact(int id)
+        {
+            await _contactRepository.DeleteContact(id);
+            return Ok("Mesaj Başarılı Bir Şekilde Silindi");
+        }
+
+        [HttpGet("GetAllContact")]
+        public async Task<IActionResult> GetAllContact()
+        {
+            var values = await _contactRepository.GetAllContact();
+            return Ok(values);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetContact(int id)
+        {
+            var value = await _contactRepository.GetContact(id);
+            return Ok(value);
+        }
     }
 }
