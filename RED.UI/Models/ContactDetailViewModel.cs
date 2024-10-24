@@ -11,7 +11,8 @@ namespace RED.UI.Models
 
         public ContactDetailViewModel()
         {
-            Replies = new List<GetByIDContactReplyDTO>(); // Boş bir liste ile başlat
+            Replies = new List<GetByIDContactReplyDTO>();
+            ReplyDTO = new CreateContactReplyDTO(); // ReplyDTO'yu başlat
         }
     }
 }

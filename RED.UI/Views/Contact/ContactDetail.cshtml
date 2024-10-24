@@ -18,7 +18,7 @@
                             <br />
                             <b>Email:</b> @Model.ContactDetails.Email
                             <br />
-                            <b>Tarih:</b> @Model.ContactDetails.SendDate
+                            <b>Tarih:</b> @Model.ContactDetails.SendDate.ToString("dd/MMM/yy HH:mm")
                             <br /><br />
                             <b>Konu:</b> @Model.ContactDetails.Subject
                             <br />
@@ -28,28 +28,23 @@
                     <div class="card-body">
                         <div class="card-sub">
                             <h6>Cevabınız</h6>
-                            <b>Gönderen:</b> @ViewBag.sender
-                            <br />
-                            <b>Tarih:</b>  @ViewBag.date
-                            <br />
-                            @foreach (var reply in ViewBag.reply)
+                            @foreach (var reply in Model.Replies)
                             {
                                 <div>
-                                    <b>Cevap:</b> @reply <br />
+                                    <b>(@reply.Date.ToString("HH:mm")) Siz:</b> @reply.Reply 
+                                     <br />
                                 </div>
                             }
                         </div>
                     </div>
                     <!-- Cevap gönderme formu -->
-                    <form asp-controller="Contact" asp-action="SendReply" method="post">
-                        <input type="hidden" asp-for="ReplyDTO.ContactId" />
-                        <input type="hidden" asp-for="ReplyDTO.ReceiverEmail" /> <!-- Alıcı Email'i hidden olarak gönderiyoruz -->
+                    <form asp-controller="Contact" asp-action="ContactDetail" method="post">
+                        <input type="hidden" name="messageId" asp-for="ContactDetails.ContactID" />
+                        <input type="hidden" name="contactEmail" asp-for="ContactDetails.Email" />
                         <div class="form-group">
-                            <label for="ReplyContent" style="position:relative; left:15px">Cevabınızı Girin:</label>
-                            <textarea class="form-control" id="ReplyContent" name="ReplyContent" rows="4" required></textarea>
-                        </div><br />
-                        <button type="submit" class="btn btn-primary" style="position:relative; left:84%; bottom:12px">Cevap Gönder</button>
-                        <br />
+                            <textarea class="form-control" id="ReplyContent" name="ReplyContent" rows="4" placeholder="Cevap yaz..." required></textarea>
+                        </div>
+                        <button style="position:relative;left:730px;width:125px" type="submit" class="btn btn-primary">Gönder</button>
                     </form>
                 </div>
             </div>

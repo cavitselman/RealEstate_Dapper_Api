@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using RED.Api.DTOs.BottomGridDTOs;
-using RED.Api.DTOs.ServiceDTOs;
 using RED.Api.Models.DapperContext;
 
 namespace RED.Api.Repositories.BottomGridRepositories

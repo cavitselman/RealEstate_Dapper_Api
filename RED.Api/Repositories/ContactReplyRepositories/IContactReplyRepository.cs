@@ -5,6 +5,6 @@ namespace RED.Api.Repositories.ContactReplyRepositories
     public interface IContactReplyRepository
     {
         Task PostReply(CreateContactReplyDTO createContactReplyDTO);
-        Task<GetByIDContactReplyDTO> GetReply(int id);
+        Task<List<GetByIDContactReplyDTO>> GetReply(int id);
     }
 }

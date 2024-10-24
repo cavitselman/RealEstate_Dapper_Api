@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using RED.UI.DTOs.ContactDTOs;
 using RED.UI.DTOs.ContactReplyDTOs;
 using RED.UI.Models;
+using System;
 using System.Net.Http;
 using System.Text;
 
@@ -71,7 +72,6 @@ namespace RED.UI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
 
-            // Mesaj detaylarını al
             var responseMessage = await client.GetAsync($"https://localhost:44383/api/Contacts/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
@@ -79,73 +79,77 @@ namespace RED.UI.Controllers
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var contactDetails = JsonConvert.DeserializeObject<GetByIDContactDTO>(jsonData);
 
-                // Cevapları almak için API çağrısı
+                if (contactDetails == null)
+                {
+                    TempData["ErrorMessage"] = "Mesaj detayları alınamadı.";
+                    return RedirectToAction("Index");
+                }
+
                 var repliesResponse = await client.GetAsync($"https://localhost:44383/api/ContactReplies/{id}");
                 List<GetByIDContactReplyDTO> replies = new List<GetByIDContactReplyDTO>();
 
                 if (repliesResponse.IsSuccessStatusCode)
                 {
                     var repliesJsonData = await repliesResponse.Content.ReadAsStringAsync();
-                    // JSON array olarak deserialize et
                     replies = JsonConvert.DeserializeObject<List<GetByIDContactReplyDTO>>(repliesJsonData) ?? new List<GetByIDContactReplyDTO>();
                 }
 
                 var replyDTO = new CreateContactReplyDTO
                 {
-                    ContactId = id,
-                    ReceiverEmail = contactDetails.Email
+                    ContactID = id,
+                    SenderEmail = contactDetails.Email
                 };
-
-                ViewBag.sender = "Admin"; // Gönderen
-                ViewBag.date = DateTime.Now; // Tarih
 
                 var viewModel = new ContactDetailViewModel
                 {
                     ContactDetails = contactDetails,
                     ReplyDTO = replyDTO,
-                    Replies = replies // Cevapları ekleyin
+                    Replies = replies
                 };
 
                 return View(viewModel);
             }
 
-            return View();
+            TempData["ErrorMessage"] = "Mesaj detayları alınamadı.";
+            return RedirectToAction("Index");
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> SendReply(CreateContactReplyDTO createContactReplyDTO)
+        public async Task<IActionResult> ContactDetail(CreateContactReplyDTO createContactReplyDTO, int messageId, string replyContent, string contactEmail)
         {
             try
             {
-                // Alıcı e-posta adresini DTO'dan al
-                var adminReply = new CreateContactReplyDTO
-                {
-                    Email = "realestate@admin.com", // Adminin e-posta adresi
-                    ContactId = createContactReplyDTO.ContactId, // Mesaj ID'si
-                    ReceiverEmail = createContactReplyDTO.ReceiverEmail, // Alıcı emaili DTO'dan al
-                    Date = DateTime.UtcNow,
-                    Reply = createContactReplyDTO.Reply // Burada Reply'yi DTO'dan alıyoruz
-                };
-
+                createContactReplyDTO.ContactID = messageId;
+                createContactReplyDTO.SenderEmail = "realestate@destek.com";
+                createContactReplyDTO.Email = contactEmail;
+                createContactReplyDTO.Reply = replyContent;
+                createContactReplyDTO.Date = DateTime.Now;  
+                
                 var client = _httpClientFactory.CreateClient();
-                var jsonData = JsonConvert.SerializeObject(adminReply);
+                var jsonData = JsonConvert.SerializeObject(createContactReplyDTO);
                 StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 var responseMessage = await client.PostAsync("https://localhost:44383/api/ContactReplies", stringContent);
 
+                // API yanıtını kontrol et
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     TempData["SuccessMessage"] = "Cevabınız başarıyla gönderildi.";
-                    return RedirectToAction("ContactDetail", new { id = createContactReplyDTO.ContactId });
+                    return RedirectToAction("ContactDetail", "Contact", new { id = createContactReplyDTO.ContactID });
                 }
-
-                TempData["ErrorMessage"] = "Cevap gönderilirken bir hata oluştu.";
-                return RedirectToAction("ContactDetail", new { id = createContactReplyDTO.ContactId });
+                else
+                {
+                    // Hata durumunda içeriği oku ve kullanıcıya göster
+                    var content = await responseMessage.Content.ReadAsStringAsync();
+                    TempData["ErrorMessage"] = $"Cevap gönderilirken bir hata oluştu: {content}";
+                    return RedirectToAction("ContactDetail", "Contact", new { id = createContactReplyDTO.ContactID });
+                }
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = $"Cevap gönderirken bir hata oluştu: {ex.Message}";
-                return RedirectToAction("ContactDetail", new { id = createContactReplyDTO.ContactId });
+                TempData["ErrorMessage"] = $"Bir hata oluştu: {ex.Message}";
+                return RedirectToAction("ContactDetail", "Contact", new { id = createContactReplyDTO.ContactID });
             }
         }
     }

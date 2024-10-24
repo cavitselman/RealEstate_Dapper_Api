@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using RED.Api.DTOs.ContactReplyDTOs;
 using RED.Api.Models.DapperContext;
 
@@ -12,31 +13,31 @@ namespace RED.Api.Repositories.ContactReplyRepositories
         {
             _context = context;
         }
-        public async Task<GetByIDContactReplyDTO> GetReply(int id)
+        public async Task<List<GetByIDContactReplyDTO>> GetReply(int contactId)
         {
-            string query = "SELECT ReplyId, Email, ContactId, ReceiverEmail, Reply, Date " +
-                   "FROM ContactReply WHERE ReplyId = @Id";
+            string query = "SELECT ReplyId, Email, ContactID, SenderEmail, Reply, Date " +
+                           "FROM ContactReply WHERE ContactID = @ContactId"; // Burayı değiştirdik
 
             var parameters = new DynamicParameters();
-            parameters.Add("@Id", id);
+            parameters.Add("@ContactId", contactId); // @Id yerine @ContactId
 
             using (var connection = _context.CreateConnection())
             {
-                var value = await connection.QueryFirstOrDefaultAsync<GetByIDContactReplyDTO>(query, parameters);
-                return value;
+                var replies = await connection.QueryAsync<GetByIDContactReplyDTO>(query, parameters);
+                return replies.ToList();
             }
         }
 
         public async Task PostReply(CreateContactReplyDTO createContactReplyDTO)
         {
-            string query = "INSERT INTO ContactReply (ContactId, Email, ReceiverEmail, Date, Reply) " +
-                   "VALUES (@ContactId, @Email, @ReceiverEmail, @Date, @Reply)";
+            string query = "INSERT INTO ContactReply (ContactID, Email, SenderEmail, Date, Reply) " +
+                           "VALUES (@ContactId, @Email, @SenderEmail, @Date, @Reply)";
 
             var parameters = new DynamicParameters();
-            parameters.Add("@ContactId", createContactReplyDTO.ContactId);
+            parameters.Add("@ContactId", createContactReplyDTO.ContactID);
             parameters.Add("@Email", createContactReplyDTO.Email);
-            parameters.Add("@ReceiverEmail", createContactReplyDTO.ReceiverEmail);
-            parameters.Add("@Date", createContactReplyDTO.Date);
+            parameters.Add("@SenderEmail", createContactReplyDTO.SenderEmail);
+            parameters.Add("@Date", DateTime.UtcNow);
             parameters.Add("@Reply", createContactReplyDTO.Reply);
 
             using (var connection = _context.CreateConnection())
