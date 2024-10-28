@@ -1,0 +1,68 @@
+﻿@model CreateMessageDTO
+
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Yeni Mesaj Gönder</h6>
+                <form asp-action="SendMessage" method="post">
+                    <div class="form-group">
+                        <label asp-for="ReceiverEmail">Alıcı E-Posta:</label>
+                        <input asp-for="ReceiverEmail" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Receiver" /> <!-- Receiver ID'yi gizli bir alanda tut -->
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Subject">Konu:</label>
+                        <input asp-for="Subject" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MessageContent">Mesaj İçeriği:</label>
+                        <textarea asp-for="MessageContent" class="form-control" required></textarea>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Gönder</button>
+                </form>
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector('input[name="ReceiverEmail"]').addEventListener('change', async function() {
+        const email = this.value;
+        try {
+            const response = await fetch(`/api/users/getByEmail?email=${encodeURIComponent(email)}`);
+            if (response.ok) {
+                const user = await response.json();
+                document.querySelector('input[name="Receiver"]').value = user.id; // ID'yi gizli alana yerleştir
+            } else {
+                alert("Kullanıcı bulunamadı.");
+                document.querySelector('input[name="Receiver"]').value = ''; // ID'yi sıfırla
+            }
+        } catch (error) {
+            console.error('API çağrısında hata oluştu:', error);
+            alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+        }
+    });
+</script>

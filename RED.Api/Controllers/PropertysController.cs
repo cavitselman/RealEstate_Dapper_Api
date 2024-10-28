@@ -154,5 +154,19 @@ namespace RED.Api.Controllers
             await _PropertyRepository.PropertyStatusChangeToFalse(id);
             return Ok("İlan Pasif Yapıldı.");
         }
+
+        [HttpGet("GetAllAnkaraProperty")]
+        public async Task<IActionResult> GetAllAnkaraProperty()
+        {
+            var value = await _PropertyRepository.GetAllAnkaraProperty();
+            return Ok(value);
+        }
+
+        [HttpGet("GetAllIzmirProperty")]
+        public async Task<IActionResult> GetAllIzmirProperty()
+        {
+            var value = await _PropertyRepository.GetAllIzmirProperty();
+            return Ok(value);
+        }
     }
 }

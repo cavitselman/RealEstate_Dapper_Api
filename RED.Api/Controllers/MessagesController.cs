@@ -23,10 +23,32 @@ namespace RED.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendMessage(CreateContactMessageDTO createContactMessageDTO)
+        public async Task<IActionResult> SendMessage(CreateMessageDTO createContactMessageDTO)
         {
             await _messageRepository.SendMessage(createContactMessageDTO);
             return Ok("Mesaj başarıyla gönderildi.");
         }
+
+        [HttpGet("GetInBoxByReceiver")]
+        public async Task<IActionResult> GetInBoxByReceiver(int id)
+        {
+            var values = await _messageRepository.GetInBoxByReceiver(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetInBoxDetailByReceiver")]
+        public async Task<IActionResult> GetInBoxDetailByReceiver(int id)
+        {
+            var values = await _messageRepository.GetInBoxDetailByReceiver(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetUserIdByEmail")]
+        public async Task<IActionResult> GetUserIdByEmail(string email)
+        {
+            var values = await _messageRepository.GetUserIdByEmail(email);
+            return Ok(values);
+        }
+
     }
 }

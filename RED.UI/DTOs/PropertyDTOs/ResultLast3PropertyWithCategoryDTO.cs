@@ -12,5 +12,6 @@
         public int PropertyCategory { get; set; }
         public string CategoryName { get; set; }
         public DateTime AdvertisementDate { get; set; }
+        public string SlugUrl { get; set; }
     }
 }

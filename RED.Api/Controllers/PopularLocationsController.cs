@@ -48,6 +48,6 @@ namespace RED.Api.Controllers
         {
             var value = await _locationRepository.GetPopularLocation(id);
             return Ok(value);
-        }
+        }        
     }
 }

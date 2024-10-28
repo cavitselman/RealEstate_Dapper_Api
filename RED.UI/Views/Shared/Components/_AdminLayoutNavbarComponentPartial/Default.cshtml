@@ -1,4 +1,6 @@
-﻿<nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+﻿@model List<ResultInBoxMessageDTO>
+
+<nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
     <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
         <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
     </a>
@@ -15,37 +17,42 @@
                 <span class="d-none d-lg-inline-flex">Mesajlar</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                <a href="#" class="dropdown-item">
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="~/dashmin-1.0.0/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="ms-2">
-                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                            <small>15 minutes ago</small>
+
+                @foreach (var item in Model)
+                {
+                    var timeSpan = DateTime.Now - item.SendDate;
+                    string timeAgo;
+
+                    if (timeSpan.Days > 0)
+                    {
+                        timeAgo = $"{timeSpan.Days} gün önce";
+                    }
+                    else if (timeSpan.Hours > 0)
+                    {
+                        timeAgo = $"{timeSpan.Hours} saat önce";
+                    }
+                    else if (timeSpan.Minutes > 0)
+                    {
+                        timeAgo = $"{timeSpan.Minutes} dakika önce";
+                    }
+                    else
+                    {
+                        timeAgo = $"{timeSpan.Seconds} saniye önce";
+                    }
+
+                    <a href="/Message/InBoxDetail/@item.MessageId" class="dropdown-item">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle" src="@item.UserImageUrl" alt="" style="width: 40px; height: 40px;">
+                            <div class="ms-2">
+                                <h6 class="fw-normal mb-0">@item.SenderName bir mesaj gönderdi.</h6>
+                                <small>@timeAgo</small>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item">
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="~/dashmin-1.0.0/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="ms-2">
-                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                    </div>
-                </a>
-                <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item">
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="ms-2">
-                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                    </div>
-                </a>
-                <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item text-center">See all message</a>
+                    </a>
+                    <hr class="dropdown-divider">
+                }
+
+                <a href="/Message/Inbox" class="dropdown-item text-center">Tüm Mesajları Gör</a>
             </div>
         </div>
         <div class="nav-item dropdown">

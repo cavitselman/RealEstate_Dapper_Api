@@ -10,18 +10,18 @@
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-sm-4">
                         <div class="grids5-info">
                             <span class="posted-date">
-                                <a href="/Property/PropertySingle/@item.PropertyID">
+                                <a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.PropertyID })">
                                     <span class="small">@item.AdvertisementDate.ToString("yyyy")</span>
                                     <span class="big">@item.AdvertisementDate.ToString("dd")</span>
-                                    <span class="small">@item.AdvertisementDate.ToString("MMMMM")</span>
+                                    <span class="small">@item.AdvertisementDate.ToString("MMMM", new System.Globalization.CultureInfo("tr-TR"))</span>
                                 </a>
                             </span>
-                            <a href="/Property/PropertySingle/@item.PropertyID" class="d-block zoom">
+                            <a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.PropertyID })" class="d-block zoom">
                                 <img src="@item.CoverImage" alt="" class="img-fluid news-image" style="height:250px" />
                             </a>
                             <div class="blog-info">
-                                <a href="/Property/PropertySingle/@item.PropertyID" class="category">@item.CategoryName</a>
-                                <h4><a href="/Property/PropertySingle/@item.PropertyID">@item.Title</a></h4>
+                                <a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.PropertyID })" class="category">@item.CategoryName</a>
+                                <h4><a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.PropertyID })">@item.Title</a></h4>
                                 <p>@(item.Description.Length > 100 ? item.Description.Substring(0, 100) : item.Description)</p>
                             </div>
                         </div>

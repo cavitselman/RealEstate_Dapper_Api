@@ -1,8 +1,7 @@
 ﻿@model List<ResultPropertyDTO>
 
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "PropertyByIzmir";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
@@ -10,10 +9,10 @@
     <div class="locations py-5">
         <div class="container py-lg-5 py-md-4 py-2">
             <div class="heading text-center mx-auto">
-                <h3 class="title-big">Tüm Satılık & Kiralık İlanlar (@Model.Count)</h3>
+                <h3 class="title-big">İzmir'deki Tüm İlanlar (@Model.Count)</h3>
             </div>
             <div class="row pt-md-5 pt-4">
-                @foreach(var item in Model)
+                @foreach (var item in Model)
                 {
                     <div class="col-lg-4 col-md-6 mb-3">
                         <a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.PropertyID })">

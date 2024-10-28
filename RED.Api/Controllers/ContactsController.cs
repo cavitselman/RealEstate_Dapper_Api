@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RED.Api.DTOs.ContactDTOs;
-using RED.Api.DTOs.MessageDTOs;
 using RED.Api.Repositories.ContactRepositories;
 
 namespace RED.Api.Controllers

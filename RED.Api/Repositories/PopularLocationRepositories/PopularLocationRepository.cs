@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using RED.Api.DTOs.PopularLocationDTOs;
+using RED.Api.DTOs.PropertyDTOs;
 using RED.Api.DTOs.ServiceDTOs;
 using RED.Api.Models.DapperContext;
 
@@ -45,7 +46,7 @@ namespace RED.Api.Repositories.PopularLocationRepositories
                 var values = await connection.QueryAsync<ResultPopularLocationDTO>(query);
                 return values.ToList();
             }
-        }
+        }               
 
         public async Task<GetByIDPopularLocationDTO> GetPopularLocation(int id)
         {
@@ -70,6 +71,6 @@ namespace RED.Api.Repositories.PopularLocationRepositories
             {
                 await connection.ExecuteAsync(query, parameters);
             }
-        }
+        }        
     }
 }

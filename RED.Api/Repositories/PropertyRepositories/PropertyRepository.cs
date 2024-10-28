@@ -225,7 +225,7 @@ namespace RED.Api.Repositories.PropertyRepositories
 
         public async Task<List<ResultPropertyWithCategoryDTO>> GetPropertyByDealOfTheDayTrueWithCategory()
         {
-            string query = "Select PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay From Property inner join Category on Property.PropertyCategory=Category.CategoryID Where DealOfTheDay=1";
+            string query = "Select PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl From Property inner join Category on Property.PropertyCategory=Category.CategoryID Where DealOfTheDay=1";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultPropertyWithCategoryDTO>(query);
@@ -235,7 +235,7 @@ namespace RED.Api.Repositories.PropertyRepositories
 
         public async Task<List<ResultLast3PropertyWithCategoryDTO>> GetLast3Property()
         {
-            string query = "Select Top(3) PropertyID,Title,Price,City,District,PropertyCategory,CategoryName,AdvertisementDate,CoverImage,Description From Property Inner Join Category On Property.PropertyCategory=Category.CategoryID Order By PropertyID Desc";
+            string query = "Select Top(3) PropertyID,Title,Price,City,District,PropertyCategory,CategoryName,AdvertisementDate,CoverImage,Description,SlugUrl From Property Inner Join Category On Property.PropertyCategory=Category.CategoryID Order By PropertyID Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultLast3PropertyWithCategoryDTO>(query);
@@ -285,6 +285,26 @@ namespace RED.Api.Repositories.PropertyRepositories
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
+        public async Task<List<ResultPropertyDTO>> GetAllAnkaraProperty()
+        {
+            string query = @"SELECT PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl,PropertyStatus FROM Property INNER JOIN Category ON Property.PropertyCategory = Category.CategoryID WHERE City = 'Ankara'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultPropertyDTO>(query);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultPropertyDTO>> GetAllIzmirProperty()
+        {
+            string query = @"SELECT PropertyID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay,SlugUrl,PropertyStatus FROM Property INNER JOIN Category ON Property.PropertyCategory = Category.CategoryID WHERE City = 'İzmir'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultPropertyDTO>(query);
+                return values.ToList();
             }
         }
     }
