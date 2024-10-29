@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RED.UI.DTOs.AppUserDTOs;
 using RED.UI.DTOs.MessageDTOs;
 using RED.UI.Services.LoginService.LoginService;
 
@@ -10,23 +11,34 @@ namespace RED.UI.ViewComponents.Admin
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;
 
-        public _AdminLayoutNavbarComponentPartial(IHttpClientFactory httpClientFactory, ILoginService loginService)
+        public _AdminLayoutNavbarComponentPartial(ILoginService loginService, IHttpClientFactory httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
             _loginService = loginService;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var id = _loginService.GetUserId;
+            var id = _loginService.GetUserId; // Kullanıcı ID'sini al
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44383/api/Messages?id=" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/AppUsers/GetAppUserInfo?id=" + id);
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultInBoxMessageDTO>>(jsonData);
-                return View(values);
+                var user = JsonConvert.DeserializeObject<GetAppUserInfoDTO>(jsonData); // Tek bir nesne döndüğünü varsayıyoruz
+
+                // ViewBag'e verileri ekle
+                ViewBag.UserImageUrl = user?.UserImageUrl ?? "~/dashmin-1.0.0/img/user.jpg"; // Varsayılan resim
+                ViewBag.Name = user?.Name ?? "Kullanıcı"; // Varsayılan kullanıcı adı
             }
+            else
+            {
+                // Hata durumunda varsayılan değerler
+                ViewBag.UserImageUrl = "~/dashmin-1.0.0/img/user.jpg";
+                ViewBag.Name = "Kullanıcı";
+            }
+
             return View();
         }
     }

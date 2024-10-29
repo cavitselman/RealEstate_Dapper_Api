@@ -1,0 +1,42 @@
+﻿@model GetAppUserInfoDTO
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h4 class="mb-4">Profil Düzenleme Sayfası</h4>
+                <form method="post">
+                    <input type="hidden" asp-for="UserId" />
+                    <label>Ad Soyad</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <br />
+                    <label>Email</label>
+                    <input type="text" asp-for="Email" class="form-control" />
+                    <br />
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" asp-for="UserName" class="form-control" />
+                    <br />
+                    <label>Telefon</label>
+                    <input type="text" asp-for="PhoneNumber" class="form-control" />
+                    <br />
+                    <label>Şifre</label>
+                    <input type="password" asp-for="Password" class="form-control" />
+                    <br />
+                    <div class="form-group">
+                        <label>Profil Resmi Yükle</label>
+                        <input type="file" asp-for="UserImageUrl" class="form-control" />
+                        <small class="form-text text-muted">Dosya seçin (jpg, png, vb.)</small>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                    <button class="btn btn-light">İptal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
