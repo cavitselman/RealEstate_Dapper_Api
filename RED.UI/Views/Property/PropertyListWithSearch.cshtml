@@ -15,13 +15,13 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-lg-4 col-md-6 mb-3">
-                        <a href="/Property/PropertySingle/@item.PropertyID">
+                        <a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.PropertyID })">
                             <div class="box16">
                                 <div class="rentext-listing-category"><span>@item.Type</span><span>@item.CategoryName</span></div>
                                 <img class="img-fluid" style="height:200px;width:700px" src="@item.CoverImage" alt="">
                                 <div class="box-content">
-                                    <h3 class="title">₺ @item.Price</h3>
-                                    <span class="post">@item.Address @item.District - @item.City</span>
+                                    <h3 class="title" style="position:relative;top:30px">@item.Price ₺</h3>
+                                    <span class="post" style="position:relative;top:17px">@item.Title - @item.City</span>
                                 </div>
                             </div>
                         </a>

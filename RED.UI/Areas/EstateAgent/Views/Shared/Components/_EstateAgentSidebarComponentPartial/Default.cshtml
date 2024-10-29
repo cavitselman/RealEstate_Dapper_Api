@@ -5,25 +5,63 @@
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
-                <img class="rounded-circle" src="~/dashmin-1.0.0/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                <img class="rounded-circle" src="@ViewBag.UserImageUrl" alt="" style="width: 40px; height: 40px;">
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
                 <h6 class="mb-0">Kullanıcı Paneli</h6>
-                <span>emlak45</span>
+                <span>@ViewBag.UserName</span>
             </div>
         </div>
         <div class="navbar-nav w-100">
             <a href="/EstateAgent/Dashboard/Index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="/Default/Index" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Siteye Git</a>
-            <a href="/EstateAgent/MyAdverts/ActiveAdverts" class="nav-item nav-link"><i class="fa fa-th me-2"></i>İlanlarım</a>
-            <a href="/EstateAgent/MyAdverts/PassiveAdverts" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Geçmiş İlanlar</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-gift me-2"></i>Profilim</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-cubes me-2"></i>Gelen Mesajlar</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-cubes me-2"></i>Giden Mesajlar</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-cubes me-2"></i>Yeni Mesaj</a>
+            <a href="/Default/Index" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Siteye Git</a>
+            <a href="/EstateAgent/MyAdverts/ActiveAdverts" class="nav-item nav-link"><i class="fa fa-folder-open me-2"></i>İlanlarım</a>
+            <a href="/EstateAgent/MyAdverts/PassiveAdverts" class="nav-item nav-link"><i class="fa fa-folder me-2"></i>Geçmiş İlanlar</a>
+            <a href="/EstateAgent/Profile/Index" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Profilim</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" onclick="toggleMenu(event, 'messageMenu')">
+                    <i class="fa fa-envelope me-2"></i>Email Listesi <i class="fa fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu" id="messageMenu" style="display: none;">
+                    <a class="dropdown-item" href="/Message/InBox">Gelen Mesajlar</a>
+                    <a class="dropdown-item" href="/Writer/Message/SenderMessage/">Gönderilen Mesajlar</a>
+                    <a class="dropdown-item" href="/Writer/Message/SendMessage/">Mesaj Gönder</a>
+                </div>
+            </li>
             <a href="#" class="nav-item nav-link"><i class="fa fa-cog me-2"></i>Ayarlar</a>
             <a href="/Login/LogOut" class="nav-item nav-link"><i class="fa fa-times me-2"></i>Çıkış Yap</a>
         </div>
     </nav>
 </div>
+
+<script>
+    function toggleMenu(event, menuId) {
+        event.preventDefault();
+        var menu = document.getElementById(menuId);
+        if (menu.style.display === "none" || menu.style.display === "") {
+            menu.style.display = "block";
+        } else {
+            menu.style.display = "none";
+        }
+    }
+</script>
+
+<style>
+    .dropdown-menu {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .dropdown-item {
+        padding: 10px 15px;
+        display: block;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+</style>

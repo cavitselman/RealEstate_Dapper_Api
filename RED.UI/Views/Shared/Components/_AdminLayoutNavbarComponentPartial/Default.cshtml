@@ -1,6 +1,4 @@
-﻿@model List<ResultInBoxMessageDTO>
-
-<nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+﻿<nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
     <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
         <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
     </a>
@@ -11,50 +9,9 @@
         <input class="form-control border-0" type="search" placeholder="Search">
     </form>
     <div class="navbar-nav align-items-center ms-auto">
-        <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <i class="fa fa-envelope me-lg-2"></i>
-                <span class="d-none d-lg-inline-flex">Mesajlar</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+        
+        @await Component.InvokeAsync("_AdminLayoutNavbarLast3MessageComponentPartial")
 
-                @foreach (var item in Model)
-                {
-                    var timeSpan = DateTime.Now - item.SendDate;
-                    string timeAgo;
-
-                    if (timeSpan.Days > 0)
-                    {
-                        timeAgo = $"{timeSpan.Days} gün önce";
-                    }
-                    else if (timeSpan.Hours > 0)
-                    {
-                        timeAgo = $"{timeSpan.Hours} saat önce";
-                    }
-                    else if (timeSpan.Minutes > 0)
-                    {
-                        timeAgo = $"{timeSpan.Minutes} dakika önce";
-                    }
-                    else
-                    {
-                        timeAgo = $"{timeSpan.Seconds} saniye önce";
-                    }
-
-                    <a href="/Message/InBoxDetail/@item.MessageId" class="dropdown-item">
-                        <div class="d-flex align-items-center">
-                            <img class="rounded-circle" src="@item.UserImageUrl" alt="" style="width: 40px; height: 40px;">
-                            <div class="ms-2">
-                                <h6 class="fw-normal mb-0">@item.SenderName bir mesaj gönderdi.</h6>
-                                <small>@timeAgo</small>
-                            </div>
-                        </div>
-                    </a>
-                    <hr class="dropdown-divider">
-                }
-
-                <a href="/Message/Inbox" class="dropdown-item text-center">Tüm Mesajları Gör</a>
-            </div>
-        </div>
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class="fa fa-bell me-lg-2"></i>
@@ -62,27 +19,27 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 <a href="#" class="dropdown-item">
-                    <h6 class="fw-normal mb-0">Profile updated</h6>
-                    <small>15 minutes ago</small>
+                    <h6 class="fw-normal mb-0">Profil güncellendi</h6>
+                    <small>5 dakika önce</small>
                 </a>
                 <hr class="dropdown-divider">
                 <a href="#" class="dropdown-item">
-                    <h6 class="fw-normal mb-0">New user added</h6>
-                    <small>15 minutes ago</small>
+                    <h6 class="fw-normal mb-0">Yeni ilan eklendi</h6>
+                    <small>10 dakika önce</small>
                 </a>
                 <hr class="dropdown-divider">
                 <a href="#" class="dropdown-item">
-                    <h6 class="fw-normal mb-0">Password changed</h6>
-                    <small>15 minutes ago</small>
+                    <h6 class="fw-normal mb-0">Şifre değiştirildi</h6>
+                    <small>15 dakika önce</small>
                 </a>
                 <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item text-center">See all notifications</a>
+                <a href="#" class="dropdown-item text-center">Tüm bildirimleri görün</a>
             </div>
         </div>
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <img class="rounded-circle me-lg-2" src="~/dashmin-1.0.0/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                <span class="d-none d-lg-inline-flex">Cavit Selman</span>
+                <img class="rounded-circle me-lg-2" src="@ViewBag.UserImageUrl" alt="" style="width: 40px; height: 40px;">
+                <span class="d-none d-lg-inline-flex">@ViewBag.Name</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 <a href="#" class="dropdown-item">Profilim</a>

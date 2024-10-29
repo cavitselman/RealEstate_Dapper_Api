@@ -171,9 +171,9 @@ namespace RED.Api.Repositories.PropertyRepositories
             parameters.Add("@PropertyId", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<GetPropertyByPropertyIdDTO>(query,parameters);
+                var values = await connection.QueryAsync<GetPropertyByPropertyIdDTO>(query, parameters);
                 return values.FirstOrDefault();
-            }            
+            }
         }
 
         public async Task<GetPropertyDetailByIdDTO> GetPropertyDetailByPropertyId(int id)
@@ -191,25 +191,26 @@ namespace RED.Api.Repositories.PropertyRepositories
         public async Task<List<ResultPropertyWithSearchListDTO>> ResultPropertyWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
         {
             string query = @"
-        SELECT 
-            p.PropertyID, 
-            p.Title, 
-            p.Price, 
-            p.City, 
-            p.District, 
-            c.CategoryName, 
-            p.CoverImage, 
-            p.Type, 
-            p.Address, 
-            p.DealOfTheDay 
-        FROM 
-            Property p
-        INNER JOIN 
-            Category c ON p.PropertyCategory = c.CategoryID
-        WHERE 
-            p.Title LIKE @searchKeyValue 
-            AND p.PropertyCategory = @propertyCategoryId 
-            AND p.City = @city";
+                            SELECT 
+                            p.PropertyID, 
+                            p.Title, 
+                            p.Price, 
+                            p.City, 
+                            p.District, 
+                            c.CategoryName, 
+                            p.CoverImage, 
+                            p.Type, 
+                            p.Address, 
+                            p.DealOfTheDay, 
+                            p.SlugUrl        
+                            FROM 
+                            Property p
+                        INNER JOIN 
+                            Category c ON p.PropertyCategory = c.CategoryID
+                        WHERE 
+                            p.Title LIKE @searchKeyValue 
+                            AND p.PropertyCategory = @propertyCategoryId 
+                            AND p.City = @city";
 
             var parameters = new DynamicParameters();
             parameters.Add("@searchKeyValue", $"%{searchKeyValue}%");

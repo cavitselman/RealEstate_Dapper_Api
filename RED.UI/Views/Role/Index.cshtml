@@ -1,0 +1,53 @@
+﻿@model List<UpdateAppUserRoleDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Rol Düzenleme Listesi</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Kullanıcı Adı</th>
+                                <th scope="col">Rolü</th>
+                                <th scope="col">Kullanıcı Sil</th>
+                                <th scope="col">Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.UserId</th>
+                                    <td>@item.UserName</td>
+                                    <td>
+                                        @{
+                                            string userRole = item.UserRole switch
+                                            {
+                                                1 => "Admin",
+                                                2 => "Üye",
+                                                3 => "Yönetici",
+                                                4 => "Ziyaretçi",
+                                                5 => "Çalışan"
+                                            };
+                                        }
+                                        @userRole
+                                    </td>
+                                    <td><a href="/Role/DeleteAppUser/@item.UserId" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Role/UpdateRole/@item.UserId" class="btn btn-outline-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
