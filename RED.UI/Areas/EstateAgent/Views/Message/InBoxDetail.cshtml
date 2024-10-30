@@ -1,0 +1,47 @@
+﻿@model ResultInBoxMessageDTO
+
+@{
+    ViewData["Title"] = "InBoxDetail";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
+}
+
+<input type="hidden" asp-for="@Model.MessageId" />
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title" style="position:relative; right:200px"><br />Mesaj Detayları</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="right:220px">
+                    <div class="card-body">
+                        <div class="card-sub">
+                            <b>Gönderen:</b> @Model.SenderName
+                            <br />
+                            <b>Email:</b> @Model.SenderEmail
+                            <br />
+                            <b>Tarih:</b> @Model.SendDate.ToString("dd/MM/yy HH:mm", System.Globalization.CultureInfo.InvariantCulture)
+                            <br />
+                            <b>Konu:</b> @Model.Subject
+                            <br />
+                            <b>Mesaj:</b> @Model.MessageContent
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br />
+
+        <!-- Cevap Gönderme Alanı -->
+        <div class="card" style="right:220px">
+            <div class="card-body">
+                <h5>Cevap Gönder</h5>
+                <form asp-area="EstateAgent" asp-controller="Message" asp-action="SendMessage" method="post">
+                    <input type="hidden" asp-for="@Model.MessageId" />
+                    <div class="form-group">
+                        <label for="responseContent">Cevap Metni:</label>
+                        <textarea id="responseContent" name="responseContent" class="form-control" rows="4" required></textarea>
+                    </div><br />
+                    <button type="submit" class="btn btn-primary">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -35,6 +35,19 @@ namespace RED.Api.Repositories.MessageRepositories
             }
         }
 
+        public async Task DeleteMessage(int id)
+        {
+            string query = "DELETE FROM Message WHERE MessageId = @MessageId";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@MessageId", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
         public async Task<List<ResultInBoxMessageDTO>> GetInBoxLast3MessageListByReceiver(int id)
         {
             string query = "Select Top(3) MessageId,SenderName,Subject,MessageContent,SendDate,IsRead,UserImageUrl From Message Inner Join AppUser On Message.Sender=AppUser.UserId Where Receiver=@receiverId Order By MessageId Desc";
@@ -52,6 +65,32 @@ namespace RED.Api.Repositories.MessageRepositories
             string query = "Select MessageId, SenderName, Subject, MessageContent, SendDate, IsRead, UserImageUrl, AppUser.Email AS SenderEmail From Message Inner Join AppUser On Message.Sender=AppUser.UserId Where Receiver=@receiverId Order By MessageId Desc";
             var parameters = new DynamicParameters();
             parameters.Add("@receiverId", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultInBoxMessageDTO>(query, parameters);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultInBoxMessageDTO>> GetInBoxBySender(int id)
+        {
+            string query = @"
+                    SELECT MessageId, 
+                           Receiver AS ReceiverId, 
+                           Subject, 
+                           MessageContent, 
+                           SendDate, 
+                           IsRead, 
+                           ReceiverEmail, 
+                           AppUser.Email AS ReceiverEmail 
+                    FROM Message 
+                    INNER JOIN AppUser ON Message.Receiver = AppUser.UserId 
+                    WHERE Sender = @senderId 
+                    ORDER BY MessageId DESC";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@senderId", id);
+
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultInBoxMessageDTO>(query, parameters);
@@ -83,6 +122,6 @@ namespace RED.Api.Repositories.MessageRepositories
             {
                 return await connection.QuerySingleOrDefaultAsync<int?>(query, parameters);
             }
-        }
+        }        
     }
 }

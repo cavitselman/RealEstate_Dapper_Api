@@ -25,51 +25,10 @@
             <a href="/Service/Index" class="nav-item nav-link"><i class="fa fa-university me-2"></i>Hizmetler</a>
             <a href="/PopularLocation/Index" class="nav-item nav-link"><i class="fa fa-map-marker me-2"></i>Lokasyonlar</a>
             <a href="/DealOfTheDay/List" class="nav-item nav-link"><i class="fa fa-gift me-2"></i>Günün Fırsatları</a>
-            <a href="/Contact/AdminContact" class="nav-item nav-link"><i class="fa fa-inbox me-2"></i>İletişim Mesajları</a>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#" onclick="toggleMenu(event, 'messageMenu')">
-                    <i class="fa fa-cubes me-2"></i>Email Listesi <i class="fa fa-chevron-down"></i>
-                </a>
-                <div class="dropdown-menu" id="messageMenu" style="display: none;">
-                    <a class="dropdown-item" href="/Message/InBox">Gelen Mesajlar</a>
-                    <a class="dropdown-item" href="/Writer/Message/SenderMessage/">Gönderilen Mesajlar</a>
-                    <a class="dropdown-item" href="/Writer/Message/SendMessage/">Mesaj Gönder</a>
-                </div>
-            </li>
+            <a href="/Contact/AdminContact" class="nav-item nav-link"><i class="fa fa-inbox me-2"></i>İletişim Mesajları</a>            
             <a href="#" class="nav-item nav-link"><i class="fa fa-phone me-2"></i>İletişim Bilgileri</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-cog me-2"></i>Ayarlar</a>
+            <a href="/Notification/Index" class="nav-item nav-link"><i class="fa fa-cog me-2"></i>Ayarlar</a>
             <a href="/Login/LogOut" class="nav-item nav-link"><i class="fa fa-times me-2"></i>Çıkış Yap</a>
         </div>
     </nav>
 </div>
-
-<script>
-function toggleMenu(event, menuId) {
-    event.preventDefault();
-    var menu = document.getElementById(menuId);
-    if (menu.style.display === "none" || menu.style.display === "") {
-        menu.style.display = "block";
-    } else {
-        menu.style.display = "none";
-    }
-}
-</script>
-
-<style>
-.dropdown-menu {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.dropdown-item {
-    padding: 10px 15px;
-    display: block;
-    text-decoration: none;
-    color: #333;
-}
-
-.dropdown-item:hover {
-    background-color: #f1f1f1;
-}
-</style>

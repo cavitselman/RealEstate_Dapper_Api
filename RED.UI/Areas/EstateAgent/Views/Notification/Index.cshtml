@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h4 class="mb-4">Bildirim Ayarları</h4>
+                <form asp-action="UpdateNotificationSettings" method="post">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="announcement" name="announcement" checked />
+                        <label class="form-check-label" for="announcement">İlan Bildirimi</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="message" name="message" checked />
+                        <label class="form-check-label" for="message">Mesaj Bildirimi</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="announcementNotification" name="announcementNotification" />
+                        <label class="form-check-label" for="announcementNotification">Duyuru Bildirimi</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="taskNotification" name="taskNotification" />
+                        <label class="form-check-label" for="taskNotification">Yapılacaklar Bildirimi</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="taskNotification" name="taskNotification" checked />
+                        <label class="form-check-label" for="taskNotification">Email Bildirimleri</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="taskNotification" name="taskNotification" />
+                        <label class="form-check-label" for="taskNotification">Sms Bildirimleri</label>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

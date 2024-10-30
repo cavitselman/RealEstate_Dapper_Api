@@ -4,8 +4,9 @@ using RED.UI.DTOs.MessageDTOs;
 using RED.UI.Services.LoginService.LoginService;
 using System.Text;
 
-namespace RED.UI.Controllers
+namespace RED.UI.Areas.EstateAgent.Controllers
 {
+    [Area("EstateAgent")]
     public class MessageController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -65,6 +66,69 @@ namespace RED.UI.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> OutBox()
+        {
+            var id = _loginService?.GetUserId;
+            if (id == null)
+            {
+                // Kullanıcı oturum açmamış, yönlendirme veya hata mesajı
+                return RedirectToAction("SignIn", "Login");
+            }
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44383/api/Messages/GetInBoxBySender?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultInBoxMessageDTO>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> OutBoxDetail(int id)
+        {
+            if (id == null)
+            {
+                // Kullanıcı oturum açmamış, yönlendirme veya hata mesajı
+                return RedirectToAction("SignIn", "Login");
+            }
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44383/api/Messages/GetInBoxDetailByReceiver?id={id}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultInBoxMessageDTO>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteMessageInBox(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:44383/api/Messages/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("InBox", "Message", new { area = "EstateAgent" });
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteMessageOutBox(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:44383/api/Messages/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("OutBox", "Message", new { area = "EstateAgent" });
+            }
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult SendMessage()
         {
             return View();
@@ -73,9 +137,9 @@ namespace RED.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> SendMessage(CreateMessageDTO createMessageDTO)
         {
+            // Giriş yapan kullanıcının bilgilerini al
             var userEmail = _httpContextAccessor.HttpContext.User.FindFirst("Email")?.Value;
             var userSenderId = _httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value;
-            var userSenderName = _httpContextAccessor.HttpContext.User.FindFirst("Name")?.Value;
 
             if (string.IsNullOrEmpty(userEmail) || string.IsNullOrEmpty(createMessageDTO.ReceiverEmail))
             {
@@ -92,9 +156,9 @@ namespace RED.UI.Controllers
                 var content = await response.Content.ReadAsStringAsync();
                 var receiverId = JsonConvert.DeserializeObject<int>(content);
 
+                // Mesaj bilgilerini doldur
                 createMessageDTO.Sender = int.Parse(userSenderId);
                 createMessageDTO.SenderEmail = userEmail;
-                createMessageDTO.SenderName = userSenderName;
                 createMessageDTO.Receiver = receiverId;
                 createMessageDTO.SendDate = DateTime.Now;
                 createMessageDTO.IsRead = false;
@@ -116,7 +180,6 @@ namespace RED.UI.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Alıcı e-posta adresi sistemde bulunamadı.");
             }
-
             return View(createMessageDTO);
         }
     }
