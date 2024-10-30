@@ -1,0 +1,31 @@
+﻿@model CreateMessageDTO
+
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h4 class="mb-4">Yeni Mesaj Gönder</h4>
+                <form method="post">
+                    <label>Alıcı Email</label>
+                    <input type="text" asp-for="ReceiverEmail" class="form-control" />
+                    <br />
+                    <label>Konu</label>
+                    <input type="text" asp-for="Subject" class="form-control" />
+                    <br />
+                    <label>Mesaj</label>
+                    <textarea id="MessageContent" name="MessageContent" class="form-control" rows="4" required></textarea>
+                    <br />
+                    <input type="hidden" asp-for="Sender" />
+                    <input type="hidden" asp-for="SenderEmail" />
+                    <input type="hidden" asp-for="Receiver" />
+                    <button class="btn btn-primary">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

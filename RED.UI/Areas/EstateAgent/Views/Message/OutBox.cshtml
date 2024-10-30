@@ -1,23 +1,22 @@
 ﻿@model List<ResultInBoxMessageDTO>
 
 @{
-    ViewData["Title"] = "InBox";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "OutBox";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
     int count = 0;
 }
-
 
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Gelen Kutusu</h6>
+                <h6 class="mb-4">Giden Kutusu</h6>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Gönderen</th>
+                                <th scope="col">Alıcı Email</th>
                                 <th scope="col">Konu</th>
                                 <th scope="col">Tarih</th>
                                 <th scope="col">Sil</th>
@@ -30,11 +29,11 @@
                                 count++;
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.SenderName</td>
+                                    <td>@item.ReceiverEmail</td>
                                     <td>@item.Subject</td>
                                     <td>@item.SendDate.ToString("dd/MM/yy HH:mm", System.Globalization.CultureInfo.InvariantCulture)</td>
-                                    <td><a href="/Contact/DeleteContact/@item.MessageId" class="btn btn-outline-danger">Sil</a></td>
-                                        <td><a href="/Message/InBoxDetail/@item.MessageId" class="btn btn-outline-success">Mesajı Gör</a></td>
+                                    <td><a href="/EstateAgent/Message/DeleteMessageOutBox/@item.MessageId" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/EstateAgent/Message/OutBoxDetail/@item.MessageId" class="btn btn-outline-success">Mesajı Gör</a></td>
                                 </tr>
                             }
                         </tbody>

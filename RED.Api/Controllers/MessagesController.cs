@@ -29,10 +29,24 @@ namespace RED.Api.Controllers
             return Ok("Mesaj başarıyla gönderildi.");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMessage(int id)
+        {
+            await _messageRepository.DeleteMessage(id);
+            return Ok("Mesaj Başarılı Bir Şekilde Silindi");
+        }
+
         [HttpGet("GetInBoxByReceiver")]
         public async Task<IActionResult> GetInBoxByReceiver(int id)
         {
             var values = await _messageRepository.GetInBoxByReceiver(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetInBoxBySender")]
+        public async Task<IActionResult> GetInBoxBySender(int id)
+        {
+            var values = await _messageRepository.GetInBoxBySender(id);
             return Ok(values);
         }
 

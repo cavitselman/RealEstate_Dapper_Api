@@ -1,8 +1,8 @@
 ﻿@model ResultInBoxMessageDTO
 
 @{
-    ViewData["Title"] = "InBox Detail";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "OutBoxDetail";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
 }
 
 <input type="hidden" asp-for="@Model.MessageId" />
@@ -23,11 +23,10 @@
                             <b>Konu:</b> @Model.Subject
                             <br />
                             <b>Mesaj:</b> @Model.MessageContent
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
-        </div><br />
-        <button style="position:relative;right:210px" class="btn btn-primary">Cevap Yaz</button>
+        </div>
     </div>
 </div>
