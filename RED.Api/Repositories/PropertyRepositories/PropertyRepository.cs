@@ -2,7 +2,6 @@
 using RED.Api.DTOs.PropertyDetailDTOs;
 using RED.Api.DTOs.PropertyDTOs;
 using RED.Api.Models.DapperContext;
-using System.Collections.Generic;
 
 namespace RED.Api.Repositories.PropertyRepositories
 {

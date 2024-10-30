@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using RED.Api.DTOs.CategoryDTOs;
 using RED.Api.DTOs.EmployeeDTOs;
 using RED.Api.Models.DapperContext;
 

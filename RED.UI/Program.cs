@@ -21,10 +21,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.SameSite = SameSiteMode.Strict;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     opt.Cookie.Name = "RealEstateJwt";
-
-    // Oturum süresini ayarlama
-    opt.ExpireTimeSpan = TimeSpan.FromMinutes(1000); // 1000 dakika
-    opt.SlidingExpiration = true; // Her istek ile süre uzat?l?r
 });
 
 builder.Services.AddHttpContextAccessor();
