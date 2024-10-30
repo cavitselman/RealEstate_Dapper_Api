@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.AspNetCore.Mvc;
 using RED.Api.DTOs.ContactReplyDTOs;
 using RED.Api.Models.DapperContext;
 

@@ -1,5 +1,4 @@
 ﻿using RED.Api.DTOs.PopularLocationDTOs;
-using RED.Api.DTOs.PropertyDTOs;
 
 namespace RED.Api.Repositories.PopularLocationRepositories
 {

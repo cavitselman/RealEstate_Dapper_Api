@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using RED.Api.DTOs.BottomGridDTOs;
 using RED.Api.DTOs.ContactDTOs;
 using RED.Api.Models.DapperContext;
 

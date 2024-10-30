@@ -1,5 +1,4 @@
-﻿using RED.Api.DTOs.CategoryDTOs;
-using RED.Api.DTOs.EmployeeDTOs;
+﻿using RED.Api.DTOs.EmployeeDTOs;
 
 namespace RED.Api.Repositories.EmployeeRepositories
 {

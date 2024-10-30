@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using RED.Api.DTOs.LoginDTOs;
 using RED.Api.Models.DapperContext;
 using RED.Api.Tools;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace RED.Api.Controllers
 {

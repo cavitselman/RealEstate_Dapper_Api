@@ -1,7 +1,5 @@
 ﻿using Dapper;
 using RED.Api.DTOs.PopularLocationDTOs;
-using RED.Api.DTOs.PropertyDTOs;
-using RED.Api.DTOs.ServiceDTOs;
 using RED.Api.Models.DapperContext;
 
 namespace RED.Api.Repositories.PopularLocationRepositories

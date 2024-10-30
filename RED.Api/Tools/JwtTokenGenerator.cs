@@ -22,7 +22,7 @@ namespace RED.Api.Tools
             var signinCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             // Token'ın geçerlilik süresini 10 dakika olarak ayarlıyoruz
-            var expireDate = DateTime.UtcNow.AddMinutes(10);
+            var expireDate = DateTime.UtcNow.AddHours(2);
 
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: JwtTokenDefaults.ValidIssuer,
