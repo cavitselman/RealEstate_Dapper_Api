@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RED.UI.DTOs.BottomGridDTOs;
 using RED.UI.DTOs.TestimonialDTOs;
 
 namespace RED.UI.ViewComponents.HomePage
 {
-    public class _DefaultOurTestimonialComponentPartial:ViewComponent
+    public class _DefaultOurTestimonialComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

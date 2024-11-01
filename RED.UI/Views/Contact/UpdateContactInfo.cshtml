@@ -1,0 +1,32 @@
+﻿@model ResultContactInfoDTO
+
+@{
+    ViewData["Title"] = "UpdateContactInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Bize Ulaşın Düzenleme Sayfası</h6>
+                <form method="post">
+                    <input type="hidden" asp-for="ContactInfoId" />
+                    <label>Açıklama</label>
+                    <input type="text" asp-for="Description" class="form-control" />
+                    <br />
+                    <label>Email</label>
+                    <input type="text" asp-for="Email" class="form-control" />
+                    <br />
+                    <label>Adres</label>
+                    <input type="text" asp-for="Address" class="form-control" />
+                    <br />
+                    <label>Telefon</label>
+                    <input type="text" asp-for="Phone" class="form-control" />
+                    <br />
+                    <button class="btn-outline-success">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

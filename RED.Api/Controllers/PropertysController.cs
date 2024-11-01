@@ -130,7 +130,7 @@ namespace RED.Api.Controllers
         [HttpGet("GetPropertyByDealOfTheDayTrueWithCategory")]
         public async Task<IActionResult> GetPropertyByDealOfTheDayTrueWithCategory()
         {
-            var values= await _PropertyRepository.GetPropertyByDealOfTheDayTrueWithCategory();
+            var values = await _PropertyRepository.GetPropertyByDealOfTheDayTrueWithCategory();
             return Ok(values);
         }
 

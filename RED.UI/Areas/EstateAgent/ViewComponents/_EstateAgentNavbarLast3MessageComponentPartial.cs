@@ -5,7 +5,7 @@ using RED.UI.Services.LoginService.LoginService;
 
 namespace RED.UI.Areas.EstateAgent.ViewComponents
 {
-    public class _EstateAgentNavbarLast3MessageComponentPartial:ViewComponent
+    public class _EstateAgentNavbarLast3MessageComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;

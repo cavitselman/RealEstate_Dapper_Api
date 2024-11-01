@@ -2,7 +2,7 @@
 
 namespace RED.UI.ViewComponents.Admin
 {
-    public class _AdminLayoutHeadComponentPartial:ViewComponent
+    public class _AdminLayoutHeadComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -1,0 +1,40 @@
+﻿@model ResultContactInfoDTO
+
+@{
+    ViewData["Title"] = "ContactInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Bize Ulaşın Bilgileri Düzenleme</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Açıklama</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Adres</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Düzenle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>@Model.ContactInfoId</th>
+                                <td>@(Model.Description.Length > 30 ? Model.Description.Substring(0, 30) + "..." : Model.Description)</td>
+                                <td>@Model.Email</td>
+                                <td>@(Model.Address.Length > 30 ? Model.Address.Substring(0, 30) + "..." : Model.Address)</td>
+                                <td>@Model.Phone</td>
+                                <td><a href="/Contact/UpdateContactInfo/@Model.ContactInfoId" class="btn btn-outline-success">Güncelle</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@ using RED.UI.Services.LoginService.LoginService;
 
 namespace RED.UI.ViewComponents.Admin
 {
-    public class _AdminLayoutSidebarComponentPartial:ViewComponent
+    public class _AdminLayoutSidebarComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;

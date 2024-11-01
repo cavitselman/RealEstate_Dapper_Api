@@ -11,6 +11,6 @@ namespace RED.Api.Repositories.AppUserRepositories
         Task UpdateAppUser(GetAppUserInfoDTO getAppUserInfoDTO);
         Task UpdateAppUserRole(UpdateAppUserRoleDTO updateAppUserRoleDTO);
         Task<List<UpdateAppUserRoleDTO>> GetAppUserRole();
-        Task<UpdateAppUserRoleDTO> GetAppUserRoleId(int id);        
+        Task<UpdateAppUserRoleDTO> GetAppUserRoleId(int id);
     }
 }

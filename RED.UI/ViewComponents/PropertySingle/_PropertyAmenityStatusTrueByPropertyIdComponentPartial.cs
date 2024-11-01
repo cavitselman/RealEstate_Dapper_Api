@@ -4,7 +4,7 @@ using RED.UI.DTOs.PropertyAmenityDTOs;
 
 namespace RED.UI.ViewComponents.PropertySingle
 {
-    public class _PropertyAmenityStatusTrueByPropertyIdComponentPartial:ViewComponent
+    public class _PropertyAmenityStatusTrueByPropertyIdComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

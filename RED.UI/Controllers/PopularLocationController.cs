@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.PopularLocationDTOs;
-using RED.UI.DTOs.PropertyDTOs;
 using System.Text;
 
 namespace RED.UI.Controllers
 {
+    [Authorize]
     public class PopularLocationController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -26,7 +27,7 @@ namespace RED.UI.Controllers
                 return View(values);
             }
             return View();
-        }        
+        }
 
         [HttpGet]
         public IActionResult CreatePopularLocation()

@@ -19,7 +19,7 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Las
             parameters.Add("@appUserId", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultLast5PropertyWithCategoryDTO>(query,parameters);
+                var values = await connection.QueryAsync<ResultLast5PropertyWithCategoryDTO>(query, parameters);
                 return values.ToList();
             }
         }

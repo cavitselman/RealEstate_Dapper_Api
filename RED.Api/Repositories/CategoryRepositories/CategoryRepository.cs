@@ -1,6 +1,6 @@
-﻿using RED.Api.DTOs.CategoryDTOs;
+﻿using Dapper;
+using RED.Api.DTOs.CategoryDTOs;
 using RED.Api.Models.DapperContext;
-using Dapper;
 
 namespace RED.Api.Repositories.CategoryRepositories
 {
@@ -19,7 +19,7 @@ namespace RED.Api.Repositories.CategoryRepositories
             var parameters = new DynamicParameters();
             parameters.Add("@categoryName", categoryDTO.CategoryName);
             parameters.Add("@categoryStatus", true);
-            using(var connection = _context.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -32,14 +32,14 @@ namespace RED.Api.Repositories.CategoryRepositories
             parameters.Add("@categoryID", id);
             using (var connection = _context.CreateConnection())
             {
-                await connection.ExecuteAsync(query,parameters);
+                await connection.ExecuteAsync(query, parameters);
             }
         }
 
         public async Task<List<ResultCategoryDTO>> GetAllCategory()
         {
             string query = "Select * From Category";
-            using(var connection=_context.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultCategoryDTO>(query);
                 return values.ToList();
@@ -51,9 +51,9 @@ namespace RED.Api.Repositories.CategoryRepositories
             string query = "Select * From Category Where CategoryID=@CategoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@CategoryID", id);
-            using(var connection = _context.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryFirstOrDefaultAsync<GetByIDCategoryDTO>(query,parameters);
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIDCategoryDTO>(query, parameters);
                 return values;
             }
         }
@@ -65,7 +65,7 @@ namespace RED.Api.Repositories.CategoryRepositories
             parameters.Add("@categoryName", categoryDTO.CategoryName);
             parameters.Add("@categoryStatus", categoryDTO.CategoryStatus);
             parameters.Add("@categoryID", categoryDTO.CategoryID);
-            using(var connection = _context.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }

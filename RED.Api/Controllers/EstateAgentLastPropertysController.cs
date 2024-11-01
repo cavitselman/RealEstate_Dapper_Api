@@ -17,7 +17,7 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetLast5PropertyAsync(int id)
         {
-            var values= await _lastPropertyRepository.GetLast5Property(id);
+            var values = await _lastPropertyRepository.GetLast5Property(id);
             return Ok(values);
         }
     }

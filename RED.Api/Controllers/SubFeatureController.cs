@@ -17,7 +17,7 @@ namespace RED.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSubFeatureList()
         {
-            var values=await _subFeatureRepository.GetAllSubFeature();
+            var values = await _subFeatureRepository.GetAllSubFeature();
             return Ok(values);
         }
     }

@@ -28,5 +28,6 @@ namespace RED.Api.Repositories.PropertyRepositories
         Task DeleteProperty(int id);
         Task<List<ResultPropertyDTO>> GetAllAnkaraProperty();
         Task<List<ResultPropertyDTO>> GetAllIzmirProperty();
+        Task CreatePropertyDetail(CreatePropertyDetailDTO createPropertyDetailDTO);
     }
 }

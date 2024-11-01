@@ -4,7 +4,7 @@ using RED.UI.DTOs.SubFeatureDTOs;
 
 namespace RED.UI.ViewComponents.HomePage
 {
-    public class _DefaultSubFeatureComponentPartial:ViewComponent
+    public class _DefaultSubFeatureComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

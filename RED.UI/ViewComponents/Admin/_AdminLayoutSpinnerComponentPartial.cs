@@ -2,7 +2,7 @@
 
 namespace RED.UI.ViewComponents.Admin
 {
-    public class _AdminLayoutSpinnerComponentPartial:ViewComponent
+    public class _AdminLayoutSpinnerComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.AppUserDTOs;
-using RED.UI.DTOs.MessageDTOs;
 using RED.UI.Services.LoginService.LoginService;
 
 namespace RED.UI.ViewComponents.Admin
 {
-    public class _AdminLayoutNavbarComponentPartial:ViewComponent
+    public class _AdminLayoutNavbarComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;

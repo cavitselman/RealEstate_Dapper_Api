@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Options;
 using RED.UI.Models;
 using RED.UI.Services.LoginService.LoginService;
 using System.IdentityModel.Tokens.Jwt;

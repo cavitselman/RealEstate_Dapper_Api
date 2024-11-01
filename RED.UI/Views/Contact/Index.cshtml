@@ -24,20 +24,20 @@
                         <div class="cont-details">
                             <h5>İletişim Bilgilerimiz</h5>
                             <p class="mt-3 mb-4">
-                                Profesyonel gayrimenkul danışmanlarımız, her türlü emlak ihtiyacınızı karşılamak üzere 7 gün 24 saat hizmet vermekte olup, siz değerli müşterilerimizin memnuniyetini en öncelikli hedefimiz olarak belirlemekteyiz. Bizimle iletişime geçerek, beklentilerinizi karşılayacak çözümler sunmamıza olanak tanıyabilirsiniz.
+                                @ViewBag.Description
                             </p>
                         </div>
                         <div class="hours">
                             <h6 class="mt-4">E-mail Adresimiz:</h6>
                             <p>
-                                <a href="mailto:realestate@destek.com">
-                                    realestate@destek.com
+                                <a href="mailto:@ViewBag.Email">
+                                    @ViewBag.Email
                                 </a>
                             </p>
                             <h6 class="mt-4">Ofisimize Gelin:</h6>
-                            <p> Cumhuriyet Mah. Papatya Plaza No:20 Kat:3 Alsancak/İzmir.</p>
+                            <p> @ViewBag.Address</p>
                             <h6 class="mt-4">İletişim:</h6>
-                            <p class="margin-top"><a href="tel:+90 500-400-3020">+90 500-400-3020</a></p>
+                            <p class="margin-top"><a href="tel:@ViewBag.Phone">@ViewBag.Phone</a></p>
                         </div>
                     </div>
                 </div>

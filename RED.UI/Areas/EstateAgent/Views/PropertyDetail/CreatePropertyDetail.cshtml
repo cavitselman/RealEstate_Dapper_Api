@@ -1,0 +1,57 @@
+﻿@model CreatePropertyDetailDTO
+
+@{
+    ViewData["Title"] = "CreatePropertyDetail";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">İlan Detayları Ekleme Sayfası</h6>
+                <form method="post" asp-action="CreatePropertyDetail" asp-area="EstateAgent">
+                    <input type="hidden" asp-for="PropertyID" value="@ViewBag.PropertyId" />
+
+                    <label>Metrekaresi (m²)</label>
+                    <input type="number" asp-for="PropertySize" class="form-control" required />
+                    <br />
+
+                    <label>Oda Sayısı</label>
+                    <input type="number" asp-for="RoomCount" class="form-control" required />
+                    <br />
+
+                    <label>Yatak Odası Sayısı</label>
+                    <input type="number" asp-for="BedRoomCount" class="form-control" required />
+                    <br />
+
+                    <label>Banyo Sayısı</label>
+                    <input type="number" asp-for="BathCount" class="form-control" required />
+                    <br />
+
+                    <label>Garaj Sayısı</label>
+                    <input type="number" asp-for="GarageSize" class="form-control" />
+                    <br />
+
+                    <label>Yapım Yılı</label>
+                    <input type="number" asp-for="BuildYear" class="form-control" />
+                    <br />
+
+                    <label>Fiyat</label>
+                    <input type="number" asp-for="Price" class="form-control" required />
+                    <br />
+
+                    <label>Lokasyon Link</label>
+                    <input type="text" asp-for="Location" class="form-control" required />
+                    <br />
+
+                    <label>Video URL</label>
+                    <input type="url" asp-for="VideoUrl" class="form-control" />
+                    <br />
+
+                    <button class="btn btn-success">Detayları Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

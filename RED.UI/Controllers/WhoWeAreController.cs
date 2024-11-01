@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RED.UI.DTOs.EmployeeDTOs;
 using RED.UI.DTOs.WhoWeAreDTOs;
 using System.Text;
 
 namespace RED.UI.Controllers
 {
+    [Authorize]
     public class WhoWeAreController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

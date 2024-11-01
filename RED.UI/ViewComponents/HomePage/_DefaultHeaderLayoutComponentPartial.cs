@@ -2,7 +2,7 @@
 
 namespace RED.UI.ViewComponents.HomePage
 {
-    public class _DefaultHeaderLayoutComponentPartial:ViewComponent
+    public class _DefaultHeaderLayoutComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -122,6 +122,6 @@ namespace RED.Api.Repositories.MessageRepositories
             {
                 return await connection.QuerySingleOrDefaultAsync<int?>(query, parameters);
             }
-        }        
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace RED.Api.Controllers
         {
             _statisticsRepository = statisticsRepository;
         }
-        
+
         [HttpGet("ActiveCategoryCount")]
         public IActionResult ActiveCategoryCount()
         {
@@ -30,7 +30,7 @@ namespace RED.Api.Controllers
         {
             return Ok(_statisticsRepository.ApartmentCount());
         }
-        
+
         [HttpGet("AveragePropertyPriceByRent")]
         public IActionResult AveragePropertyPriceByRent()
         {

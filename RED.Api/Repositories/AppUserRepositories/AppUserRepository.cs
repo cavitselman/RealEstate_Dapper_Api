@@ -131,9 +131,9 @@ namespace RED.Api.Repositories.AppUserRepositories
             parameters.Add("@UserId", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryFirstOrDefaultAsync<UpdateAppUserRoleDTO>(query,parameters);
+                var values = await connection.QueryFirstOrDefaultAsync<UpdateAppUserRoleDTO>(query, parameters);
                 return values;
-            }            
+            }
         }
 
         public async Task DeleteAppUser(int id)
