@@ -63,7 +63,7 @@ namespace RED.Api.Controllers
             var value = await _appUserRepository.GetAppUserRole();
             return Ok(value);
         }
-        
+
         [HttpGet("GetAppUserRoleId")]
         public async Task<IActionResult> GetAppUserRoleId(int id)
         {

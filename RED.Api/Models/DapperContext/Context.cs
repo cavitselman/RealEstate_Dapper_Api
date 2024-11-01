@@ -15,6 +15,6 @@ namespace RED.Api.Models.DapperContext
         }
         public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
 
-        
+
     }
 }

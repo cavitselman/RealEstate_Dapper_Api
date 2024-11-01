@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace RED.UI.Controllers
-{    
+{
+    [Authorize]
     public class DashboardController : Controller
     {
         public IActionResult Index()

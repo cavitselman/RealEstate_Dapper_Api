@@ -4,7 +4,7 @@ using RED.UI.DTOs.BottomGridDTOs;
 
 namespace RED.UI.ViewComponents.HomePage
 {
-    public class _DefaultBottomGridComponentPartial:ViewComponent
+    public class _DefaultBottomGridComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

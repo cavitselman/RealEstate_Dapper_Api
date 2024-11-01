@@ -4,7 +4,7 @@ using RED.UI.DTOs.PropertyImageDTOs;
 
 namespace RED.UI.ViewComponents.PropertySingle
 {
-    public class _PropertySliderComponentPartial:ViewComponent
+    public class _PropertySliderComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

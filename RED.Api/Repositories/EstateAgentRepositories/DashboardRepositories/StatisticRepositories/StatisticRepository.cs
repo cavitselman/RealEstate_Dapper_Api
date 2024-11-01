@@ -28,7 +28,7 @@ namespace RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.Sta
             parameters.Add("@appUserId", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = connection.QueryFirstOrDefault<int>(query,parameters);
+                var values = connection.QueryFirstOrDefault<int>(query, parameters);
                 return values;
             }
         }

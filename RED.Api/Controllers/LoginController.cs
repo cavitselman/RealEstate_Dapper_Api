@@ -25,11 +25,11 @@ namespace RED.Api.Controllers
             var parameters = new DynamicParameters();
             parameters.Add("@username", loginDTO.Username);
             parameters.Add("@password", loginDTO.Password);
-            using(var connection=_context.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<CreateLoginDTO>(query, parameters);
-                var values2=await connection.QueryFirstAsync<GetAppUserIdDTO>(query2, parameters);
-                if(values != null)
+                var values2 = await connection.QueryFirstAsync<GetAppUserIdDTO>(query2, parameters);
+                if (values != null)
                 {
                     GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
                     model.Username = values.Username;

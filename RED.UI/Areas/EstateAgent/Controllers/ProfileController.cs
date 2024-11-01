@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using RED.UI.DTOs.AppUserDTOs;
 using RED.UI.Services.LoginService.LoginService;
-using System.Net.Http;
 using System.Text;
 
 namespace RED.UI.Areas.EstateAgent.Controllers
@@ -47,5 +46,5 @@ namespace RED.UI.Areas.EstateAgent.Controllers
             }
             return View();
         }
-    }    
+    }
 }

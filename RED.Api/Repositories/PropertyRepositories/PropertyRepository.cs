@@ -307,5 +307,28 @@ namespace RED.Api.Repositories.PropertyRepositories
                 return values.ToList();
             }
         }
+
+        public async Task CreatePropertyDetail(CreatePropertyDetailDTO createPropertyDetailDTO)
+        {
+            string query = @"INSERT INTO PropertyDetails (PropertySize, BedRoomCount, BathCount, RoomCount, GarageSize, BuildYear, Price, Location, VideoUrl, PropertyID)
+                     VALUES (@PropertySize, @BedRoomCount, @BathCount, @RoomCount, @GarageSize, @BuildYear, @Price, @Location, @VideoUrl, @PropertyID)";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@PropertySize", createPropertyDetailDTO.PropertySize);
+            parameters.Add("@BedRoomCount", createPropertyDetailDTO.BedRoomCount);
+            parameters.Add("@BathCount", createPropertyDetailDTO.BathCount);
+            parameters.Add("@RoomCount", createPropertyDetailDTO.RoomCount);
+            parameters.Add("@GarageSize", createPropertyDetailDTO.GarageSize);
+            parameters.Add("@BuildYear", createPropertyDetailDTO.BuildYear);
+            parameters.Add("@Price", createPropertyDetailDTO.Price);
+            parameters.Add("@Location", createPropertyDetailDTO.Location);
+            parameters.Add("@VideoUrl", createPropertyDetailDTO.VideoUrl);
+            parameters.Add("@PropertyID", createPropertyDetailDTO.PropertyID); // PropertyID, ilk aşamadaki kayıttan alınır.
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ using RED.UI.DTOs.PropertyDTOs;
 
 namespace RED.UI.ViewComponents.HomePage
 {
-    public class _DefaultDiscountOfDayComponentPartial:ViewComponent
+    public class _DefaultDiscountOfDayComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

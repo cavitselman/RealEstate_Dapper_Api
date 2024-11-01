@@ -2,6 +2,8 @@
 using RED.Api.Repositories.AppUserRepositories;
 using RED.Api.Repositories.BottomGridRepositories;
 using RED.Api.Repositories.CategoryRepositories;
+using RED.Api.Repositories.ContactInfoRepositories;
+using RED.Api.Repositories.ContactReplyRepositories;
 using RED.Api.Repositories.ContactRepositories;
 using RED.Api.Repositories.EmployeeRepositories;
 using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.ChartRepositories;
@@ -9,16 +11,15 @@ using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.LastPro
 using RED.Api.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticRepositories;
 using RED.Api.Repositories.MessageRepositories;
 using RED.Api.Repositories.PopularLocationRepositories;
-using RED.Api.Repositories.PropertyRepositories;
 using RED.Api.Repositories.PropertyAmenityRepositories;
 using RED.Api.Repositories.PropertyImageRepositories;
+using RED.Api.Repositories.PropertyRepositories;
 using RED.Api.Repositories.ServiceRepositories;
 using RED.Api.Repositories.StatisticsRepositories;
 using RED.Api.Repositories.SubFeatureRepositories;
 using RED.Api.Repositories.TestimonialRepositories;
 using RED.Api.Repositories.ToDoListRepositories;
 using RED.Api.Repositories.WhoWeAreDetailRepositories;
-using RED.Api.Repositories.ContactReplyRepositories;
 
 namespace RED.Api.Containers
 {
@@ -48,6 +49,7 @@ namespace RED.Api.Containers
             services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
             services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
             services.AddTransient<IContactReplyRepository, ContactReplyRepository>();
+            services.AddTransient<IContactInfoRepository, ContactInfoRepository>();
         }
     }
 }

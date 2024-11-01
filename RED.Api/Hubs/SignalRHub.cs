@@ -2,7 +2,7 @@
 
 namespace RED.Api.Hubs
 {
-    public class SignalRHub:Hub
+    public class SignalRHub : Hub
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

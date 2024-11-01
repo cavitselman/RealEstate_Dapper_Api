@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.ServiceDTOs;
 using System.Text;
 
 namespace RED.UI.Controllers
 {
+    [Authorize]
     public class ServiceController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

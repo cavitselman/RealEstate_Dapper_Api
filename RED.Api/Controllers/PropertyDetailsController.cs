@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RED.Api.DTOs.PropertyDetailDTOs;
 using RED.Api.Repositories.PropertyRepositories;
 
 namespace RED.Api.Controllers
@@ -19,6 +20,13 @@ namespace RED.Api.Controllers
         {
             var values = await _PropertyRepository.GetPropertyDetailByPropertyId(id);
             return Ok(values);
+        }
+
+        [HttpPost("CreatePropertyDetail")]
+        public async Task<IActionResult> CreatePropertyDetail(CreatePropertyDetailDTO createPropertyDetailDTO)
+        {
+            await _PropertyRepository.CreatePropertyDetail(createPropertyDetailDTO);
+            return Ok("İlan detayı başarıyla eklendi.");
         }
     }
 }

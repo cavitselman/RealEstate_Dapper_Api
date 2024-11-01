@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.ContactDTOs;
+using RED.UI.DTOs.ContactInfoDTOs;
 using RED.UI.DTOs.ContactReplyDTOs;
 using RED.UI.Models;
-using System;
-using System.Net.Http;
 using System.Text;
 
 namespace RED.UI.Controllers
@@ -18,10 +17,60 @@ namespace RED.UI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/ContactInfo/GetAllContactInfo");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<ResultContactInfoDTO>(jsonData);
+            ViewBag.Description = values.Description;
+            ViewBag.Email = values.Email;
+            ViewBag.Address = values.Address;
+            ViewBag.Phone = values.Phone;
             // TempData'dan başarı mesajını kontrol et
             ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ContactInfo()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44383/api/ContactInfo/GetAllContactInfo");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultContactInfoDTO>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateContactInfo(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44383/api/ContactInfo/GetContactInfo?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultContactInfoDTO>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateContactInfo(ResultContactInfoDTO resultContactInfoDTO)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(resultContactInfoDTO);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:44383/api/ContactInfo/UpdateContactInfo", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Contact");
+            }
             return View();
         }
 
@@ -124,8 +173,8 @@ namespace RED.UI.Controllers
                 createContactReplyDTO.SenderEmail = "realestate@destek.com";
                 createContactReplyDTO.Email = contactEmail;
                 createContactReplyDTO.Reply = replyContent;
-                createContactReplyDTO.Date = DateTime.Now;  
-                
+                createContactReplyDTO.Date = DateTime.Now;
+
                 var client = _httpClientFactory.CreateClient();
                 var jsonData = JsonConvert.SerializeObject(createContactReplyDTO);
                 StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");

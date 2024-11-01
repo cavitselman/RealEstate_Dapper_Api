@@ -4,7 +4,7 @@
     {
         int PropertyCountByEmployeeId(int id);
         int PropertyCountByStatusTrue(int id);
-        int PropertyCountByStatusFalse(int id);        
+        int PropertyCountByStatusFalse(int id);
         int AllPropertyCount();
     }
 }

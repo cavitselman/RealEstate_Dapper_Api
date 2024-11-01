@@ -2,7 +2,7 @@
 
 namespace RED.UI.Areas.EstateAgent.ViewComponents
 {
-    public class _EstateAgentNavbarMessageComponentPartial:ViewComponent
+    public class _EstateAgentNavbarMessageComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

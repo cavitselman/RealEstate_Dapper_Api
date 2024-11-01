@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.BottomGridDTOs;
 using System.Text;
 
 namespace RED.UI.Controllers
 {
+    [Authorize]
     public class BottomGridController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

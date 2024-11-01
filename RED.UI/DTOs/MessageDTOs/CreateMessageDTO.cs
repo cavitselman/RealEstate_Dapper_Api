@@ -5,7 +5,7 @@
         public int Sender { get; set; }
         public int Receiver { get; set; }
         public string SenderName { get; set; }
-        public string SenderEmail { get; set; }   
+        public string SenderEmail { get; set; }
         public string ReceiverEmail { get; set; }
         public string Subject { get; set; }
         public string MessageContent { get; set; }

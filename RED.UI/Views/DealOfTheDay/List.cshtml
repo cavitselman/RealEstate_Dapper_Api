@@ -24,8 +24,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">İlan Görseli</th>
                                 <th scope="col">Başlık</th>
-                                <th scope="col">Sil</th>
-                                <th scope="col">Güncelle</th>
                                 <th scope="col">Sitede Gör</th>
                             </tr>
                         </thead>
@@ -37,8 +35,6 @@
                                     <th scope="row">@count</th>
                                     <td><img src="@item.coverimage" height="50" width="50" /></td>
                                     <th scope="row">@item.title</th>
-                                    <td><a href="/Product/DeleteProperty/@item.PropertyID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Category/UpdateCategory/@item.PropertyID" class="btn btn-outline-success">Güncelle</a></td>
                                     <td><a href="/Property/PropertySingle/@item.PropertyID" class="btn btn-outline-primary">Sitede Gör</a></td>
                                 </tr>
                             }

@@ -4,7 +4,7 @@ using RED.UI.DTOs.PopularLocationDTOs;
 
 namespace RED.UI.ViewComponents.HomePage
 {
-    public class _DefaultPropertyListExploreCitiesComponentPartial:ViewComponent
+    public class _DefaultPropertyListExploreCitiesComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

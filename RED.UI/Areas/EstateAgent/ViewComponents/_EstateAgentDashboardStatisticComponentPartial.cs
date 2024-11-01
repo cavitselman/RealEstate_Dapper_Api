@@ -3,7 +3,7 @@ using RED.UI.Services.LoginService.LoginService;
 
 namespace RED.UI.Areas.EstateAgent.ViewComponents
 {
-    public class _EstateAgentDashboardStatisticComponentPartial:ViewComponent
+    public class _EstateAgentDashboardStatisticComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;

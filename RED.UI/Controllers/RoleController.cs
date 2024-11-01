@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RED.UI.DTOs.AppUserDTOs;
-using System.Net.Http;
 using System.Text;
 
 namespace RED.UI.Controllers
 {
+    [Authorize]
     public class RoleController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
