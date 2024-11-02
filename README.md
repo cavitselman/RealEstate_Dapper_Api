@@ -72,3 +72,4 @@ Bu proje, kullanıcıların gayrimenkul piyasasına daha etkin bir şekilde kat�
 ![](./RED.UI/wwwroot/readme_img/20.jpg)
 ![](./RED.UI/wwwroot/readme_img/21.jpg)
 ![](./RED.UI/wwwroot/readme_img/22.jpg)
+![](./RED.UI/wwwroot/readme_img/23.jpg)
